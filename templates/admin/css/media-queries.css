@@ -1,0 +1,52 @@
+@media only screen and (max-width:1024px) {
+
+}
+@media only screen and (max-width:768px) {
+    .logout {
+            position: absolute;
+            background:#00498e;
+            right: 0;
+            display: none;
+            top: 69px;
+            z-index: 999;
+            text-align: center;
+            padding:10px;
+    }
+}
+@media only screen and (max-width:679px) {
+    .pageTitle {
+        margin-top:10px;
+        font-size: 18px;
+        text-align: center;
+    }
+
+
+    .dashboardLogo {
+        text-align: center;
+    }
+
+
+    .userName, .userName span span {
+        text-align: center;
+    }
+
+    .logout {
+            position: absolute;
+            background:#00498e;
+            right: 0;
+            display: none;
+            top: 140px;
+            z-index: 999;
+            text-align: center;
+            padding:10px;
+    }
+
+    table.sentMessages {
+		overflow-x: auto;
+		display: block;
+	}
+
+}
+@media only screen and (max-width:500px) {
+
+}
