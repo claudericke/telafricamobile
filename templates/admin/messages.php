@@ -90,9 +90,9 @@
             <nav>
                 <ul class="cd-tabs-navigation">
                     <li><a data-content="sent" class="selected" href="#0"><span class="icon"><img src="images/icons/sentIcon.png" alt=">" /></span>Sent Messages</a></li>
-                    <li><a data-content="compose" href="#0"><span class="icon"><img src="images/icon/write.png" alt=">" /></span>Compose Message</a></li>
-                    <li><a data-content="templates" href="#0"><span class="icon"><img src="images/icon/message.png" alt=">" /></span>Message Templates</a></li>
-                    <li><a data-content="subs" href="#0"><span class="icon"><img src="images/icon/list.png" alt=">" /></span>Subscriber Lists</a></li>
+                    <li><a data-content="compose" href="#0"><span class="icon"><img src="images/icons/write.png" alt=">" /></span>Compose Message</a></li>
+                    <li><a data-content="templates" href="#0"><span class="icon"><img src="images/icons/message.png" alt=">" /></span>Message Templates</a></li>
+                    <li><a data-content="subs" href="#0"><span class="icon"><img src="images/icons/list.png" alt=">" /></span>Subscriber Lists</a></li>
                 </ul>
                 <!-- cd-tabs-navigation -->
             </nav>
@@ -187,7 +187,7 @@
                             <textarea name="message" id="message" value="" class="u-full-width"></textarea>
                         </div>
                         <div class="three columns ">
-                            <span class="wordCount">160</span><span>&nbsp; characters</span>
+                            <span class="wordCount">0</span><span>&nbsp; characters</span>
                             <br/>
                             <span class="messageCount">1</span><span>&nbsp; part message</span>
                         </div>

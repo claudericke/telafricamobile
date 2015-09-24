@@ -42,19 +42,27 @@ body {
     margin: 20px auto;
     background: #fff;
     min-height: 270px;
-
-}
-
-.login-wrapper {
     padding: 20px;
 }
 
+.register-wrapper {
+    margin: 20px auto;
+    background: #fff;
+    height: auto;
+    min-height: 478px;
+    padding: 20px;
+}
+
+
 .emailInput {
-    background: url(../images/envelopes5.png) 95% center no-repeat;
+    background: url(../images/icons/envelopes5.png) 95% center no-repeat;
+}
+.mobileInput {
+    background: url(../images/icons/smartphone86.png) 95% center no-repeat;
 }
 
 .passwordInput {
-    background: url(../images/lock91.png) 95% center no-repeat;
+    background: url(../images/icons/lock91.png) 95% center no-repeat;
 }
 
 .forgotLinks a {
