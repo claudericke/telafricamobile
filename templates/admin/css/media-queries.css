@@ -41,7 +41,7 @@
             padding:10px;
     }
 
-    table.sentMessages {
+    table.sentMessages, table.subscribers {
 		overflow-x: auto;
 		display: block;
 	}

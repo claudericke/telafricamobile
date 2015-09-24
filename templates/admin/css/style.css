@@ -1,3 +1,16 @@
+html {
+  font-family: "Open Sans", sans-serif; /* 1 */
+  -ms-text-size-adjust: 100%; /* 2 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+}
+
+
+body {
+  margin: 0;
+}
+
+
+
 /* Stylesheet for telafrica mobile sms gateway */
 html {
     height: 100%;
@@ -114,6 +127,13 @@ body {
 .greyBG {
     background-color: #3d3d3d;
 }
+.redBG {
+    background-color: #aa0000;
+}
+
+.lightgreyBG {
+    background-color: #cecece;
+}
 
 .italics {
     font-style: italic;
@@ -131,6 +151,11 @@ body {
 .floatLeft {
     float: left !important;
 }
+
+.noMargin {
+    margin: 0 !important;
+}
+
 .reportsSummary h4 span {
     font-size: 11px;
     text-align: right;
@@ -309,7 +334,7 @@ nav.topNav a {
 }
 
 .panel {
-    border-radius: 10px;
+    border-radius: 5px;
     padding:10px;
     margin-top:10px;
     background:#fff;
@@ -373,9 +398,9 @@ nav.topNav a {
 
 .panel p {
     color: #979191;
-    font-weight: 500;
-    font-size: 11px;
-    line-height: 12px;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 18px;
     font-family: "Roboto", sans-serif;
 }
 
