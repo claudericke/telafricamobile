@@ -22,7 +22,7 @@
         <li class="account"><a href="">Account</a></li>
         <li class="reports"><a href="">Reports</a></li>
         <li class="support"><a href="">Support</a></li>
-        <li class="Logout"><a href="">Logout</a></li>
+        <li class="Logout"><a href="login.php">Logout</a></li>
         <li class="close" onclick="toggleNav();" ><a href="#">Close</a></li>
     </ul>
 </nav>
@@ -51,11 +51,11 @@
                 <span>Logged in as <a href="#" class="openLogout"><span>user@example.com<span ><img src="images/icons/down_arrow.png" alt="\/"/></span></span></a></span>
             </div>
             <div class="logout">
-                <span><a href="#">Dashboard</a></span>
+                <span><a href="dashboard.php">Dashboard</a></span>
                 <br/>
                 <span><a href="#">Add Credits</a></span>
                 <br/>
-                <span><a href="#">Log Out</a></span>
+                <span><a href="login.php">Log Out</a></span>
             </div>
             <!-- Currently Logged in User  -->
         </div>
@@ -72,7 +72,7 @@
             </div>
         </div>
         <div class="twelve columns">
-            <div class="panel alert">This is an alart</div>
+            <div class="panel alert">This is an alert</div>
         </div>
     </div>
 </section>

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/skeleton.css">
     <link rel="stylesheet" href="css/entypo.css">
     <link rel="stylesheet" href="css/media-queries.css">
+    <link rel="stylesheet" href="css/sweetalert.css">
 
 </head>
 <body class="dashboard">
@@ -71,7 +72,7 @@
             </div>
         </div>
         <div class="twelve columns">
-            <div class="panel alert">This is an alart</div>
+            <div class="panel alert">This is an alert</div>
         </div>
     </div>
 </section>
@@ -80,7 +81,22 @@
 <section class="settings">
     <div class="container">
         <div class="twelve columns panel">
+            <h4>Change Sender ID</h4>
+            <p>Your sender ID is<span class="senderID"><strong> currently not set</strong></span></p>
+            <form name="settings" action="" method="post">
+                <label for="senderID">Enter Sender ID:</label>
+                <input name="senderID" type="text" id="senderID" />
+                <div class="twelve columns"><div class="spacer"></div></div>
+                <h4>Change Password</h4>
+                <p>To reset your password, enter your new password below:</p>
+                <label for="password">Password:</label>
+                <input name="password" type="password" id="password" />
+                <label for="Confirmpassword">Confirm Password:</label>
+                <input name="Confirmpassword" type="password" id="Confirmpassword" />
+                <div class="twelve columns"><div class="spacer"></div></div>
+                <div class="twelve columns"><input type="button" name="register" class="saveSettings center greenBG white " value="Save Settings" /></div>
 
+            </form>
         </div>
     </div>
 </section>
@@ -88,6 +104,7 @@
 <!-- Links for Scripts  -->
 <script src="js/jquery-2.1.4.js"></script>
 <script src="js/jquery-ui.min.js"></script>
+<script src="js/sweetalert.min.js"></script>
 <!-- Links for Scripts  -->
 
 <!-- Javascript  -->
@@ -106,6 +123,11 @@
         function toggleNav() {
             $("nav").toggle("slide", {direction: "left"}, 500);
         }
+
+        // Save Action
+        $(".saveSettings").click(function () {
+            swal("Validate and save settings to database");
+        });
     </script>
 </body>
 </html>

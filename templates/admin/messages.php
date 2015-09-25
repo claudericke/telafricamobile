@@ -28,7 +28,7 @@
             <li class="account"><a href="">Account</a></li>
             <li class="reports"><a href="">Reports</a></li>
             <li class="support"><a href="">Support</a></li>
-            <li class="Logout"><a href="">Logout</a></li>
+            <li class="Logout"><a href="login.php">Logout</a></li>
             <li class="close" onclick="toggleNav();"><a href="#">Close</a></li>
         </ul>
     </nav>
@@ -59,11 +59,11 @@
                 </span>
             </div>
             <div class="logout">
-                <span><a href="#">Dashboard</a></span>
+                <span><a href="dashboard.php">Dashboard</a></span>
                 <br/>
                 <span><a href="#">Add Credits</a></span>
                 <br/>
-                <span><a href="#">Log Out</a></span>
+                <span><a href="login.php">Log Out</a></span>
             </div>
             <!-- Currently Logged in User  -->
         </div>
@@ -80,7 +80,7 @@
                 </div>
             </div>
             <div class="twelve columns">
-                <div class="panel alert">This is an alart</div>
+                <div class="panel alert">This is an alert</div>
             </div>
         </div>
     </section>
@@ -412,7 +412,7 @@
             swal("Added to Send List", "Your message(s) have been sent to the network. Check sent items to view send status");
         });
 
-        // Functionality for reset button
+        // Functionality for reset button on compose
         $("#resetMessage").click(function () {
             swal({
                 title: "Are you sure?",
@@ -436,6 +436,7 @@
             });
         });
 
+        //Select ALL function on sent items
         function toggleCheck(source) {
             checkboxes = $(".sentCheck");
             for (var i = 0, n = checkboxes.length; i < n; i++) {
@@ -443,6 +444,7 @@
             }
         }
 
+        //Function for deleting a template
         function deleteTemplate(templateItem) {
             swal({
                 title: "Are you sure?",
@@ -463,6 +465,7 @@
             });
         }
 
+        //Function te sent SMS from template
         function sendTemplate(templateItem) {
             swal("Pass Value of selected template to #message textarea and activate compose tab");
         }
