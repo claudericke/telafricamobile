@@ -149,6 +149,7 @@ body {
 .spacer {
     display: block;
     width: 100%;
+    clear: both;
     height: 20px;
 }
 

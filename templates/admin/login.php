@@ -23,7 +23,7 @@
         <div class="six columns offset-by-three">
             <div class="login-wrapper center">
                 <div class="twelve columns login-form">
-                        <form name="login" id="loginForm" action="" method="post">
+                        <form name="login" id="loginForm" action="dashboard.php" method="post">
                             <div class="spacer">&nbsp;</div>
                             <div class="twelve columns">
                                 <input type="text" placeholder="E-Mail Address" autocomplete="off" class="emailInput u-full-width" name="email" />
@@ -51,6 +51,7 @@
             </div>
         </div>
     </div>
-    <script src=""></script>
+    <script src="js/jquery-2.1.4.js"></script>
+
 </body>
 </html>
