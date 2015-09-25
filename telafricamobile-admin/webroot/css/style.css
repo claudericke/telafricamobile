@@ -1,0 +1,450 @@
+html {
+  font-family: "Open Sans", sans-serif; /* 1 */
+  -ms-text-size-adjust: 100%; /* 2 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+}
+
+
+body {
+  margin: 0;
+}
+
+
+
+/* Stylesheet for telafrica mobile sms gateway */
+html {
+    height: 100%;
+    background:#fff;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    min-height: 100%;
+    background-color: rgb(235, 235, 235)
+}
+
+.login {
+    background: url(../images/bg.jpg) top center;
+    background-size:cover;
+}
+
+
+.logo {
+    height: 100px;
+    margin-top:50px;
+}
+
+.login-title {
+    margin-top: 25px;
+}
+
+.login-wrapper {
+    margin: 20px auto;
+    background: #fff;
+    min-height: 270px;
+    padding: 20px;
+}
+
+.register-wrapper {
+    margin: 20px auto;
+    background: #fff;
+    height: auto;
+    min-height: 478px;
+    padding: 20px;
+}
+
+
+.emailInput {
+    background: url(../images/icons/envelopes5.png) 95% center no-repeat;
+}
+.mobileInput {
+    background: url(../images/icons/smartphone86.png) 95% center no-repeat;
+}
+
+.passwordInput {
+    background: url(../images/icons/lock91.png) 95% center no-repeat;
+}
+
+.forgotLinks a {
+    font-size: 11.5px;
+    text-decoration: underline;
+    text-align: left !important;
+    display: block;
+    color: #676767;
+    margin-top: 2.6px;
+}
+
+.Linkarrow {
+    margin-right:10px;
+}
+
+
+.padding5 {
+    padding: 5px;
+}
+
+.padding10 {
+    padding: 5px;
+}
+
+
+.margin5 {
+    margin: 5px;
+}
+
+.margin10 {
+    margin: 5px;
+}
+
+.center {
+    text-align: center;
+}
+
+.left {
+    text-align: left;
+}
+
+.right {
+    text-align: right;
+}
+
+.bold {
+    font-weight: 700;
+}
+
+.white {
+    color:#ffffff;
+}
+
+
+.green {
+    color: #04ad00;
+}
+
+.red {
+    color: rgba(191, 0, 0, 0.73);
+}
+
+.greenBG {
+    background-color: #68be1b;
+}
+
+.blueBG {
+    background-color: #0070a3;
+}
+.greyBG {
+    background-color: #3d3d3d;
+}
+.redBG {
+    background-color: #aa0000;
+}
+
+.lightgreyBG {
+    background-color: #cecece;
+}
+
+.italics {
+    font-style: italic;
+}
+.spacer {
+    display: block;
+    width: 100%;
+    height: 20px;
+}
+
+.floatRight {
+    float: right !important;
+}
+
+.floatLeft {
+    float: left !important;
+}
+
+.noMargin {
+    margin: 0 !important;
+}
+
+.reportsSummary h4 span {
+    font-size: 11px;
+    text-align: right;
+    width: 40%;
+    display: inline-block;
+}
+
+
+
+
+/* Dashboard */
+header {
+    background-color: #00498e;
+    min-height: 60px;
+    width: 100%;
+    color: #fff;
+}
+
+.dashboardLogo {
+    margin-top: 5px;
+    text-align: center;
+}
+
+.pageTitle {
+    font-size: 18px;
+    text-align: left;
+    margin-top: 15px;
+}
+
+.menu {
+    display:block;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    z-index: 11;
+}
+
+
+.entypo-menu:before {
+    font-size: 30px;
+    padding: 5px;
+    position: absolute;
+}
+
+.username a {
+    color: #fff;
+}
+.userName span span    {
+    text-decoration: underline;
+    color: #fff;
+    margin-top: 15px;
+}
+
+.userName span span a , .logout a   {
+    color: #fff;
+}
+
+
+.logout a {
+    text-decoration: none;
+}
+
+.userName span span span    {
+    display: inline-block;
+    height: 30px;
+    color: #fff;
+    width: 30px;
+}
+
+
+.userName span img    {
+      margin-left:10px;
+}
+
+
+.logout {
+    text-decoration: none;
+    position: absolute;
+    background:#00498e;
+    right: 80px;
+    display: none;
+    top:45px;
+    z-index: 10;
+    text-align: left;
+    padding:10px;
+}
+
+.logout a:hover {
+    color: #cecece;
+    border-bottom: 3px solid #fff;
+      -webkit-transition: all 0.3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s;
+}
+
+
+nav.topNav {
+    background-color: rgba(0, 73, 142, 0.95);
+    display: none;
+    width: 378px;
+    height: 100%;
+    position: absolute;
+    left: 0px;
+    top:0px;
+    color: #fff;
+    z-index: 9;
+    cursor: pointer;
+}
+
+nav.topNav ul li {
+    display: block;
+    min-height: 22px;
+    padding-left:30px;
+}
+
+li.dashboard {
+    background: url(../images/icons/dashboard.png) left center no-repeat;
+}
+
+li.messageCenter {
+    background: url(../images/icons/messageCenter.png) left center no-repeat;
+}
+
+li.settings {
+    background: url(../images/icons/settings.png) left center no-repeat;
+}
+
+li.account {
+    background: url(../images/icons/account.png) left center no-repeat;
+}
+
+li.reports {
+    background: url(../images/icons/reports.png) left center no-repeat;
+}
+
+li.support {
+    background: url(../images/icons/support.png) left center no-repeat;
+}
+
+li.Logout {
+    background: url(../images/icons/logout.png) left center no-repeat;
+}
+
+li.close {
+    background: url(../images/icons/close.png) left center no-repeat;
+}
+
+.icon {
+    margin-right: 10px;
+}
+
+
+nav.topNav ul {
+    list-style: none;
+    margin: 50px 0px 0px 50px;
+}
+
+
+nav.topNav li:nth-child(2) {
+    font-size: 20px;
+    margin-left: -25px;
+}
+
+nav.topNav li a:hover {
+    color: #cecece;
+    border-bottom: 3px solid #fff;
+      -webkit-transition: all 0.3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s;
+}
+
+nav.topNav a {
+    text-decoration: none;
+    color: #ffffff;
+    border-bottom: 0px solid #fff;
+      -webkit-transition: all 0.3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s;
+}
+
+.panel {
+    border-radius: 5px;
+    padding:10px;
+    margin-top:10px;
+    background:#fff;
+    line-height: normal !important;
+}
+
+.messagesSent {
+    background: url(../images/icons/messageSent.png) 1% 70% no-repeat #fff;
+    text-align: right;
+    min-height: 148px;
+}
+
+.creditsRemaining {
+    background: url(../images/icons/credits.png) 1% 50% no-repeat #fff ;
+    text-align: right;
+    min-height: 148px;
+}
+
+.reportsSummary {
+    background:#fff;
+    min-height: 148px;
+}
+
+.reportSummary h4 span {
+    font-weight: normal;
+    text-align: right;
+    display: block;
+    width: 100%:
+}
+
+.reportSummary p, .creditsRemaining p, .messagesSent p {
+    margin-top: -23px;
+
+}
+
+
+.reportsSummary ul {
+    list-style: none;
+    margin: 0;
+    font-size: 12px;
+    line-height: 11px;
+}
+
+.usageReport img {
+    width: 100%;
+}
+
+.usageReport, .welcomeText {
+    min-height:345px;
+}
+
+
+.panel h4 {
+    color: #a2a0a0;
+    font-weight: 700;
+    font-size: 17px;
+    text-align: left;
+    margin-bottom: 20px;
+    font-family: "Roboto", sans-serif;
+}
+
+.panel p {
+    color: #979191;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 18px;
+    font-family: "Roboto", sans-serif;
+}
+
+
+.notice {
+    background: url(../images/icons/info.png) 2% center no-repeat #8ac6f0;
+    padding-left:50px;
+    color: #fff;
+    font-weight: 700;
+}
+
+.alert {
+    background: url(../images/icons/alert.png) 2% center no-repeat #e40000;
+    padding-left:50px;
+    color: #fff;
+    font-weight: 700;
+}
+
+table.sentMessages td, table.sentMessages th {
+    padding:10px;
+}
+
+table.sentMessages tr:nth-child(even) {
+    background:#efefef;
+}
+
+table.sentMessages {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+table.sentMessages td, table.sentMessages th {
+    padding: 4px 8px;
+}
+
+textarea {
+    resize: none;
+    width: 103% !important;
+    border-radius: 0 !important;
+}
