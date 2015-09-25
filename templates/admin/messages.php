@@ -412,7 +412,7 @@
             swal("Added to Send List", "Your message(s) have been sent to the network. Check sent items to view send status");
         });
 
-        // Functionality for reset button
+        // Functionality for reset button on compose
         $("#resetMessage").click(function () {
             swal({
                 title: "Are you sure?",
@@ -436,6 +436,7 @@
             });
         });
 
+        //Select ALL function on sent items
         function toggleCheck(source) {
             checkboxes = $(".sentCheck");
             for (var i = 0, n = checkboxes.length; i < n; i++) {
@@ -443,6 +444,7 @@
             }
         }
 
+        //Function for deleting a template
         function deleteTemplate(templateItem) {
             swal({
                 title: "Are you sure?",
@@ -463,6 +465,7 @@
             });
         }
 
+        //Function te sent SMS from template
         function sendTemplate(templateItem) {
             swal("Pass Value of selected template to #message textarea and activate compose tab");
         }

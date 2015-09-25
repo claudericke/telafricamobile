@@ -49,10 +49,20 @@ body {
     margin: 20px auto;
     background: #fff;
     height: auto;
-    min-height: 478px;
+    min-height: 578px;
     padding: 20px;
 }
 
+
+.required:before {
+    content: "*";
+    z-index: 10;
+    margin-left: -10px;
+    float: left;
+    display: inline-block;
+    color: #fe0000;
+    font-size: 13px;
+}
 
 .emailInput {
     background: url(../images/icons/envelopes5.png) 95% center no-repeat;
@@ -449,3 +459,4 @@ textarea {
     width: 103% !important;
     border-radius: 0 !important;
 }
+
