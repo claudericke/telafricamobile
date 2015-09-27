@@ -12,7 +12,7 @@ class UsersController extends AppController{
 		// Allow users to register and logout.
 		// You should not add the "login" action to allow list. Doing so would
 		// cause problems with normal functioning of AuthComponent.
-		$this->Auth->allow(['register', 'logout']);
+		$this->Auth->allow(['register', 'login']);
 	}
 	
 	public function login(){
@@ -36,7 +36,7 @@ class UsersController extends AppController{
 		$user = $this->Users->get($id);
 		$this->set(compact('user'));
 	}
-	
+
 	public function register(){ 
 
 		$user = $this->Users->newEntity();

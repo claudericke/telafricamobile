@@ -26,8 +26,8 @@ class UsersTable extends Table{
 	public function validationDefault(Validator $validator){
 		
 		return $validator
-		//->notEmpty('firstname', 'A first name is required')
-		//->notEmpty('lastname', 'A last name is required')
+		->notEmpty('firstname', 'A first name is required')
+		->notEmpty('lastname', 'A last name is required')
 		->notEmpty('email', 'A email address is required')
 		->add('email', 'valid', ['rule' => 'email'])
 		->notEmpty('country', 'Please select your country')
