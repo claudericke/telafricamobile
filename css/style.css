@@ -169,6 +169,10 @@ p:last-child {
     color: #fff;
     border-color: #fff;
 }
+
+.text-green {
+    color: #68be1b;
+}
 .underline {
     display: inline-block;
     border-bottom: 3px solid;
@@ -287,6 +291,11 @@ code {
     position: relative;
     top: 30px;
 }
+
+.slide-content {
+    padding: 10px;
+}
+
 @-webkit-keyframes burnsIn {
     from {
         -webkit-transform: scale(1, 1);
@@ -594,21 +603,21 @@ ul {
 
 .button {
     overflow: hidden;
-    border: 2px solid #454545;
+    color: #fff;
     border-radius: 5px;
     padding: 20px 25px 22px 25px;
     text-transform: uppercase;
+    background: #0070a3;
     font-size: 14px;
     letter-spacing: 1px;
     text-align: center;
     font-weight: bold;
-    background: none;
     display: inline-block;
     transition: all .2s ease;
+    margin-top: 10px;
     -webkit-transition: all .2s ease;
     -moz-transition: all .2s ease;
-    margin-top: 44px;
-    font-family: "Raleway", "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+    font-family: "Roboto", "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
     margin-right: 22px;
 }
 .button i {
@@ -653,6 +662,7 @@ ul {
     width: 20px;
     opacity: 1;
     left: 0px;
+    color: #cecece;
 }
 .button-white {
     border-color: #fff;
@@ -927,7 +937,7 @@ ul {
 }
 .panel .social-profiles h6 {
     margin: 0px;
-    letter=spacing: 1px;
+    letter-spacing: 1px;
     font-size: 12px;
     position: relative;
     top: 3px;
@@ -1334,7 +1344,7 @@ nav {
     padding-top: 17px;
 }
 .shrink-nav .menu li a {
-    padding-bottom: 27px;
+    padding-bottom: 33px;
 }
 .overlay-nav {
     position: absolute;
@@ -1438,6 +1448,7 @@ nav.nav-transparent .menu a {
     top: 97%;
     overflow: hidden;
     margin: 0px;
+    max-width: 611px;
     text-align: left !important;
 }
 .subnav li {
@@ -2317,4 +2328,16 @@ footer.footer-alt span.sub .icon_heart {
 }
 .show-switcher {
     left: 0px !important;
+}
+
+.greenBG {
+    background: #68be1b!important;
+}
+.blueBG {
+    background: #0070a3 !important;
+}
+
+.nav-transparent .button {
+    padding: 10px !important;
+    margin:0px !important;
 }

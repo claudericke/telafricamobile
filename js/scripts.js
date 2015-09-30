@@ -386,7 +386,6 @@ $(window).load(function () {
             $(this).css('left', subNavOffset);
         });
     });
-
     /************** Portfolio Scripts **************/
 
     setTimeout(function () {
@@ -440,6 +439,15 @@ $(window).load(function () {
 
 });
 
+$(window).load(function () {
+    var tabs =  $(".tabs li a");
+    var content = "#one";
+    tabs.removeClass("active");
+    $(".tabs li:nth-child(1) a").addClass("active");
+    $("#content").find('section').hide();
+    $(content).fadeIn(200);
+
+});
 /************ Tabs  ***************/
 
 (function($) {
