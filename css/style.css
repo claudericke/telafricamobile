@@ -57,8 +57,8 @@ input:focus {
 /********** SPACING **********/
 
 section {
-    padding-top: 88px;
-    padding-bottom: 99px;
+    padding-top: 60px;
+    padding-bottom: 60px;
 }
 .section-small {
     padding-top: 44px;
@@ -82,7 +82,7 @@ section {
     position: absolute;
 }
 .section-fullwidth {
-    padding: 88px 66px;
+    padding: 10px 66px;
 }
 .pad-bottom {
     padding-top: 0px;
@@ -258,7 +258,6 @@ code {
 }
 .hero-slider .slides li .slide-content img {
     max-height: 500px;
-    position:
 }
 .hero-slider .flex-direction-nav a {
     height: 60px;
@@ -604,11 +603,11 @@ ul {
 .button {
     overflow: hidden;
     color: #fff;
-    border-radius: 5px;
-    padding: 20px 25px 22px 25px;
+    border-radius: 3px;
+    padding: 10px 10px 10px 10px;
     text-transform: uppercase;
     background: #0070a3;
-    font-size: 14px;
+    font-size: 12px;
     letter-spacing: 1px;
     text-align: center;
     font-weight: bold;
@@ -1409,6 +1408,8 @@ nav .menu li a {
     -webkit-transition: all .2s ease;
     -moz-transition: all .2s ease;
 }
+
+
 nav.nav-dark .menu li a,
 nav.nav-transparent .menu a {
     color: #fff;
@@ -2348,4 +2349,9 @@ footer.footer-alt span.sub .icon_heart {
 
 .list-divided li {
     border-top: 1px solid #cecece;
+}
+
+
+#Fibre li {
+    font-size:12px;
 }
