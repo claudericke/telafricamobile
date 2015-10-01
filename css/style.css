@@ -10,7 +10,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Raleway", "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+    font-family: "Roboto", "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
     text-transform: uppercase;
     font-weight: bold;
 }
@@ -160,7 +160,7 @@ section.duplicatable .large-feature {
 /********** TYPOGRAPHY **********/
 
 p {
-    font-size: 14px;
+    font-size: 12px;
 }
 p:last-child {
     margin-bottom: 0px;
@@ -2340,4 +2340,12 @@ footer.footer-alt span.sub .icon_heart {
 .nav-transparent .button {
     padding: 10px !important;
     margin:0px !important;
+}
+
+.list-divided li:first-child {
+    border:0;
+}
+
+.list-divided li {
+    border-top: 1px solid #cecece;
 }
