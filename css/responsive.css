@@ -46,10 +46,10 @@ nav{ position: absolute !important; }
 .mobile-toggle{ display: block; }
 
 nav{ max-height: 75px; overflow: hidden; padding-top: 22px; }
-.nav-transparent{ background: #353535; backgroound: rgba(53,53,53,0.7); }
+.nav-transparent{ background: #353535; background: rgba(53,53,53,0.7); }
 .nav-transparent-dark{ background: #fff; }
 
-.shrink-nav.nav-transparent{ backgroound: rgba(53,53,53,0.7); }
+.shrink-nav.nav-transparent{ background: rgba(53,53,53,0.7); }
 .shrink-nav .logo{ bottom: 0px; }
 
 nav .text-right{ text-align: left !important; }
@@ -167,10 +167,10 @@ nav{ position: absolute !important; }
 .mobile-toggle{ display: block; }
 
 nav{ max-height: 90px; overflow: hidden; padding-top: 22px; }
-.nav-transparent{ background: #353535; backgroound: rgba(53,53,53,0.9); }
+.nav-transparent{ background: #353535; background: rgba(53,53,53,0.9); }
 .nav-transparent-dark{ background: #fff; }
 
-.shrink-nav.nav-transparent{ backgroound: rgba(53,53,53,0.9); }
+.shrink-nav.nav-transparent{ background: rgba(53,53,53,0.9); }
 .shrink-nav .logo{ bottom: 0px; }
 
 nav .text-right{ text-align: left !important; }
@@ -216,7 +216,7 @@ header h2{ font-size: 18px; }
 .border-box{ margin-bottom: 33px; }
 
 .feature-selector-tabs{ text-align: center; }
-.feature-selector-tabs li{ display: inline-block; width: 70px; height: 70px; font-size: 28px; padding-top: 12px; margin-right: 11px; margin-bottom: 11px; }
+.feature-selector-tabs li{ display: inline-block; width: 70px; height: 70px; font-size: 12px; padding-top: 12px; margin-right: 11px; margin-bottom: 11px; }
 
 .tabs-holder li{ border-right: 2px solid #454545; margin-right: 4px; margin-bottom: 4px; }
 
@@ -257,11 +257,11 @@ nav .medium-9{ width: 100%; }
 .mobile-toggle{ display: block; }
 
 nav{ max-height: 75px; overflow: hidden; padding-top: 22px; }
-.nav-transparent, .nav-dark{ background: #353535; backgroound: rgba(53,53,53,0.9); }
+.nav-transparent, .nav-dark{ background: #353535; background: rgba(53,53,53,0.9); }
 .nav-transparent-dark, .nav-light{ background: #fff;  }
 .nav-transparent .menu li{  }
 
-.shrink-nav.nav-transparent{ backgroound: rgba(53,53,53,0.9); }
+.shrink-nav.nav-transparent{ background: rgba(53,53,53,0.9); }
 .shrink-nav .logo{ bottom: 0px; }
 
 nav .text-right{ text-align: left !important; }

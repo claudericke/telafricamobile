@@ -2384,3 +2384,29 @@ margin:0 auto;
     font-size:24px;
     font-weight: bold;
 }
+
+
+.callingPackage  table {
+    width: 100%;
+    margin:0 auto;
+
+}
+
+.callingPackage  tr:nth-child(odd) {
+    background:#68BE1B;
+}
+
+.callingPackage  tr:nth-child(even) {
+    background:#0070A3;
+}
+
+.callingPackage thead tr:first-child {
+    background:#222;
+}
+
+
+.callingPackage td , th{
+    padding:10px;
+    color: #fff;
+
+}
