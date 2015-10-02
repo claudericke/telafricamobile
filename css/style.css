@@ -160,7 +160,7 @@ section.duplicatable .large-feature {
 /********** TYPOGRAPHY **********/
 
 p {
-    font-size: 12px;
+    font-size: 14px;
 }
 p:last-child {
     margin-bottom: 0px;
@@ -1030,9 +1030,12 @@ ul {
     margin-bottom: 44px;
     transition: all .3s ease;
     position: relative;
+    width: 100%;
 }
 .feature-selector-content li {
     opacity: 0;
+    width:100%;
+    color: #fff;
     position: absolute;
     -webkit-transition: all .3s ease;
     -moz-transition: all .3s ease;
@@ -1057,7 +1060,6 @@ ul {
     text-align: center;
     margin-right: 33px;
     padding-top: 16px;
-    font-size: 43px;
     float: left;
     cursor: pointer;
     transition: all .3s ease;
@@ -2356,3 +2358,29 @@ footer.footer-alt span.sub .icon_heart {
     font-size:12px;
 }
 
+/* Pricing Tables */
+.feature-selector-content table {
+width:100%;
+text-align:center;
+margin:0 auto;
+}
+
+.feature-selector-content table tr:nth-child(even) {
+    background:rgba(0,0,0,0.3);
+
+}
+
+
+.feature-selector-content table th {
+    border-bottom:1px solid #1e1e1e;
+
+}
+
+.feature-selector-content table td {
+    padding:5px;
+}
+
+.feature-selector-content table td:nth-child(3) {
+    font-size:24px;
+    font-weight: bold;
+}
