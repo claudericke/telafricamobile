@@ -60,7 +60,22 @@ nav .menu{ padding-bottom: 44px; }
 
 nav .menu li:hover .subnav{ max-height: 0px; }
 
-.subnav{ position: relative; background: none; transition: all .3s ease; -webkit-transition: all .3s ease; -moz-transition: all .3s ease; }
+.subnav{ position: relative; background: none; transition: all .3s ease; -webkit-transition: all .3s ease; -moz-transition: all .3s ease; left:-40px !important; color:#fff !important;}
+    .subnav:before {
+        border-top:none !important;
+    }
+
+    .subnav li h6 {
+        color:#fff;
+    }
+
+    .menu .button {
+        width: 100%;
+    }
+
+    nav .menu li:last-child {
+        padding-right:22px;
+    }
 .subnav li:first-child{ margin-top: 6px; }
 .subnav li{ margin-right: 0px; margin-bottom: 0px !important; border-bottom: none !important; }
 .subnav li:last-child{ margin-bottom: 22px !important; }
@@ -151,7 +166,7 @@ nav{ position: absolute !important; }
 
 .mobile-toggle{ display: block; }
 
-nav{ max-height: 75px; overflow: hidden; padding-top: 22px; }
+nav{ max-height: 90px; overflow: hidden; padding-top: 22px; }
 .nav-transparent{ background: #353535; backgroound: rgba(53,53,53,0.9); }
 .nav-transparent-dark{ background: #fff; }
 
@@ -283,6 +298,7 @@ nav .menu li:hover .subnav{ max-height: 0px; }
 
 .style-freelance figure:last-child{ display: block; }
 .style-freelance .space-box-right, .style-freelance .space-box-left{ padding-top: 88px; }
+
 
 }
 

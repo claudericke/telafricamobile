@@ -81,8 +81,8 @@ ul.tabs li a.active {
     color: #ccc;
 }
 
-#one {
-
+#BulkSMS .button {
+    width: 100%;
 }
 #two {
 
@@ -99,3 +99,30 @@ ul.tabs li a.active {
     margin-top:-10px;
     display: block;
 }
+
+
+@media only screen
+and (min-width : 321px) and (max-width : 600px){
+    .wrap {
+        margin-left: -59px;
+        width:120px;
+    }
+
+    ul.tabs li a.active {
+    }
+
+    ul.tabs li {
+        width:50px;
+    }
+
+    ul.tabs {
+        width:295%;
+    }
+
+    #content {
+        width:260%;
+        text-align: center;
+    }
+
+
+    }
