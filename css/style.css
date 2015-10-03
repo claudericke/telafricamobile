@@ -714,6 +714,9 @@ ul {
 
 /** ACCORDIONS **/
 
+.accordion {
+    margin: 10px;
+}
 .panel-holder {
     position: relative;
     margin-bottom: -3px;
@@ -1267,7 +1270,7 @@ textarea {
 }
 input[type="text"] {
     background: #fff;
-    border: none;
+    border: 1px solid #cecece;
     padding: 17px;
     font-size: 13px;
     -webkit-appearance: none;
@@ -1277,9 +1280,7 @@ input[type="text"] {
 form input[type="text"] {
     float: left;
 }
-form input[type="text"]:last-child {
-    float: right;
-}
+
 input[type="submit"] {
     float: right;
 }
@@ -2409,4 +2410,16 @@ margin:0 auto;
     padding:10px;
     color: #fff;
 
+}
+
+.u-full-width {
+    width:100% !important;
+}
+
+.formSection {
+    padding:10px;
+}
+
+.lastContentItem {
+    margin-bottom: 5px;
 }

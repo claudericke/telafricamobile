@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="css/responsive.css" />
     <link rel="stylesheet" href="css/sweetalert.css" />
     <script src="js/vendor/modernizr.js"></script>
-   <link href='https://fonts.googleapis.com/css?family=Raleway:400,700,300|Open+Sans:400,600,700,800,300|Roboto:400,700,300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,700,300|Open+Sans:400,600,700,800,300|Roboto:400,700,300' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
@@ -127,22 +127,26 @@
         <div class="row">
 
             <div class="medium-4 columns">
-
-                <h6 class="page-title">ABOUT FIBRE</h6>
+                <div class="text-center medium-12 columns">
+                    <h6 class="page-title">ABOUT FIBRE</h6>
+                </div>
                 <p>Currently, less than 1% of South Africa is connected to fibre-to-the-home (FTTH) services for their home internet needs, therefore your estate / complex becomes part of the 1% of South Africa that has access to FTTH, so buyers, investor and tenants will flock in to rent/buy homes because of this. Fibre internet increases property value by up to 8%! Home owners who rent out their unit or sell their property can increase their income by up to 8% (or more) due to the lack of fibre internet access in South Africa. Users are willing to pay more for rent/purchasing a property that has a 100Mbps fibre line ready to be activated within hours of making a call.
                 </p>
             </div>
 
             <div class="medium-4 columns">
-
-                <h6 class="page-title">Why choose our fibre above 3G/ADSL?</h6>
+                <div class="text-center medium-12 columns">
+                    <h6 class="page-title">Why choose our fibre above 3G/ADSL?</h6>
+                </div>
                 <p>Currently, less than 1% of South Africa is connected to fibre-to-the-home (FTTH) services for their home internet needs, therefore your estate / complex becomes part of the 1% of South Africa that has access to FTTH, so buyers, investor and tenants will flock in to rent/buy homes because of this. Fibre internet increases property value by up to 8%! Home owners who rent out their unit or sell their property can increase their income by up to 8% (or more) due to the lack of fibre internet access in South Africa. Users are willing to pay more for rent/purchasing a property that has a 100Mbps fibre line ready to be activated within hours of making a call.
 
                 </p>
             </div>
 
             <div class="medium-4 columns">
-                <h6 class="page-title">How Do you Get it</h6>
+                <div class="text-center medium-12 columns">
+                    <h6 class="page-title">How Do you Get it</h6>
+                </div>
                 <p>Getting connected is simple;</p>
                 <ol>
                     <li>Once-off installation of R1300</li>
@@ -214,7 +218,7 @@
                                 </table>
                                 <div class="medium-6 columns text-center  ">
                                     <a class="button greenBG expand" href="#" class="subscribeFibre" data-package="2MBps">
-                                    Subscribe to 2MBps
+                                    Place an Order for 2MBps
                                 </a>
                                 </div>
                                 <div class="medium-6 columns text-center">
@@ -256,7 +260,7 @@
                                 </table>
                                 <div class="medium-6 columns text-center  ">
                                     <a class="button greenBG expand" href="#" class="subscribeFibre" data-package="5MBps">
-                                    Subscribe to 5MBps
+                                    Place an Order for 5MBps
                                 </a>
                                 </div>
                                 <div class="medium-6 columns text-center">
@@ -298,7 +302,7 @@
                                 </table>
                                 <div class="medium-6 columns text-center  ">
                                     <a class="button greenBG expand" href="#" class="subscribeFibre" data-package="7MBps">
-                                    Subscribe to 7MBps
+                                    Place an Order for 7MBps
                                 </a>
                                 </div>
                                 <div class="medium-6 columns text-center">
@@ -340,7 +344,7 @@
                                 </table>
                                 <div class="medium-6 columns text-center  ">
                                     <a class="button greenBG expand" href="#" class="subscribeFibre" data-package="10MBps">
-                                    Subscribe to 10MBps
+                                    Place an Order for 10MBps
                                 </a>
                                 </div>
                                 <div class="medium-6 columns text-center">
@@ -382,7 +386,7 @@
                                 </table>
                                 <div class="medium-6 columns text-center  ">
                                     <a class="button greenBG expand" href="#" class="subscribeFibre" data-package="20MBps">
-                                    Subscribe to 20MBps
+                                    Place an Order for 20MBps
                                 </a>
                                 </div>
                                 <div class="medium-6 columns text-center">
@@ -424,7 +428,7 @@
                                 </table>
                                 <div class="medium-6 columns text-center  ">
                                     <a class="button greenBG expand" href="#" class="subscribeFibre" data-package="50MBps">
-                                    Subscribe to 50MBps
+                                    Place an Order for 50MBps
                                 </a>
                                 </div>
                                 <div class="medium-6 columns text-center">
@@ -454,7 +458,8 @@
         </div>
     </section>
 
-    <section><!--begin form section-->
+    <section>
+        <!--begin form section-->
         <div class="row">
             <div class="medium-12 columns text-center">
                 <h6 class="page-title"><span class="packageName"></span> FIBRE APPLICATION FORM</h6>
@@ -464,41 +469,92 @@
         <div class="row">
             <div class="medium-12 columns">
                 <div class="row">
-                    <div class="medium-4 columns">
-                        <form name="fibreApplication">
-                            <div class="row collapse">
-                                <div class="small-10 columns">
-                                    <select name="title" id="title" >
-                                        <optgroup label="Title">
-                                            <option name="Mr">Mr</option>
-                                            <option name="Miss">Miss</option>
-                                            <option name="Mrs">Mrs</option>
-                                            <option name="Dr">Dr</option>
-                                            <option name="Prf">Prof</option>
-                                        </optgroup>
-                                    </select>
+                    <form name="fibreApplication">
+                        <div class="accordion">
+                            <div class="panel-holder active-panel">
+                                <div class="panel-title"><span>Step 1 - Customer Details</span> <i class="icon arrow_carrot-down"></i></div>
+                                <div class="panel-content">
+                                    <div class="formSection">
+                                        <div class="row">
+                                            <div class="medium-2 columns">
+                                                <label for="title" class="u-full-width required">Title:</label>
+                                                <select name="title" id="title" class="u-full-width">
+                                                    <optgroup label="Title">
+                                                        <option name="Mr">Mr</option>
+                                                        <option name="Miss">Miss</option>
+                                                        <option name="Mrs">Mrs</option>
+                                                        <option name="Dr">Dr</option>
+                                                        <option name="Prf">Prof</option>
+                                                    </optgroup>
+                                                </select>
+                                            </div>
+                                            <div class="medium-5 columns">
+                                                <label for="email" class="u-full-width required">First Name</label>
+                                                <input type="text" placeholder="Full Name" id="firstName" class="u-full-width" name="firstName">
+                                            </div>
+                                            <div class="medium-5 columns">
+                                                <label for="email" class="u-full-width required">Last Name</label>
+                                                <input type="text" placeholder="Last Name" id="lastName" class="u-full-width" name="lastName">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="medium-2 columns">
+                                                <label for="DOB" class="u-full-width required">Date of Birth:</label>
+                                                <input type="text" placeholder="(DD/MM/YYYY" ) id="DOB" class="u-full-width">
+
+                                            </div>
+                                            <div class="medium-3 columns">
+                                                <label for="gender" class="u-full-width required">Gender</label>
+                                                <select name="gender" id="gender">
+                                                    <option value="Male">Male</option>
+                                                    <option value="Female">Female</option>
+                                                </select>
+                                            </div>
+                                            <div class="medium-7 columns">
+                                                <label for="IDNumber" class="u-full-width required">ID / Passport Number</label>
+                                                <input type="text" placeholder="ID Number" name="IDNUmber" id="IDNumber" class="u-full-width">
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="row collapse">
-                                <div class="small-2 columns">
-                                </div>
-                                <div class="small-10  columns">
-                                    <input type="text" placeholder="email">
-                                </div>
-                            </div>
-                            <div class="row collapse">
-                                <div class="small-2 columns ">
-                                </div>
-                                <div class="small-10 columns ">
-                                    <input type="text" placeholder="password">
+                            <div class="panel-holder">
+                                <div class="panel-title"><span>Step 2 - Contact Details</span> <i class="icon arrow_carrot-down"></i></div>
+                                <div class="panel-content">
+                                    <div class="formSection">
+                                        Step 2
+                                    </div>
                                 </div>
                             </div>
-                        </form>
-                        <a href="#" class="button ">Sign Up! </a>
-                        <p>Already have an account? <a href="#">Login here &raquo</a></p>
-                    </div>
+                            <div class="panel-holder">
+                                <div class="panel-title"><span>Step 3 - Service Order Details</span> <i class="icon arrow_carrot-down"></i></div>
+                                <div class="panel-content">
+                                    <div class="formSection">
+                                        Step 3
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-holder">
+                                <div class="panel-title"><span>Step 4 - Payment Options</span> <i class="icon arrow_carrot-down"></i></div>
+                                <div class="panel-content">
+                                    <div class="formSection">
+                                        Step 4
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-holder">
+                                <div class="panel-title"><span>Step 5 - Order Confirmation</span> <i class="icon arrow_carrot-down"></i></div>
+                                <div class="panel-content lastItem">
+                                    <div class="formSection">
+                                        Step 5
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                 </div>
+                </form>
             </div>
+        </div>
         </div>
 
     </section>
@@ -516,7 +572,7 @@
             <div class="medium-4 columns">
                 <h6>Social pages</h6>
                 <ul>
-                    <li><a href="http://www.facebook.com/" target="_blank">&nbsp;<i class="social_facebook">&nbsp;</i>&nbsp;telafricamobile<br></a></li>
+                    <li><a href="https://www.facebook.com/telafricamobile" target="_blank">&nbsp;<i class="social_facebook">&nbsp;</i>&nbsp;telafricamobile<br></a></li>
                     <li><a href="#http://www.twitter.com/" target="_blank">&nbsp;<i class="social_twitter"></i>&nbsp;@telafricamobile<br></a>
                         <br>
                     </li>
@@ -594,17 +650,18 @@
 
 
         //Smooth Scrollig on Page
-        $(document).ready(function () {
+        $(document).ready(function() {
             $("body").smoothWheel()
         });
 
-        $(".callRates").click(function () {
+        $(".callRates").click(function() {
             swal({
                 title: "fibre voIP Call Rates",
-                text: " <table class=\"callingPackage\" style=\"margin:0 auto;\"><thead><tr><th>OPERATOR</th><th>RATES IN RAND (ZAR) per minute</th></tr></thead><tbody><tr><td>TELKOM</td><td>0.75</td></tr><tr><td>VODACOM</td><td>0.75</td></tr><tr><td>CELL C</td><td>0.75</td></tr><tr><td>MTN</td><td>0.75</td></tr><tr><td>Others</td><td>0.75</td></tr></tbody></table>",
+                text: " <table class=\"callingPackage\" style=\"margin:0 auto;\"><thead><tr><th>OPERATOR</th><th>RATES IN RAND (ZAR) per minute</th></tr></thead><tbody><tr><td>TELKOM</td><td>0.75</td></tr><tr><td>VODACOM</td><td>0.75</td></tr><tr><td>CELL C</td><td>0.75</td></tr><tr><td>MTN</td><td>0.75</td></tr><tr><td>Others</td><td>0.75</td></tr></tbody></table><br/><p><i class=\"icon_info_alt\"></i><br/><i>Calling Rates are uniform across all packages</i></p>",
                 html: true
             });
         });
+
     </script>
 </body>
 
