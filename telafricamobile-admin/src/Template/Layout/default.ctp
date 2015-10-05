@@ -26,7 +26,8 @@ $cakeDescription = 'telafrica SMS Gateway';
     </title>
     <?= $this->Html->meta('icon') ?>
 
-   
+    
+    <?= $this->Html->css('cake.css') ?>
 
     <?= $this->Html->css('style.css') ?>
     <?= $this->Html->css('skeleton.css') ?>
@@ -35,6 +36,7 @@ $cakeDescription = 'telafrica SMS Gateway';
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 <body class="login">
      <div class="container">
