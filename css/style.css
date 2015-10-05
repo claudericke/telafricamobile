@@ -2933,3 +2933,7 @@ th {
     font-style: italic;
     vertical-align: super;
 }
+
+#form-name {
+    margin-right: 10px;
+}
