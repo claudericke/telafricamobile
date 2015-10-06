@@ -15,7 +15,7 @@ class UsersController extends AppController{
 		// Allow users to register and logout.
 		// You should not add the "login" action to allow list. Doing so would
 		// cause problems with normal functioning of AuthComponent.
-		$this->Auth->allow(['register', 'login']);
+		$this->Auth->allow(['register', 'login', 'logout']);
 	}
 	
 	public function login(){
