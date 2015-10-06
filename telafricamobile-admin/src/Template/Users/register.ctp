@@ -1,4 +1,3 @@
-
 <div class="register-wrapper center" style="min-height: 800px;">
 	<div class="twelve columns center">
 		<h4><strong>SMS Gateway</strong> Register</h4>
@@ -293,7 +292,7 @@
 		</div>
 		<div class="twelve columns"><div class="spacer">&nbsp;</div></div>
         <div class="four columns margin5 center">
-           <div class="g-recaptcha" data-sitekey="6LeAqA0TAAAAAJj4wVmX90oJsdS3eZd8vpwfzZ-K"></div>
+           <div class="g-recaptcha" data-sitekey="<?php echo $sitekey; ?>"></div>
         </div>
         <div class="twelve columns"><div class="spacer">&nbsp;</div></div>
         <div class="four columns forgotLinks">

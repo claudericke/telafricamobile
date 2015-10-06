@@ -26,7 +26,6 @@ $cakeDescription = 'telafrica SMS Gateway';
     </title>
     <?= $this->Html->meta('icon') ?>
 
-    
     <?= $this->Html->css('cake.css') ?>
 
     <?= $this->Html->css('style.css') ?>
