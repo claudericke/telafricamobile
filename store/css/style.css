@@ -302,10 +302,11 @@ code {
 }
 
 .hero-slider .slides li h1 {
-    line-height: 1;
-    font-size: 60px;
+    line-height: 10px;
+    font-size: 80px;
     margin-bottom: 33px;
 }
+
 
 .work-slider {
     margin-top: 28px;
