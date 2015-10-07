@@ -47,7 +47,7 @@ class AppController extends Controller
                     ]
                 ]
             ],
-            'authError' => 'Please login to view this page',
+            'authError' => 'Please login to use the system',
             'loginRedirect' => [
                 'controller' => 'Dashboards',
                 'action' => 'index'
