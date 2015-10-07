@@ -39,7 +39,6 @@ class AppController extends Controller
 
         $this->loadComponent('Flash');
         $this->loadComponent('Auth', [
-            'authorize'=> 'Controller',
             'authenticate' => [
                 'Form' => [
                     'fields' => [
@@ -48,7 +47,8 @@ class AppController extends Controller
                     ]
                 ]
             ],
-            'loginAction' => [
+            'authError' => 'Please login to view this page',
+            'loginRedirect' => [
                 'controller' => 'Dashboards',
                 'action' => 'index'
             ],
@@ -57,13 +57,10 @@ class AppController extends Controller
                 'action' => 'login'
             ]
         ]);
-        // Allow the display action so our pages controller
-        // continues to work.
-        $this->Auth->allow(['login', 'register', 'logout']);
     }
 
-    public function isAuthorized($user){
-        return false;
+    public function beforeFilter(Event $event){
+        $this->Auth->allow(['login', 'register', 'logout']);
     }
 
     /**
