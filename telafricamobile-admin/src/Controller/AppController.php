@@ -49,14 +49,17 @@ class AppController extends Controller
                 ]
             ],
             'loginAction' => [
+                'controller' => 'Dashboards',
+                'action' => 'index'
+            ],
+            'logoutRedirect' => [
                 'controller' => 'Users',
                 'action' => 'login'
-            ], 
-            'unauthorizedRedirect' => $this->referer()
+            ]
         ]);
         // Allow the display action so our pages controller
         // continues to work.
-        $this->Auth->allow(['login', 'register']);
+        $this->Auth->allow(['login', 'register', 'logout']);
     }
 
     public function isAuthorized($user){

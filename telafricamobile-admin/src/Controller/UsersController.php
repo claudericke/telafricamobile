@@ -23,13 +23,14 @@ class UsersController extends AppController{
 			$user = $this->Auth->identify();
 			if ($user) {
 				$this->Auth->setUser($user);
-				return $this->redirect($this->Auth->redirectUrl());
+				//return $this->redirect($this->Auth->redirectUrl());
+				return $this->redirect(['controller' => 'dashboards', 'action' => 'index']);
 			}
 			$this->Flash->error(__('Invalid username or password, please try again'));
 		}
 	}
 
-	 public function index(){
+	public function index(){
         $this->set('users', $this->paginate($this->Users));
         $this->set('_serialize', ['users']);
     }
