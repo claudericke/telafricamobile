@@ -1,3 +1,4 @@
+<script src='https://www.google.com/recaptcha/api.js'></script>
 <div class="register-wrapper center" style="min-height: 800px;">
 	<div class="twelve columns center">
 		<h4><strong>SMS Gateway</strong> Register</h4>
