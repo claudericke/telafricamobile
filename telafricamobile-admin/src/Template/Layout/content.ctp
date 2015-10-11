@@ -26,7 +26,7 @@ $cakeDescription = 'telafrica SMS Gateway';
     </title>
     <?= $this->Html->meta('icon') ?>
 
-    
+     <?= $this->Html->css('cake.css') ?>
 
     <?= $this->Html->css('style.css') ?>
     <?= $this->Html->css('skeleton.css') ?>
@@ -48,7 +48,8 @@ $cakeDescription = 'telafrica SMS Gateway';
         <li class="settings"><a href="">Settings</a></li>
         <li class="account"><a href="">Account</a></li>
         <li class="reports"><a href="">Reports</a></li>
-        <li class="support"><a href="">Support</a></li>
+        <li class="account"><a href="">Support</a></li>
+        <?php if ($this->request->session()->read('Auth.User.role') == 'admin' || $this->request->session()->read('Auth.User.role') == 'sales') {?> <li class="support"><a href="/users">Manage Users</a></li><?php }?>
         <li class="Logout"><a href="/users/logout">Logout</a></li>
         <li class="close" onclick="toggleNav();" ><a href="#">Close</a></li>
     </ul>
