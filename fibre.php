@@ -1,34 +1,10 @@
 <!doctype html>
 <html class="no-js" lang="en">
 
+
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="apple-touch-icon" sizes="57x57" href="/favicons/apple-touch-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="/favicons/apple-touch-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="/favicons/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="/favicons/apple-touch-icon-76x76.png">
-    <link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="/favicons/favicon-96x96.png" sizes="96x96">
-    <link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
-    <link rel="manifest" href="/favicons/manifest.json">
-    <link rel="shortcut icon" href="/favicons/favicon.ico">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
-    <meta name="theme-color" content="#ffffff">
-    <title>Telafrica Mobile - Fibre-To-Home Sign Up</title>
-    <link rel="stylesheet" href="css/loader.css" />
-    <link rel="stylesheet" href="css/foundation.css" />
-    <link rel="stylesheet" href="css/animate.min.css" />
-    <link rel="stylesheet" href="css/elegant-icons.css" />
-    <link rel="stylesheet" href="css/outline-icons.css" />
-    <link rel="stylesheet" href="css/flexslider.css" />
-    <link rel="stylesheet" href="css/tabs.css" />
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/responsive.css" />
-    <link rel="stylesheet" href="css/sweetalert.css" />
-    <script src="js/vendor/modernizr.js"></script>
-    <!-- <link href='https://fonts.googleapis.com/css?family=Raleway:400,700,300|Open+Sans:400,600,700,800,300|Roboto:400,700,300' rel='stylesheet' type='text/css'> -->
+      <title>Telafrica Mobile -Fibre-To-Home</title>
+      <?php include("includes/header.php"); ?>
 </head>
 
 <body>
@@ -38,67 +14,11 @@
         </div>
     </div>
 
+   <!-- Start Navigation -->
     <nav class="overlay-nav sticky-nav nav-transparent">
-
-        <div class="row">
-            <div class="medium-3 columns">
-                <a class="logo-light" href="index.html"><img alt="Pangaea" src="img/logo-light.png" class="logo"></a>
-            </div>
-
-            <div class="columns text-left medium-8">
-                <ul class="menu">
-                    <li class="has-dropdown"><a href="#">PRODUCTS</a>
-                        <ul class="subnav subnav-fullwidth">
-                            <li>
-                                <div class="medium-6 columns">
-                                    <h6>Bulk SMS Services</h6>
-                                    <p>We offer self managed Bulk SMS through out SMS Dashboard. Sending SMS or Bulk SMS is cost effective and tailor made to suite your needs and requirements.</p>
-                                    <a href="telafricamobile-admin/">Log In</a><span> or </span><a href="telafricamobile-admin/">Register to Bulk SMS</a>
-                                </div>
-                            </li>
-
-                            <li>
-                                <div class="medium-6 columns">
-                                    <h6>Voice Solutions</h6>
-                                    <p>The VoIP solution is an offering provided is ideally suited for small to medium enterprises that rely on office based voice calls to run a successful business.</p>
-                                    <a href="#" class="enquire" data-product="Voice Solutions">Inquire about Voice Solutions</a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="medium-6 columns">
-                                    <h6>Fibre-to-Home Solutions</h6>
-                                    <p>Uncapped/Unlimited downloads, Youtube, Netflix/Hulu/Vidi, email, browsing, gaming at speeds that are 100 times faster than 3G and ADSL at a cheaper price than 3G and ADSL
-                                        <br/>
-                                    </p>
-                                    <a href="fibre.html">Learn more about Fibre-to-Home Solutions</a>
-                                </div>
-                            </li>
-
-                            <li>
-                                <div class="medium-6 columns">
-                                    <h6>Devices Store</h6>
-                                    <p>We have numerous cellular, voIP and internet devices for sale for wholesale or to end user. Contracs and payment plans also available.
-                                        <br/>
-                                        <br/>
-                                    </p>
-                                    <a href="#">Visit the Device Store</a>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><a href="#">CORPORATE</a></li>
-                    <li><a href="terms.html">LEGAL</a></li>
-                    <li><a href="contact.html">CONTACT</a></li>
-                    <li><a href="#" class="button greenBG text-white"><span class="icon_profile "></span>&nbsp;SMS Sign Up</a></li>
-                    <li><a href="#" class="button blueBG text-white"><span class="icon_key"></span>&nbsp;SMS Log In</a></li>
-
-                </ul>
-            </div>
-        </div>
-
-        <div class="mobile-toggle"><i class="icon icon_menu"></i></div>
-
+       <?php include("includes/navigation.php"); ?>
     </nav>
+    <!-- Start Navigation -->
 
 
     <header class="divider-background background-parallax">

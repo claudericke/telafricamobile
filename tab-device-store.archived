@@ -1,0 +1,104 @@
+<section id="DeviceStore">
+                    <div class="testimonials-slider">
+                        <ul class="slides">
+                            <li class="slide">
+                                <!-- Start Device -->
+                                <div class="medium-6 columns">
+                                    <div class="medium-4 columns">
+                                        <img src="img/devices/G40/1.png" alt="G-40" />
+                                    </div>
+                                    <div class="medium-8 columns">
+                                        <h6 class="text-white">i-Life G40</h6>
+                                        <p>
+                                            <ul>
+                                                <li>Android 4.2 Device</li>
+                                                <li>4.2GHZ Snapdragon Processor</li>
+                                                <li>4GB Internal Storage</li>
+                                                <li>5MP Camera with Flash</li>
+                                                <li>Whats App, Skype and We-Chat pre-installed in device</li>
+                                                <li>
+                                                    <h4 class="text-white">R1, 300.00</h4></li>
+                                                <li><small>R85pm X 24 </small></li>
+                                                <li><a href="#" class="button  greenBG">View Device</a></li>
+                                            </ul>
+                                        </p>
+                                    </div>
+                                </div>
+                                <!-- End Device -->
+                                <!-- Start Device -->
+                                <div class="medium-6 columns">
+                                    <div class="medium-4 columns">
+                                        <img src="img/devices/G80/1.png" alt="G-80" />
+                                    </div>
+                                    <div class="medium-8 columns">
+                                        <h6 class="text-white">i-Life G80</h6>
+                                        <p>
+                                            <ul>
+                                                <li>Android 4.2 Device</li>
+                                                <li>4.2GHZ Snapdragon Processor</li>
+                                                <li>8GB Internal Storage</li>
+                                                <li>8MP Camera with Flash</li>
+                                                <li>Whats App, Skype and We-Chat pre-installed in device</li>
+                                                <li>
+                                                    <h4 class="text-white">R1, 300.00</h4></li>
+                                                <li><small>R85pm X 24 </small></li>
+                                                <li><a href="#" class="button  greenBG">View Device</a></li>
+                                            </ul>
+                                        </p>
+                                    </div>
+                                </div>
+                                <!-- End Device -->
+                            </li>
+                            <li class="slide">
+                                <!-- Start Device -->
+                                <div class="medium-6 columns">
+                                    <div class="medium-4 columns">
+                                        <img src="img/devices/G40/1.png" alt="G-40" />
+                                    </div>
+                                    <div class="medium-8 columns">
+                                        <h6 class="text-white">i-Life T40</h6>
+                                        <p>
+                                            <ul>
+                                                <li>Android 4.1 Device</li>
+                                                <li>2.2GHZ Snapdragon Processor</li>
+                                                <li>4GB Internal Storage</li>
+                                                <li>5MP Camera with Flash</li>
+                                                <li>Whats App, Skype and We-Chat pre-installed in device</li>
+                                                <li>
+                                                    <h4 class="text-white">R1, 300.00</h4></li>
+                                                <li><small>R65pm X 24 </small></li>
+                                                <li><a href="#" class="button  greenBG">View Device</a></li>
+                                            </ul>
+                                        </p>
+                                    </div>
+                                </div>
+                                <!-- End Device -->
+                                <!-- Start Device -->
+                                <div class="medium-6 columns">
+                                    <div class="medium-4 columns">
+                                        <img src="img/devices/G80/1.png" alt="G-80" />
+                                    </div>
+                                    <div class="medium-8 columns">
+                                        <h6 class="text-white">i-Life G80</h6>
+                                        <p>
+                                            <ul>
+                                                <li>Android 3.2 Device</li>
+                                                <li>1.2GHZ Snapdragon Processor</li>
+                                                <li>2GB Internal Storage</li>
+                                                <li>5MP Camera with Flash</li>
+                                                <li>Whats App, Skype and We-Chat pre-installed in device</li>
+                                                <li>
+                                                    <h4 class="text-white">R900.00</h4></li>
+                                                <li><small>R55pm X 24 </small></li>
+                                                <li><a href="#" class="button  greenBG">View Device</a></li>
+                                            </ul>
+                                        </p>
+                                    </div>
+                                </div>
+                                <!-- End Device -->
+                            </li>
+                        </ul>
+                    </div>
+                    <p>&nbsp;</p>
+                </section>
+              
