@@ -30,6 +30,12 @@ class UsersTable extends Table{
 		->notEmpty('lastname', 'A last name is required')
 		->notEmpty('email', 'A email address is required')
 		->add('email', 'valid', ['rule' => 'email'])
+        ->add('email', [ 'unique' => [
+            'rule' => 'validateUnique', 
+            'provider' => 'table',
+            'message' => 'Sorry this email address has already been used'
+            ]
+        ])
 		->notEmpty('country', 'Please select your country')
 		->notEmpty('password', 'A password is required')
 		->notEmpty('password_confirm', 'Confirm password cannot be empty')
@@ -39,6 +45,7 @@ class UsersTable extends Table{
     	]);
 		
 	}
-
+    
+ 
 }
 ?>

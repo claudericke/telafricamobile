@@ -1,7 +1,6 @@
-<script src='https://www.google.com/recaptcha/api.js'></script>
 <div class="register-wrapper center" style="min-height: 800px;">
 	<div class="twelve columns center">
-		<h4><strong>SMS Gateway</strong> Register</h4>
+		<h4><strong>SMS Gateway</strong> Edit User</h4>
 	</div>
 	<div class="twelve columns register-form">
 		<?php 
@@ -282,33 +281,30 @@
 		?>
 		</div>
 		<div class="twelve columns"><div class="spacer">&nbsp;</div></div>
-		<div class="twelve columns">
-			<?php echo $this->Form->input('password', ['label' => '', 'placeholder' => 'Password', 'class' => 'passwordInput u-full-width']); ?> 
-		</div>
-		<div class="twelve columns"><div class="spacer">&nbsp;</div></div>
-		<div class="twelve columns">
-		<?php
-			echo $this->Form->input('password_confirm', ['label' => '', 'placeholder' => 'Confirm Password', 'type'=>'password', 'class' => 'passwordInput u-full-width']);
-		?>
-		</div>
-		<div class="twelve columns"><div class="spacer">&nbsp;</div></div>
-        <div class="four columns margin5 center">
-           <div class="g-recaptcha" data-sitekey="<?php echo $sitekey; ?>"></div>
-        </div>
+          <div class="twelve columns left">
+          <?php 
+               //echo $this->Form->button(__('Register', array('class' => 'button-primaryloginRegister center greenBG white u-full-width')));
+               echo $this->Form->input('role', ['class' => 'u-full-width', 'label' => '',
+                    'options' => [
+                              "" => "Choose Role",
+                              "admin" => "Admin",
+                              "user" => "User",
+                              "sales" => "Sales"
+                         ]
+                    ]
+               );               
+          ?>
+          </div>
         <div class="twelve columns"><div class="spacer">&nbsp;</div></div>
         <div class="four columns forgotLinks">
             <span class="u-full-width"><a href="#" class="forgotUsername">By proceeding you agree to our Terms of Usage</a></span>
         </div>
         <div class="four columns margin5 center" >
-            <input type="submit" name="register" class="button-primaryloginRegister center greenBG white u-full-width " value="Register" />
+            <input type="submit" name="register" class="button-primaryloginRegister center greenBG white u-full-width " value="Update" />
         </div>
-		<div class="twelve columns"><div class="spacer">&nbsp;</div></div>
-		<?php 
-			//echo $this->Form->button(__('Register', array('class' => 'button-primaryloginRegister center greenBG white u-full-width')));
-			echo $this->Form->input('role', ['type' => 'hidden', 'value' => 'user']);
-			echo $this->Form->end(); 
-		?>
-	</div>
+	    <?php
+          echo $this->Form->end(); 
+         ?>
 	<div class="twelve columns"><div class="spacer"></div></div>
 	<div class="twelve columns left">
 	    <span class="Linkarrow"><img src="/images/right133.png" alt="" /></span><a href="/">Go to Login Page</a>
