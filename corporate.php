@@ -78,83 +78,52 @@
 
         <div class="row">
 
-            <div class="medium-3 columns">
+            <div class="medium-4 columns">
                 <div class="team-member">
                     <img alt="Team Member" src="img/team1.png">
                     <div class="member-details text-center">
-                        <h6>Franck Ngolela</h6>
+                        <h6>Franck Ngolela (B Eco.)</h6>
                         <span class="title">Chief Operating Officer</span>
                         <div class="horizontal-line"></div>
                         <ul class="social-profiles">
-                            <li><a href="#"><i class="icon social_facebook"></i></a></li>
-                            <li><a href="#"><i class="icon social_twitter"></i></a></li>
+                            <li><a href="http://www.linkedin.com/profile/view?id=ADEAAAqM2KoBhkK2x9dRDMfqS25XekXjOhnCWdU&authType=OPENLINK&authToken=N1EA&locale=en_US&srchid=1732007121444648968872&srchindex=1&srchtotal=1&trk=vsrp_people_res_name&trkInfo=VSRPsearchId%3A1732007121444648968872%2CVSRPtargetId%3A177002666%2CVSRPcmpt%3Aprimary%2CVSRPnm%3Atrue%2CauthType%3AOPENLINK"><i class="icon social_linkedin"></i></a></li>
                         </ul>
-                        <p>
-                            At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas.
-                        </p>
+
                     </div>
                 </div>
                 <!--end of individual team member-->
             </div>
 
-            <div class="medium-3 columns">
+            <div class="medium-4 columns">
                 <div class="team-member">
                     <img alt="Team Member" src="img/team2.png">
                     <div class="member-details text-center">
-                        <h6>Botha Lebepe</h6>
-                        <span class="title">Chief Executive Officer</span>
+                        <h6>Botha Lebepe (Bsc. Informatics)</h6>
+                        <span class="title">Group CEO, President</span>
                         <div class="horizontal-line"></div>
                         <ul class="social-profiles">
-                            <li><a href="#"><i class="icon social_twitter"></i></a></li>
-                            <li><a href="#"><i class="icon social_linkedin"></i></a></li>
+                            <li><a href="http://www.linkedin.com/profile/view?id=ADEAAAU7RGsBTSsqICXIWRh4aVzGwGSguGHesAs&authType=NAME_SEARCH&authToken=gehc&locale=en_US&srchid=1732007121444649010135&srchindex=1&srchtotal=1&trk=vsrp_people_res_name&trkInfo=VSRPsearchId%3A1732007121444649010135%2CVSRPtargetId%3A87770219%2CVSRPcmpt%3Aprimary%2CVSRPnm%3Atrue%2CauthType%3ANAME_SEARCH"><i class="icon social_linkedin"></i></a></li>
                         </ul>
-                        <p>
-                            At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas.
-                        </p>
+
                     </div>
                 </div>
                 <!--end of individual team member-->
             </div>
 
-            <div class="medium-3 columns">
+            <div class="medium-4 columns">
                 <div class="team-member">
                     <img alt="Team Member" src="img/team3.png">
                     <div class="member-details text-center">
-                        <h6>Kylie Carr</h6>
-                        <span class="title">Director</span>
+                        <h6>Simphiwe Mkhwanazi</h6>
+                        <span class="title">Financial Director</span>
                         <div class="horizontal-line"></div>
                         <ul class="social-profiles">
-                            <li><a href="#"><i class="icon social_twitter"></i></a></li>
-                            <li><a href="#"><i class="icon social_linkedin"></i></a></li>
+                            <li><a href="https://www.linkedin.com/pub/simphiwe-mkhwanazi/35/3b9/841"><i class="icon social_linkedin"></i></a></li>
                         </ul>
-                        <p>
-                            At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas.
-                        </p>
                     </div>
                 </div>
                 <!--end of individual team member-->
             </div>
-
-            <div class="medium-3 columns">
-                <div class="team-member">
-                    <img alt="Team Member" src="img/team4.png">
-                    <div class="member-details text-center">
-                        <h6>Jacob Rowlins</h6>
-                        <span class="title">Non-Executive Director</span>
-                        <div class="horizontal-line"></div>
-                        <ul class="social-profiles">
-                            <li><a href="#"><i class="icon social_twitter"></i></a></li>
-                            <li><a href="#"><i class="icon social_linkedin"></i></a></li>
-                        </ul>
-                        <p>
-                            At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas.
-                        </p>
-                    </div>
-                </div>
-                <!--end of individual team member-->
-            </div>
-
-
         </div>
 
 

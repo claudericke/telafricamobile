@@ -43,7 +43,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li><a href="#">CORPORATE</a></li>
+                    <li><a href="corporate.php">CORPORATE</a></li>
                     <li><a href="terms.php">LEGAL</a></li>
                     <li><a href="contact.php">CONTACT</a></li>
                     <li><a href="#" class="button greenBG text-white"><span class="icon_profile "></span>&nbsp;SMS Sign Up</a></li>
