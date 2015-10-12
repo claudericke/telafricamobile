@@ -441,7 +441,7 @@ $(window).load(function () {
 
 $(window).load(function () {
     var tabs =  $(".tabs li a");
-    var content = "#Cellphones";
+    var content = "#VoiceServices";
     tabs.removeClass("active");
     $(".tabs li:nth-child(1) a").addClass("active");
     $("#content").find('section').hide();
