@@ -1,6 +1,6 @@
 <div class="register-wrapper center" style="min-height: 800px;">
 	<div class="twelve columns center">
-		<h4><strong>SMS Gateway</strong> Register</h4>
+		<h4><strong>SMS Gateway</strong> Edit User</h4>
 	</div>
 	<div class="twelve columns register-form">
 		<?php 
@@ -295,17 +295,6 @@
                );               
           ?>
           </div>
-          <div class="twelve columns"><div class="spacer">&nbsp;</div></div>
-          <div class="twelve columns">
-               <?php echo $this->Form->input('password', ['label' => '', 'placeholder' => 'Password', 'class' => 'passwordInput u-full-width']); ?> 
-          </div>
-          <div class="twelve columns"><div class="spacer">&nbsp;</div></div>
-          <div class="twelve columns">
-          <?php
-               echo $this->Form->input('password_confirm', ['label' => '', 'placeholder' => 'Confirm Password', 'type'=>'password', 'class' => 'passwordInput u-full-width']);
-          ?>
-          </div>
-		
         <div class="twelve columns"><div class="spacer">&nbsp;</div></div>
         <div class="four columns forgotLinks">
             <span class="u-full-width"><a href="#" class="forgotUsername">By proceeding you agree to our Terms of Usage</a></span>
