@@ -32,7 +32,8 @@ $cakeDescription = 'telafrica SMS Gateway';
     <?= $this->Html->css('skeleton.css') ?>
     <?= $this->Html->css('entypo.css') ?>
     <?= $this->Html->css('media-queries.css') ?>
-
+    <?= $this->Html->css('sweetalert.css') ?>
+    
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
@@ -46,10 +47,9 @@ $cakeDescription = 'telafrica SMS Gateway';
         <li class="dashboard"><a href="/dashboards/">Dashboard</a></li>
         <li class="messageCenter"><a href="messages.php">Message Center</a></li>
         <li class="settings"><a href="">Settings</a></li>
-        <li class="account"><a href="">Account</a></li>
+        <?php if ($this->request->session()->read('Auth.User.role') == 'admin' || $this->request->session()->read('Auth.User.role') == 'sales') {?> <li class="account"><a href="/users">Account</a></li><?php }?>
         <li class="reports"><a href="">Reports</a></li>
         <li class="support"><a href="">Support</a></li>
-        <?php if ($this->request->session()->read('Auth.User.role') == 'admin' || $this->request->session()->read('Auth.User.role') == 'sales') {?> <li class="account"><a href="/users">Manage Users</a></li><?php }?>
         <li class="Logout"><a href="/users/logout">Logout</a></li>
         <li class="close" onclick="toggleNav();" ><a href="#">Close</a></li>
     </ul>
@@ -85,9 +85,23 @@ $cakeDescription = 'telafrica SMS Gateway';
             <!-- Currently Logged in User  -->
         </div>
 </header>
-    
+ <!-- Start Notifications and Alerts Panel  -->
+    <section class="notifications">
+        <div class="container">
+            <div class="twelve columns">
+                <div class="panel notice">
+                   <?= $this->Flash->render() ?>
+                </div>
+            </div>
+            <div class="twelve columns">
+                <div class="panel alert">This is an alert</div>
+            </div>
+        </div>
+    </section>
+    <!-- End Notifications and Alerts Panel  -->
+   
 
-    <?= $this->Flash->render() ?>
+    
     <?= $this->fetch('content') ?>
              
 <script src="/js/jquery-2.1.4.js"></script>

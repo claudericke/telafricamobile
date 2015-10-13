@@ -305,7 +305,7 @@
 		<div class="twelve columns"><div class="spacer">&nbsp;</div></div>
 		<?php 
 			//echo $this->Form->button(__('Register', array('class' => 'button-primaryloginRegister center greenBG white u-full-width')));
-			echo $this->Form->input('role', ['type' => 'hidden', 'value' => 'user']);
+			echo $this->Form->input('role', ['type' => 'hidden', 'value' => 'regular']);
 			echo $this->Form->end(); 
 		?>
 	</div>
