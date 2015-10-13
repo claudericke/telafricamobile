@@ -7,6 +7,7 @@ use Cake\Event\Event;
 
 use Cake\Network\Http\Client;
 use Cake\Core\Configure;
+use Cake\Mailer\Email;
 
 class UsersController extends AppController{
 
@@ -19,6 +20,7 @@ class UsersController extends AppController{
 	}
 	
 	public function login(){
+
 		if ($this->request->is('post')) {
 			$user = $this->Auth->identify();
 			if ($user) {
@@ -28,6 +30,7 @@ class UsersController extends AppController{
 			}
 			$this->Flash->error(__('Invalid username or password, please try again'));
 		}
+		$this->viewBuilder()->layout('login-registration');
 	}
 
 	public function index(){
@@ -35,7 +38,7 @@ class UsersController extends AppController{
 		if($this->Auth->user('role') == 'admin' || $this->Auth->user('role') == 'sales'){
 	        $this->set('users', $this->paginate($this->Users));
 	        $this->set('_serialize', ['users']);
-	        $this->viewBuilder()->layout('content');
+	       
     	}else{
 
     		$this->Flash->error(__('Sorry you do not have permission to view the user page!'));
@@ -65,6 +68,12 @@ class UsersController extends AppController{
 			if ($response->json['success'] == 'true'){
 				$user = $this->Users->patchEntity($user, $this->request->data);
 				if ($this->Users->save($user)) {
+					$email = new Email('gmail');
+					$email->from(['tmalvern@gmail.com' => 'My Site'])
+				    ->to('malvern@intarget.mobi')
+				    ->subject('Registered on Telafrica sms gateway')
+				    ->send('Welcome to Telafrica gateway');
+
 					$this->Flash->success(__('The user has been saved.'));
 					return $this->redirect(['action' => 'login']);
 				}
@@ -75,6 +84,7 @@ class UsersController extends AppController{
 		}
 		$this->set('sitekey', Configure::read('GoogleReCaptcha.Sitekey'));
 		$this->set('user', $user);
+		$this->viewBuilder()->layout('login-registration');
 	}
 
 	public function logout(){
@@ -109,6 +119,7 @@ class UsersController extends AppController{
     		$this->Flash->error(__('Sorry you do not have permission to view the user page!'));
     		return $this->redirect(['controller' => 'dashboards', 'action' => 'index']);
     	}
+    	$this->viewBuilder()->layout('login-registration');
     }
 
     /**
