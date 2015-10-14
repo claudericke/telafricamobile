@@ -1,4 +1,6 @@
+<?php
 
+?>
     <section class="account-admin">
         <div class="container">
             <div class="twelve columns panel">
@@ -302,7 +304,10 @@
                                 </tr>
                             </thead>
                             <tbody>
-                             <?php foreach ($users as $user): 
+                             <?php 
+                             $i = 1;
+                             foreach ($users as $user): 
+                             
                                 switch ($user->role) {
                                     case 'regular':
                                         $role = 'Registered';
@@ -320,9 +325,11 @@
 
                              ?>
                                 <tr>
-                                    <td title="<?= h($user->email) ?>" class="accountName"><?= h($user->email) ?></td>
+                                    <td title="<?= h($user->email) ?>" id="email<?php echo $i;?>" class="accountName"><?= h($user->email) ?>
+                                    <input type="hidden" id="user_id<?php echo $i;?>" name="user_id<?php echo $i;?>" value="<?php echo h($user->id);?>">
+                                    </td>
                                     <td><?= h($role) ?></td>
-                                    <td>186</td>
+                                    <td><span id="credits<?php echo $i;?>"><?php echo $user->credit->creditvalue; ?></span></td>
                                     <td><button class="btn-primary u-full-width greenBG white center addCredit">Add Credits</button></td>
                                     <td><button class="btn-primary u-full-width blueBG white center">Remove Credits</button></td>
                                     <td><?= $this->Form->postLink(__('<button class="btn-primary u-full-width redBG white center closeAccount">Delete User</button>'), 
@@ -335,7 +342,10 @@
                                         ?>
                                         </td>
                                 </tr>
-                            <?php endforeach; ?>   
+                            <?php
+                            $i++;
+                            endforeach; 
+                            ?>   
                             </tbody>
                 </table>
                 <div class="paginator">
@@ -423,25 +433,50 @@
             });
         });
 
-            //Add Credit Function
-           $(".addCredit").click(function() {
-            accountName = $(".accountName").attr('title');
-            swal({
-                title: "Add Credit to " + accountName,
-                text: "Enter Amount of Credit to add:",
-                type: "input",
-                showCancelButton: true,
-                closeOnConfirm: false,
-                animation: "slide-from-top"
-            }, function(inputValue) {
-                if (inputValue === false) return false;
-                if (inputValue === "") {
-                    swal.showInputError("You need to write something!");
-                    return false
-                }
-                swal("You have added " + inputValue + " credit to " + accountName, ".", "success");
+      //Add Credit Function
+     $(".addCredit").click(function() {
+            var accountName = "";
+            var user_id = "";
+            var index = "";
+            $('.sentMessages tr').click(function(){
+                  console.log( 'test row : ' + $('tr').index(this) );  
+                  index =  $('tr').index(this);                      
+                  accountName = $("#email" + index).attr('title');
+                  user_id = $("#user_id" + index).val();
+                  console.log('user_id : ' + user_id);  
+                  
+                  swal({
+                      title: "Add Credit to " + accountName,
+                      text: "Enter Amount of Credit to add:",
+                      type: "input",
+                      showCancelButton: true,
+                      closeOnConfirm: false,
+                      animation: "slide-from-top"
+                  }, function(inputValue) {
+                      if (inputValue === false) return false;
+                      if (inputValue === "") {
+                          swal.showInputError("You need to write something!");
+                          return false
+                      }else{
+
+                        $.get('/credits/add?user_id='+user_id+"&creditvalue="+inputValue, function(d) {       
+
+                              if(d != 'error'){
+
+                                    swal("You have added " + inputValue + " credit to " + accountName, ". Your new credits are " + d, "success");
+                                    $('#credits' + index).html(d);
+                              }else{
+
+
+                              }
+                             
+
+                        });
+                      }
+                      
+                  });
             });
-        });
+      });
 
         //Show Create new user form
         $(".createUserButton").click(function () {

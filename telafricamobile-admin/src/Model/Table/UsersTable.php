@@ -18,7 +18,7 @@ class UsersTable extends Table{
         $this->displayField('id');
         $this->primaryKey('id');
         $this->addBehavior('Timestamp');
-        $this->hasMany('Messages', [
+        $this->hasOne('Credits', [
             'foreignKey' => 'user_id'
         ]);
     }
@@ -44,8 +44,7 @@ class UsersTable extends Table{
         	'message' => 'Passwords are not equal',
     	]);
 		
-	}
-    
+	}  
  
 }
 ?>
