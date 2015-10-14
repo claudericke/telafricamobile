@@ -329,7 +329,7 @@
                                     <input type="hidden" id="user_id<?php echo $i;?>" name="user_id<?php echo $i;?>" value="<?php echo h($user->id);?>">
                                     </td>
                                     <td><?= h($role) ?></td>
-                                    <td><span id="credits<?php echo $i;?>"><?php echo $user->credit->creditvalue; ?></span></td>
+                                    <td><span id="credits<?php echo $i;?>"><?php echo ($user->credit->creditvalue ? $user->credit->creditvalue : 0); ?></span></td>
                                     <td><button class="btn-primary u-full-width greenBG white center addCredit">Add Credits</button></td>
                                     <td><button class="btn-primary u-full-width blueBG white center">Remove Credits</button></td>
                                     <td><?= $this->Form->postLink(__('<button class="btn-primary u-full-width redBG white center closeAccount">Delete User</button>'), 
@@ -455,7 +455,7 @@
                   }, function(inputValue) {
                       if (inputValue === false) return false;
                       if (inputValue === "") {
-                          swal.showInputError("You need to write something!");
+                          swal.showInputError("Please enter the credits!");
                           return false
                       }else{
 
