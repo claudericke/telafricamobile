@@ -36,9 +36,10 @@ class UsersController extends AppController{
 	public function index(){
 
 		if($this->Auth->user('role') == 'admin' || $this->Auth->user('role') == 'sales'){
-	        $this->set('users', $this->paginate($this->Users));
+			$query = $this->Users->find('all')->contain(['Credits']);
+			$this->set('users', $this->paginate($query));
 	        $this->set('_serialize', ['users']);
-	       
+	              
     	}else{
 
     		$this->Flash->error(__('Sorry you do not have permission to view the user page!'));
@@ -129,8 +130,8 @@ class UsersController extends AppController{
      * @return void Redirects to index.
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
-    public function delete($id = null)
-    {
+    public function delete($id = null){
+
         $this->request->allowMethod(['post', 'delete']);
         $user = $this->Users->get($id);
         if ($this->Users->delete($user)) {
