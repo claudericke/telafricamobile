@@ -25,8 +25,8 @@ class UsersController extends AppController{
 			$user = $this->Auth->identify();
 			if ($user) {
 				$this->Auth->setUser($user);
-				return $this->redirect($this->Auth->redirectUrl());
-				//return $this->redirect(['controller' => 'dashboards', 'action' => 'index']);
+				//return $this->redirect($this->Auth->redirectUrl());
+				return $this->redirect(['action' => 'beta']);
 			}
 			$this->Flash->error(__('Invalid username or password, please try again'));
 		}
@@ -68,15 +68,11 @@ class UsersController extends AppController{
 			
 			if ($response->json['success'] == 'true'){
 				$user = $this->Users->patchEntity($user, $this->request->data);
-				if ($this->Users->save($user)) {
-					$email = new Email('gmail');
-					$email->from(['tmalvern@gmail.com' => 'My Site'])
-				    ->to('malvern@intarget.mobi')
-				    ->subject('Registered on Telafrica sms gateway')
-				    ->send('Welcome to Telafrica gateway');
+				if ($this->Users->save($user)) {					
 
 					$this->Flash->success(__('The user has been saved.'));
-					return $this->redirect(['action' => 'login']);
+					//return $this->redirect(['action' => 'login']);
+					return $this->redirect(['action' => 'beta']);
 				}
 				$this->Flash->error(__('Unable to add the user.'));
 			}else{
@@ -141,5 +137,10 @@ class UsersController extends AppController{
         }
         return $this->redirect(['action' => 'index']);
     }
+
+    public function beta(){
+
+		$this->viewBuilder()->layout('login-registration');
+	}
 }
 ?>

@@ -293,60 +293,60 @@
                     <br/>
                 </div>
                 <table class="u-full-width sentMessages">
-                            <thead>
-                                <tr>
-                                    <th><?= $this->Paginator->sort('email', 'User e-mail') ?></th>
-                                    <th><?= $this->Paginator->sort('role', 'User Level') ?></th>
-                                    <th>Credits Available</th>
-                                    <th>&nbsp;</th>
-                                    <th>&nbsp;</th>
-                                    <th>&nbsp;</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                             <?php 
-                             $i = 1;
-                             foreach ($users as $user): 
-                             
-                                switch ($user->role) {
-                                    case 'regular':
-                                        $role = 'Registered';
-                                        break;
-                                    case 'sales':
-                                        $role = 'Sales';
-                                        break;
-                                    case 'admin':
-                                        $role = 'Administrator';
-                                        break;
-                                    default:
-                                        # code...
-                                        break;
-                                }
+                      <thead>
+                          <tr>
+                              <th><?= $this->Paginator->sort('email', 'User e-mail') ?></th>
+                              <th><?= $this->Paginator->sort('role', 'User Level') ?></th>
+                              <th>Credits Available</th>
+                              <th>&nbsp;</th>
+                              <th>&nbsp;</th>
+                              <th>&nbsp;</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                       <?php 
+                       $i = 1;
+                       foreach ($users as $user): 
+                       
+                          switch ($user->role) {
+                              case 'regular':
+                                  $role = 'Registered';
+                                  break;
+                              case 'sales':
+                                  $role = 'Sales';
+                                  break;
+                              case 'admin':
+                                  $role = 'Administrator';
+                                  break;
+                              default:
+                                  # code...
+                                  break;
+                          }
 
-                             ?>
-                                <tr>
-                                    <td title="<?= h($user->email) ?>" id="email<?php echo $i;?>" class="accountName"><?= h($user->email) ?>
-                                    <input type="hidden" id="user_id<?php echo $i;?>" name="user_id<?php echo $i;?>" value="<?php echo h($user->id);?>">
-                                    </td>
-                                    <td><?= h($role) ?></td>
-                                    <td><span id="credits<?php echo $i;?>"><?php echo ($user->credit->creditvalue ? $user->credit->creditvalue : 0); ?></span></td>
-                                    <td><button class="btn-primary u-full-width greenBG white center addCredit">Add Credits</button></td>
-                                    <td><button class="btn-primary u-full-width blueBG white center">Remove Credits</button></td>
-                                    <td><?= $this->Form->postLink(__('<button class="btn-primary u-full-width redBG white center closeAccount">Delete User</button>'), 
-                                            ['action' => 'delete', $user->id],
-                                            [
-                                                'escape'   => false,
-                                                'confirm' => __('Are you sure you want to delete # {0}?', $user->firstname.' '.$user->lastname)
-                                            ]
-                                        ) 
-                                        ?>
-                                        </td>
-                                </tr>
-                            <?php
-                            $i++;
-                            endforeach; 
-                            ?>   
-                            </tbody>
+                       ?>
+                          <tr>
+                              <td title="<?= h($user->email) ?>" id="email<?php echo $i;?>" class="accountName"><?= h($user->email) ?>
+                              <input type="hidden" id="user_id<?php echo $i;?>" name="user_id<?php echo $i;?>" value="<?php echo h($user->id);?>">
+                              </td>
+                              <td><?= h($role) ?></td>
+                              <td><span id="credits<?php echo $i;?>"><?php echo ($user->credit->creditvalue ? $user->credit->creditvalue : 0); ?></span></td>
+                              <td><button class="btn-primary u-full-width greenBG white center addCredit">Add Credits</button></td>
+                              <td><button class="btn-primary u-full-width blueBG white center removeCredit">Remove Credits</button></td>
+                              <td><?= $this->Form->postLink(__('<button class="btn-primary u-full-width redBG white center closeAccount">Delete User</button>'), 
+                                      ['action' => 'delete', $user->id],
+                                      [
+                                          'escape'   => false,
+                                          'confirm' => __('Are you sure you want to delete # {0}?', $user->firstname.' '.$user->lastname)
+                                      ]
+                                  ) 
+                                  ?>
+                                  </td>
+                          </tr>
+                      <?php
+                      $i++;
+                      endforeach; 
+                      ?>   
+                      </tbody>
                 </table>
                 <div class="paginator">
                 <ul class="pagination">
@@ -390,22 +390,58 @@
             }, 500);
         }
 
-        // Function to add Credits
-        $(".addCredit").click(function () {
-            creditValue = $("#creditAmount").val();
-            swal({
-                title: "Are you sure?",
-                text: "You are about to request " + creditValue + " additional credits",
-                type: "info",
-                showCancelButton: true,
-                confirmButtonColor: "#DD6B55",
-                confirmButtonText: "Yes, send request!",
-                closeOnConfirm: false
-            }, function () {
-                swal("Request Sent!", "You have sent a request for " + creditValue + " credits. Please check your mail for more details.", "success");
-                swal("Nice!", "You wrote: " + inputValue, "success");
+        //Remove Credit Function
+     $(".removeCredit").click(function() {
+            var accountName = "";
+            var user_id = "";
+            var index = "";
+            $('.sentMessages tr').click(function(){
+                    
+                  index =  $('tr').index(this);                      
+                  accountName = $("#email" + index).attr('title');
+                  user_id = $("#user_id" + index).val();
+                  
+                  
+                  swal({
+                      title: "Remove Credit to " + accountName,
+                      text: "Enter Amount of Credit to be removed:",
+                      type: "input",
+                      showCancelButton: true,
+                      closeOnConfirm: false,
+                      animation: "slide-from-top"
+                  }, function(inputValue) {
+                      if (inputValue === false) return false;
+
+                      if (inputValue === "") {
+
+                          swal.showInputError("Ooops looks like you did not enter some credits!");
+                          return false
+
+                        }else if(!$.isNumeric(inputValue)){
+
+                              swal.showInputError("Please enter valid credits!");
+                              return false
+
+                        }else{
+
+                              $.get('/credits/remove?user_id='+user_id+"&creditvalue="+inputValue, function(d) {       
+
+                                    if(d != 'error'){
+
+                                          swal("You have removed " + inputValue + " credit to " + accountName, ". Your new credits are " + d, "success");
+                                          $('#credits' + index).html(d);
+                                    }else{
+
+                                           swal("Sorry there was error. Credit were not removed", "success");
+                                    }
+                                   
+
+                              });
+                        }
+                      
+                  });
             });
-        });
+      });
 
         // Function to delete account
         $("#closeAccount").click(function () {
@@ -439,11 +475,11 @@
             var user_id = "";
             var index = "";
             $('.sentMessages tr').click(function(){
-                  console.log( 'test row : ' + $('tr').index(this) );  
+                    
                   index =  $('tr').index(this);                      
                   accountName = $("#email" + index).attr('title');
                   user_id = $("#user_id" + index).val();
-                  console.log('user_id : ' + user_id);  
+                  
                   
                   swal({
                       title: "Add Credit to " + accountName,
@@ -454,25 +490,33 @@
                       animation: "slide-from-top"
                   }, function(inputValue) {
                       if (inputValue === false) return false;
+
                       if (inputValue === "") {
-                          swal.showInputError("Please enter the credits!");
+
+                          swal.showInputError("Ooops looks like you did not enter some credits!");
                           return false
-                      }else{
 
-                        $.get('/credits/add?user_id='+user_id+"&creditvalue="+inputValue, function(d) {       
+                        }else if(!$.isNumeric(inputValue)){
 
-                              if(d != 'error'){
+                              swal.showInputError("Please enter valid credits!");
+                              return false
 
-                                    swal("You have added " + inputValue + " credit to " + accountName, ". Your new credits are " + d, "success");
-                                    $('#credits' + index).html(d);
-                              }else{
+                        }else{
 
+                              $.get('/credits/add?user_id='+user_id+"&creditvalue="+inputValue, function(d) {       
 
-                              }
-                             
+                                    if(d != 'error'){
 
-                        });
-                      }
+                                          swal("You have added " + inputValue + " credit to " + accountName, ". Your new credits are " + d, "success");
+                                          $('#credits' + index).html(d);
+                                    }else{
+
+                                           swal("Sorry there was error. Credit were not added", "success");
+                                    }
+                                   
+
+                              });
+                        }
                       
                   });
             });

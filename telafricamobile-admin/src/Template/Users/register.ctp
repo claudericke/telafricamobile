@@ -1,7 +1,8 @@
 <script src='https://www.google.com/recaptcha/api.js'></script>
-<div class="register-wrapper center" style="min-height: 800px;">
+<div class="register-wrapper center" style="min-height: 900px;">
 	<div class="twelve columns center">
 		<h4><strong>SMS Gateway</strong> Register</h4>
+          <p>Please enter your details below to be registerd for the Beta Testing Phase. You will be notified via e-mail once system is available to you</p>
 	</div>
 	<div class="twelve columns register-form">
 		<?php 
