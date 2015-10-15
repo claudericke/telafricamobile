@@ -219,9 +219,34 @@ $(document).ready(function () {
         $(this).addClass('active');
         $(this).closest('.feature-selector-holder').find('.feature-selector-content').children('li').removeClass('active').siblings('li[data-feature-id=' + tabID + ']').addClass('active');
         $('.feature-selector-content').css('height', $('.feature-selector-content').find('.active').height());
+     if (tabID == "2MBPS") {
+           $(window).scrollTo($('#2MBPS'), 800);
+        }
+        if (tabID == "5MBPS") {
+           $(window).scrollTo($('#5MBPS'), 800);
+        }
+        if (tabID == "10MBPS") {
+           $(window).scrollTo($('#10MBPS'), 800);
+        }
+        if (tabID == "20MBPS") {
+           $(window).scrollTo($('#20MBPS'), 800);
+        }
+        if (tabID == "30MBPS") {
+           $(window).scrollTo($('#30MBPS'), 800);
+        }
+        if (tabID == "50MBPS") {
+           $(window).scrollTo($('#50MBPS'), 800);
+        }
+        if (tabID == "1GBPS") {
+           $(window).scrollTo($('#1GBPS'), 800);
+        }
     });
 
     $('.feature-selector-content').css('height', $('.feature-selector-content').find('.active').height());
+
+
+
+
 
     /************** Video Dividers Scripts **************/
 
@@ -375,7 +400,7 @@ $(window).load(function () {
 
     $('.subnav-fullwidth').each(function () {
         $(this).css('width', $('.row').width());
-        var subNavOffset = -($('nav .row').innerWidth() - $('.menu').innerWidth() - 400);
+        var subNavOffset = -($('nav .row').innerWidth() - $('.menu').innerWidth() - 280);
         $(this).css('left', subNavOffset);
     });
 
