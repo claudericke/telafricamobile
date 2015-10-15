@@ -1,9 +1,9 @@
         <div class="row">
-            <div class="medium-3 columns">
+            <div class="medium-2 columns">
                 <a class="logo-light" href="index.php"><img alt="telafrica mobile" src="img/logo-light.png" class="logo"></a>
             </div>
 
-            <div class="columns text-left medium-8">
+            <div class="columns text-left medium-10">
                 <ul class="menu">
                     <li class="has-dropdown"><a href="#">PRODUCTS</a>
                         <ul class="subnav subnav-fullwidth">
@@ -43,6 +43,14 @@
                             </li>
                         </ul>
                     </li>
+                    <li class="has-dropdown"><a href="#">Data Services</a>
+  						<ul class="subnav single-drop">
+  							<li><a href="fibre.php">Fibre-To-Home</a></li>
+  							<li><a href="data-on-demand.php">Data-On-Demand</a></li>
+  							<li><a href="hosted-pbx.php">Hosted PBX </a></li>
+  							<li><a href="sip-trunking.php">SIP Trunking </a></li>
+  						</ul>
+  					</li>
                     <li><a href="corporate.php">CORPORATE</a></li>
                     <li><a href="terms.php">LEGAL</a></li>
                     <li><a href="contact.php">CONTACT</a></li>

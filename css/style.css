@@ -2865,7 +2865,7 @@ footer.footer-alt span.sub .icon_heart {
     padding: 5px;
 }
 
-.feature-selector-content table td:nth-child(3) {
+.feature-selector-content table .price {
     font-size: 24px;
     font-weight: bold;
 }
@@ -2945,4 +2945,23 @@ th {
 .bulletList li {
     margin-left:30px !important;
     list-style-position: inside;
+}
+
+.single-drop li a {
+    text-transform: uppercase !important;
+}
+
+
+
+
+.feature-selector-tabs {
+    padding-top: 40px;
+    position: relative;
+    z-index: 99999;
+}
+
+.features li {
+    display: block;
+    width:100%;
+    text-align:center;
 }

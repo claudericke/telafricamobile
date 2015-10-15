@@ -121,12 +121,12 @@
                                         <tr>
                                             <td>1 Year</td>
                                             <td>R1, 300 (first month of usage is free)</td>
-                                            <td class="price">R225pm</td>
+                                            <td>R225pm</td>
                                         </tr>
                                         <tr>
                                             <td>2 Year</td>
                                             <td>R1, 300 (first month of usage is free)</td>
-                                            <td class="price">R205pm</td>
+                                            <td>R205pm</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -163,12 +163,12 @@
                                         <tr>
                                             <td>1 Year</td>
                                             <td>R1, 300 (first month of usage is free)</td>
-                                            <td class="price">R250pm</td>
+                                            <td>R250pm</td>
                                         </tr>
                                         <tr>
                                             <td>2 Year</td>
                                             <td>R1, 300 (first month of usage is free)</td>
-                                            <td class="price">R225pm</td>
+                                            <td>R225pm</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -205,12 +205,12 @@
                                         <tr>
                                             <td>1 Year</td>
                                             <td>R1, 300 (first month of usage is free)</td>
-                                            <td class="price">R350pm</td>
+                                            <td>R350pm</td>
                                         </tr>
                                         <tr>
                                             <td>2 Year</td>
                                             <td>R1, 300 (first month of usage is free)</td>
-                                            <td class="price">R325pm</td>
+                                            <td>R325pm</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -247,12 +247,12 @@
                                         <tr>
                                             <td>1 Year</td>
                                             <td>R1, 300 (first month of usage is free)</td>
-                                            <td class="price">R550pm</td>
+                                            <td>R550pm</td>
                                         </tr>
                                         <tr>
                                             <td>2 Year</td>
                                             <td>R1, 300 (first month of usage is free)</td>
-                                            <td class="price">R525pm</td>
+                                            <td>R525pm</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -289,12 +289,12 @@
                                         <tr>
                                             <td>1 Year</td>
                                             <td>R1, 300 (first month of usage is free)</td>
-                                            <td class="price">R750pm</td>
+                                            <td>R750pm</td>
                                         </tr>
                                         <tr>
                                             <td>2 Year</td>
                                             <td>R1, 300 (first month of usage is free)</td>
-                                            <td class="price">R675pm</td>
+                                            <td>R675pm</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -331,12 +331,12 @@
                                         <tr>
                                             <td>1 Year</td>
                                             <td>R1, 300 (first month of usage is free)</td>
-                                            <td class="price">R1150pm</td>
+                                            <td>R1150pm</td>
                                         </tr>
                                         <tr>
                                             <td>2 Year</td>
                                             <td>R1, 300 (first month of usage is free)</td>
-                                            <td class="price">R1000pm</td>
+                                            <td>R1000pm</td>
                                         </tr>
                                     </tbody>
                                 </table>
