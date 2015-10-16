@@ -3,7 +3,7 @@
 
 
 <head>
-      <title>Telafrica Mobile - Service Coverage</title>
+      <title>telafrica Mobile - Service Coverage</title>
       <?php include("includes/header.php"); ?>
 </head>
 

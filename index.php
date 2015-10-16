@@ -2,7 +2,7 @@
 <html class="no-js" lang="en">
 
 <head>
-      <title>Telafrica Mobile - Home Page</title>
+      <title>telafrica Mobile - Home Page</title>
       <?php include("includes/header.php"); ?>
 </head>
 
@@ -34,7 +34,7 @@
                             <h1 class="text-white"><strong>SMS <span class="text-green">MORE</span></strong></h1>
                         </div>
                         <div class="medium-6 columns">
-                            <p><i>Telafrica brings you closer takes your message to your customers pockets with it’s bulk sms and voice services that allow you to do less planning and take more action to sell who you are. Sign up today!</i></p>
+                            <p><i>telafrica brings you closer takes your message to your customers pockets with it’s bulk sms and voice services that allow you to do less planning and take more action to sell who you are. Sign up today!</i></p>
                             <a href="#" class="button greenBG"><span class="icon_profile"></span>&nbsp;SMS Sign Up</a>
                         </div>
                         <div class="medium-6 columns"></div>
@@ -70,8 +70,8 @@
             <ul class="tabs group">
                 <li><a href="#/VoiceServices">Voice Services</a></li>
                 <li><a class="active" href="#/BulkSMS">Bulk SMS Service</a></li>
-                <li><a href="#/Fibre">Data Services</a></li>
                 <li><a href="#/Roaming">Roaming Services</a></li>
+                <li><a href="#/Fibre">Data Services</a></li>
             </ul>
 
             <div id="content">
@@ -82,7 +82,7 @@
                         </div>
                         <div class="medium-6 columns">
                             <h6 class="text-white">telafrica Voice Solutions</h6>
-                            <p>Telafrica is specialized in delivering high-quality, high-performance, and high-capacity dialler/ CC routes with unbeatable rates for all your needs.</p><p>Telafrica Mobile Wholesale Voice provides reliable, stable, direct and competitive VoiP termination to an A-Z destinations around the world.</p>
+                            <p>telafrica is specialized in delivering high-quality, high-performance, and high-capacity dialler/ CC routes with unbeatable rates for all your needs.</p><p>telafrica Mobile Wholesale Voice provides reliable, stable, direct and competitive VoiP termination to an A-Z destinations around the world.</p>
                         <p><a class="button expand greenBG" href="voice.php">Learn More about Voice Solutions</a></p>
                         </div>
                         <div class="medium-4 columns">&nbsp;</div>

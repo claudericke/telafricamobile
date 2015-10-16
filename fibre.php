@@ -3,7 +3,7 @@
 
 
 <head>
-      <title>Telafrica Mobile Fibre-To-Home</title>
+      <title>telafrica Mobile Fibre-To-Home</title>
       <?php include("includes/header.php"); ?>
 </head>
 

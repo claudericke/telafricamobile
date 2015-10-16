@@ -3,7 +3,7 @@
 
 
 <head>
-      <title>Telafrica Mobile - Corporate</title>
+      <title>telafrica Mobile - Corporate</title>
       <?php include("includes/header.php"); ?>
 </head>
 
@@ -71,7 +71,7 @@
         <div class="row">
             <div class="medium-9 medium-centered columns text-center push-bottom">
                 <p class="lead">
-                    Telafrica Mobile board of directors consists of a team with a wealth of expertise and over 85 years combined experience.
+                    telafrica Mobile board of directors consists of a team with a wealth of expertise and over 25 years combined experience.
                 </p>
             </div>
         </div>

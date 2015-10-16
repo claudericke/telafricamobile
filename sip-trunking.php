@@ -3,7 +3,7 @@
 
 
 <head>
-      <title>Telafrica Mobile SIP Trunking</title>
+      <title>telafrica Mobile SIP Trunking</title>
       <?php include("includes/header.php"); ?>
 </head>
 

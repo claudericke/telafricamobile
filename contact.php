@@ -3,7 +3,7 @@
 
 
 <head>
-      <title>Telafrica Mobile - Home Page</title>
+      <title>telafrica Mobile - Home Page</title>
       <?php include("includes/header.php"); ?>
 </head>
 

@@ -3,7 +3,7 @@
 
 
 <head>
-      <title>Telafrica Mobile - Wireless Solutions</title>
+      <title>telafrica Mobile - Wireless Solutions</title>
       <?php include("includes/header.php"); ?>
 </head>
 

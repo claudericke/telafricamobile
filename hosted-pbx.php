@@ -3,7 +3,7 @@
 
 
 <head>
-      <title>Telafrica Mobile Hosted PBX</title>
+      <title>telafrica Mobile Hosted PBX</title>
       <?php include("includes/header.php"); ?>
 </head>
 

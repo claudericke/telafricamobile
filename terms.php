@@ -3,7 +3,7 @@
 
 
 <head>
-      <title>Telafrica Mobile - Terms and Conditions</title>
+      <title>telafrica Mobile - Terms and Conditions</title>
       <?php include("includes/header.php"); ?>
 </head>
 
@@ -60,7 +60,7 @@
                 </p>
 
                 <h5>3. Product and Services</h5>
-                <p>Telafrica mobile is a business in the telecoms industry that offers technology-related products and services. Products available for sale on our website are mobile phones, laptops, tablets and accessories and Bulk SMS’s.</p>
+                <p>telafrica mobile is a business in the telecoms industry that offers technology-related products and services. Products available for sale on our website are mobile phones, laptops, tablets and accessories and Bulk SMS’s.</p>
 
                 <h5>4. Delivery Policy</h5>
                 <p>Subject to availability and receipt of payment, requests will be processed within 3 days. The customer shall be given an order number, and shall be notified via SMS. Delivery will be through DHL.at their prevailing rates, which shall be added to your invoice if you opt for delivery and delivery shall be within 7 days of purchase.</p>
@@ -106,12 +106,12 @@
 
                         <h6><i>6.5 Responsibility</i></h6>
 
-                        <p>Telafrica takes responsibility for all aspects relating to the transaction, including sale of goods and services sold on this website, customer service and support, dispute resolution and delivery of goods.</p>
+                        <p>telafrica takes responsibility for all aspects relating to the transaction, including sale of goods and services sold on this website, customer service and support, dispute resolution and delivery of goods.</p>
 
 
                         <h5>7.	Customer Privacy Policy</h5>
 
-                        <p>Telafrica mobile shall take reasonable steps to protect personal information of users. For the purpose of this clause, “information” shall be identified as detailed in the Promotion of Access to Information Act of 2000 (PAIA). The PAIA may be downloaded from: <a href="http://www.polity.org.za/attachment.php?aa_id=3569" target="_blank">http://www.polity.org.za/attachment.php?aa_id=3569</a></p>
+                        <p>telafrica mobile shall take reasonable steps to protect personal information of users. For the purpose of this clause, “information” shall be identified as detailed in the Promotion of Access to Information Act of 2000 (PAIA). The PAIA may be downloaded from: <a href="http://www.polity.org.za/attachment.php?aa_id=3569" target="_blank">http://www.polity.org.za/attachment.php?aa_id=3569</a></p>
 
                         <h6><i>7.1.  What do we do with your information? </i></h6>
 

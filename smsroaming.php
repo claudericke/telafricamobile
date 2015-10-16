@@ -3,7 +3,7 @@
 
 
 <head>
-      <title>Telafrica Mobile - SMS Roaming</title>
+      <title>telafrica Mobile - SMS Roaming</title>
       <?php include("includes/header.php"); ?>
 </head>
 
@@ -45,8 +45,8 @@
                 <div class="medium-12 columns">
                     <h6 class="page-title">ABOUT VOICE SOLUTIONS</h6>
                 </div>
-                <p class="lead">Telafrica is specialized in delivering high-quality, high-performance, and high-capacity dialler/ CC routes with unbeatable rates for all your needs. </p>
-                    <p>Telafrica Mobile Wholesale Voice provides reliable, stable, direct and competitive VoiP termination to an A-Z destinations around the world.</p>
+                <p class="lead">telafrica is specialized in delivering high-quality, high-performance, and high-capacity dialler/ CC routes with unbeatable rates for all your needs. </p>
+                    <p>telafrica Mobile Wholesale Voice provides reliable, stable, direct and competitive VoiP termination to an A-Z destinations around the world.</p>
             </div>
 
             <div class="medium-4 columns">
