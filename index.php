@@ -221,7 +221,7 @@
             <div class="medium-4 columns">
                 <img alt="Logo" src="img/logo-light.png" class="logo push-bottom">
                 <p>
-                    telafrica mobile is a Tier 2 mobile services provider based in South Africa.
+                    telafrica mobile is a Tier 1 mobile services provider based in South Africa.
                 </p>
             </div>
 
