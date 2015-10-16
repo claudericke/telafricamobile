@@ -152,11 +152,11 @@
             <div class="medium-4 columns">
                 <div class="medium-12 columns text-center"><img src="img/icons/managedSols.png" alt="Managed Solutions"></div>
                 <div class="medium-12 columns text-center">
-                    <h5>Managed Solutions</h5></div>
+                    <h5>WEBSITE HOSTING</h5></div>
                 <p class="text-center">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse viverra mauris eget tortor imperdiet vehicula. Proin egestas diam ac mauris molestie hendrerit. Quisque nec nisi tortor. Etiam at mauris sit amet magna suscipit hend merit non sed ligula. Vivamus purus odio, mollis. Lorem ipsum dolor sit amet, consectetur </p>
+                  If you need your website to store and retrieve information then you'll need a database. Complete with SQL databases, our Premium and Premium Plus packages are perfect for sites such as directories, e-commerce websites and forums. If you need more resources like disk space and processing power, the Linux Unlimited is perfect. </p>
                 <div class="medium-12 columns text-center">
-                    <a class="button expand enquire" data-productName="Managed Solutions">Learn More</a>
+                    <a class="button expand enquire" data-productName="Managed Solutions" href="">Learn More</a>
                 </div>
             </div>
 
@@ -200,7 +200,7 @@
                     Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo
                 </p>
                 <div>
-                    <a href="#" class="button button-white button enquire" data-product="Data On Demand">Learn More <i class="icon arrow_right"></i></a>
+                    <a href="data-on-demand.php" class="button button-white button enquire" data-product="Data On Demand">Learn More <i class="icon arrow_right"></i></a>
                 </div>
             </div>
             <div class="medium-4 columns">

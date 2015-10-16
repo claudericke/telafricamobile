@@ -34,17 +34,18 @@
 
                             <li>
                                 <div class="medium-6 columns">
-                                    <h6>Wireless Solitions</h6>
+                                    <h6>Wireless Solutions</h6>
                                     <p>To thrive, you need to ensure that your business is a vibrant networked organism, with the connectivity, coverage, and capacity to meet new opportunities
                                         <br/>
                                     </p>
-                                    <a href="#">Learn More</a>
+                                    <a href="wireless.php">Learn More</a>
                                 </div>
                             </li>
                         </ul>
                     </li>
                     <li class="has-dropdown"><a href="#">Data Services</a>
   						<ul class="subnav single-drop">
+  							<li><a href="website-hosting.php">Website Hosting</a></li>
   							<li><a href="fibre.php">Fibre-To-Home</a></li>
   							<li><a href="data-on-demand.php">Data-On-Demand</a></li>
   							<li><a href="hosted-pbx.php">Hosted PBX </a></li>
