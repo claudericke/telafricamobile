@@ -207,3 +207,10 @@ Configure::write('GoogleReCaptcha', [
    'Secretkey' => '6LeAqA0TAAAAAKJV8rVa5BWHCkPFaI1hjzeewr0a'
 ]);
 
+Configure::write('OZEKI', [
+    'URL' => 'http://154.73.248.5:9501/api',
+    'User' => 'admin',
+    'Password' => 'Telafr001',
+    'Type' => 'SMPP'
+]);
+
