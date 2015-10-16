@@ -34,11 +34,11 @@
 
                             <li>
                                 <div class="medium-6 columns">
-                                    <h6>Wireless Solitions</h6>
+                                    <h6>Wireless Solutions</h6>
                                     <p>To thrive, you need to ensure that your business is a vibrant networked organism, with the connectivity, coverage, and capacity to meet new opportunities
                                         <br/>
                                     </p>
-                                    <a href="#">Learn More</a>
+                                    <a href="wireless.php">Learn More</a>
                                 </div>
                             </li>
                         </ul>
