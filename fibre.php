@@ -67,7 +67,7 @@
                     <li>Choose your monthly package</li>
                     <li>Enjoy your internet experience and cheap calling rates</li>
                 </ol>
-
+<p><a class="button u-full-width" href="downloads/telafrica%20Fiber%20to%20Home%20presentation.pptx" target="_blank"><i class=" icon_download"></i>Download Full Presentation</a></p>
             </div>
         </div>
     </section>
