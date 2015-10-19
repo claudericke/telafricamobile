@@ -9,6 +9,9 @@ use Cake\Network\Http\Client;
 use Cake\Core\Configure;
 use Cake\Mailer\Email;
 use Cake\ORM\TableRegistry;
+use Cake\Utility\Security;
+use Cake\Utility\Text;
+use Cake\Routing\Router;
 
 class UsersController extends AppController{
 
@@ -24,12 +27,18 @@ class UsersController extends AppController{
 
 		if ($this->request->is('post')) {
 			$user = $this->Auth->identify();
+			
 			if ($user) {
-				$this->Auth->setUser($user);
+				if($user['activate'] == 1){
+					$this->Auth->setUser($user);
 				//return $this->redirect($this->Auth->redirectUrl());
-				return $this->redirect(['action' => 'beta']);
+					return $this->redirect(['action' => 'beta']);
+				}else{
+					$this->Flash->error(__('Please verify your account by clicking on the link that was sent to your email.'));
+				}
+			}else{
+				$this->Flash->error(__('Invalid username or password, please try again'));
 			}
-			$this->Flash->error(__('Invalid username or password, please try again'));
 		}
 		$this->viewBuilder()->layout('login-registration');
 	}
@@ -132,6 +141,16 @@ class UsersController extends AppController{
 				// close cURL resource, and free up system resources
 				curl_close($ch2);
 				**/
+				
+				//Create Token using form data and random number to ensure its unique and cannot be replicated
+				
+				$key = Security::hash(Text::uuid(),'sha512',true);
+                $hash = sha1($this->request->data['email'].rand(0,100));
+                $url = Router::url(['controller' => 'users', 'action'=>'verify'], true ).'/'.$key.'#'.$hash;
+                $ms = $url;
+                $ms = wordwrap($ms,1000);
+
+				$this->request->data['tokenhash'] = $key;
 				$user = $this->Users->patchEntity($user, $this->request->data);
 				if ($result = $this->Users->save($user)) {					
 
@@ -142,8 +161,20 @@ class UsersController extends AppController{
 					$credit->creditvalue = '5';
 
 					if ($creditsTable->save($credit)) {
+
+						$Message = "Hi ".$this->request->data['firstname']. " ".$this->request->data['lastname']."\n";
+	                    $Message .= "Thank you for registering on the telafrica SMS gateway portal.\nPlease click here ".$url." to complete your registration.\n";
+	                    $Message .= "Regards\n \ntelafrica Team.";
+
+	                    $Email = new Email('default');
+	                    $Email->from(['telafrica360@gmail.com' => 'TelAfrica Moblie'])
+	                    	->to($this->request->data['email'])
+	                    	->subject('Complete your registration on telafrica')
+	                    	->send($Message);
 					    
 					    $this->Flash->success(__('The user has been saved.'));
+
+					    
 						return $this->redirect(['action' => 'login']);
 					}
 					$this->Flash->error(__('Unable to add the user.'));
@@ -224,5 +255,42 @@ class UsersController extends AppController{
 
 		$this->viewBuilder()->layout('login-registration');
 	}
+
+	public function verify($token=null){
+        $this->User->recursive=-1;
+        if(!empty($token)){
+            $u = $this->User->findBytokenhash($token);
+           
+            if($u){
+                $this->User->id = $u['User']['id'];
+                if(!empty($this->data)){
+                    $this->User->data = $this->data;
+
+                    $this->User->data['User']['username'] = $u['User']['username'];
+                    $new_hash = sha1($u['User']['username'].rand(0,100));//created token
+                    $this->User->data['User']['tokenhash'] = $new_hash;
+                    $this->User->data['User']['id'] =  $u['User']['id'];
+                    //var_dump($this->User->data);
+                    if($this->User->validates(array('fieldList' => array('password','password_confirm')))){
+                        if($this->User->save($this->User->data)){
+                            $this->Session->setFlash('Password Has been Updated');
+                            $this->redirect(array('controller'=>'users','action'=>'login'));
+                        }else{
+
+                            $this->Session->setFlash('Something went wrong :( :(');
+                        }
+
+                    }else{
+
+                        $this->set('errors', $this->User->invalidFields());
+                    }
+                }
+            }else{
+                $this->Session->setFlash('Token Corrupted, the reset link only works once.');
+            }
+        }else{
+            $this->redirect('/');
+        }
+    }
 }
 ?>

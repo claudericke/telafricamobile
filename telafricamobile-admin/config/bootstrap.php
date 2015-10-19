@@ -203,8 +203,8 @@ Type::build('date')->useLocaleParser();
 Type::build('datetime')->useLocaleParser();
 
 Configure::write('GoogleReCaptcha', [
-   'Sitekey' => '6LeAqA0TAAAAAJj4wVmX90oJsdS3eZd8vpwfzZ-K',
-   'Secretkey' => '6LeAqA0TAAAAAKJV8rVa5BWHCkPFaI1hjzeewr0a'
+   'Sitekey' => '6Lf8Fw8TAAAAAE2YZZxPUehr4yb1mtGg9jDuorOt',
+   'Secretkey' => '6Lf8Fw8TAAAAAM7Fyq0t4zHXiWfLQDFVDV1ao14j'
 ]);
 
 Configure::write('OZEKI', [
