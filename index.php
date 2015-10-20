@@ -165,9 +165,9 @@
                 <div class="medium-12 columns text-center">
                     <h5>Service Coverage</h5></div>
                 <p class="text-center">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse viverra mauris eget tortor imperdiet vehicula. Proin egestas diam ac mauris molestie hendrerit. Quisque nec nisi tortor. Etiam at mauris sit amet magna suscipit hend merit non sed ligula. Vivamus purus odio, mollis. Lorem ipsum dolor sit amet, consectetur</p>
+                    We provide coverate in over 220 countries across the world. Take a look at our coverage map to see what regsions we cover</p>
                 <div class="medium-12 columns text-center">
-                    <a href="coverage.php" class="button expand greenBG">Learn More</a>
+                    <a href="coverage.php" class="button expand greenBG">View Coverage</a>
                 </div>
             </div>
 

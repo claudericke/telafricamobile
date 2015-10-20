@@ -361,7 +361,7 @@ code {
 }
 
 .slide-content {
-    padding: 10px;
+    padding: -100px;
 }
 
 @-webkit-keyframes burnsIn {
@@ -2828,7 +2828,7 @@ footer.footer-alt span.sub .icon_heart {
 }
 
 .nav-transparent .button {
-    padding: 10px !important;
+    padding: 5px !important;
     margin: 0px !important;
 }
 

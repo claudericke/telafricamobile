@@ -23,11 +23,11 @@
 
     <header class="divider-background background-parallax">
 
-        <img alt="Header Background" class="background-image" src="img/header4.jpg">
+        <img alt="Header Background" class="background-image" src="img/header3.jpg">
 
         <div class="row">
             <div class="medium-12 medium-centered columns text-center">
-                <h4 class="text-white underline">telafrica mobile corporate</h4>
+                <h4 class="text-white underline">telafrica mobile coverage</h4>
             </div>
         </div>
 
@@ -45,7 +45,7 @@
         <div class="row">
 
             <div class="medium-12 columns">
-
+<iframe width="100%" height="600" frameborder="0" src="http://widgets.scribblemaps.com/myl/?d=true&z=true&mc=true&lat=31.720275257466337&lng=-20.056035300000076&vz=2&type=road&ti=true&s=true&t=d&width=1020&height=600&id=nCCJysZ39n" style="border:0" allowfullscreen></iframe>
             </div>
 
 
