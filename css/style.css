@@ -958,6 +958,7 @@ ul {
     margin: 0px auto;
     cursor: pointer;
     margin-top: 22px;
+    background: #f2f2f2;
 }
 
 .team-member img {
@@ -1792,6 +1793,7 @@ nav.nav-transparent .menu a {
 .subnav span {
     font-size: 11px;
 }
+
 
 .subnav a {
     font-size: 11px !important;

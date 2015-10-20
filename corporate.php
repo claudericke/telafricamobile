@@ -78,7 +78,7 @@
 
         <div class="row">
 
-            <div class="medium-4 columns">
+            <div class="medium-3 columns">
                 <div class="team-member">
                     <img alt="Team Member" src="img/team1.png">
                     <div class="member-details text-center">
@@ -94,7 +94,7 @@
                 <!--end of individual team member-->
             </div>
 
-            <div class="medium-4 columns">
+            <div class="medium-3 columns">
                 <div class="team-member">
                     <img alt="Team Member" src="img/team2.png">
                     <div class="member-details text-center">
@@ -110,7 +110,7 @@
                 <!--end of individual team member-->
             </div>
 
-            <div class="medium-4 columns">
+            <div class="medium-3 columns">
                 <div class="team-member">
                     <img alt="Team Member" src="img/team3.png">
                     <div class="member-details text-center">
@@ -119,6 +119,21 @@
                         <div class="horizontal-line"></div>
                         <ul class="social-profiles">
                             <li><a href="https://www.linkedin.com/pub/simphiwe-mkhwanazi/35/3b9/841" target="_blank"><i class="icon social_linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!--end of individual team member-->
+            </div>
+
+            <div class="medium-3 columns">
+                <div class="team-member">
+                    <img alt="Team Member" src="img/team4.png">
+                    <div class="member-details text-center">
+                        <h6>Antonia Nyagumbo</h6>
+                        <span class="title">Roaming Services Manager</span>
+                        <div class="horizontal-line"></div>
+                        <ul class="social-profiles">
+                            <li><a href="https://za.linkedin.com/pub/antonia-rumbidzai-m-nyagumbo/87/966/a40" target="_blank"><i class="icon social_linkedin"></i></a></li>
                         </ul>
                     </div>
                 </div>
@@ -175,7 +190,7 @@
         <div class="footer-lower">
             <div class="row">
                 <div class="medium-7 columns">
-                    <span>© 2015 telafrica mobile - Design by <a href="http://www.driftcreativeagency.com"><strong>Drift Creative Agency</strong></a> - All Rights Reserved</span>
+                    <span>© 2015 telafrica mobile - Design by <a href="http://www.driftcreativeagency.com" target="_blank"><strong>Drift Creative Agency</strong></a> - All Rights Reserved</span>
                 </div>
 
                 <div class="medium-5 columns text-right">

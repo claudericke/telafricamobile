@@ -151,7 +151,7 @@
         <div class="footer-lower">
             <div class="row">
                 <div class="medium-7 columns">
-                    <span>© 2015 telafrica mobile - Design by <a href="http://www.driftcreativeagency.com"><strong>Drift Creative Agency</strong></a> - All Rights Reserved</span>
+                    <span>© 2015 telafrica mobile - Design by <a href="http://www.driftcreativeagency.com" target="_blank"><strong>Drift Creative Agency</strong></a> - All Rights Reserved</span>
                 </div>
 
                 <div class="medium-5 columns text-right">
