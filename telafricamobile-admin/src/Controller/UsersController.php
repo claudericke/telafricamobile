@@ -9,6 +9,9 @@ use Cake\Network\Http\Client;
 use Cake\Core\Configure;
 use Cake\Mailer\Email;
 use Cake\ORM\TableRegistry;
+use Cake\Utility\Security;
+use Cake\Utility\Text;
+use Cake\Routing\Router;
 
 class UsersController extends AppController{
 
@@ -17,19 +20,25 @@ class UsersController extends AppController{
 		// Allow users to register and logout.
 		// You should not add the "login" action to allow list. Doing so would
 		// cause problems with normal functioning of AuthComponent.
-		$this->Auth->allow(['register', 'login', 'logout']);
+		$this->Auth->allow(['register', 'login', 'logout', 'activate']);
 	}
 	
 	public function login(){
 
 		if ($this->request->is('post')) {
 			$user = $this->Auth->identify();
+			
 			if ($user) {
-				$this->Auth->setUser($user);
+				if($user['activate'] == 1){
+					$this->Auth->setUser($user);
 				//return $this->redirect($this->Auth->redirectUrl());
-				return $this->redirect(['action' => 'beta']);
+					return $this->redirect(['action' => 'beta']);
+				}else{
+					$this->Flash->error(__('Please verify your account by clicking on the link that was sent to your email.'));
+				}
+			}else{
+				$this->Flash->error(__('Invalid username or password, please try again'));
 			}
-			$this->Flash->error(__('Invalid username or password, please try again'));
 		}
 		$this->viewBuilder()->layout('login-registration');
 	}
@@ -132,6 +141,16 @@ class UsersController extends AppController{
 				// close cURL resource, and free up system resources
 				curl_close($ch2);
 				**/
+				
+				//Create Token using form data and random number to ensure its unique and cannot be replicated
+				
+				$key = Security::hash(Text::uuid(),'sha512',true);
+                $hash = sha1($this->request->data['email'].rand(0,100));
+                $url = Router::url(['controller' => 'users', 'action'=>'activate'], true ).'/'.$key.'#'.$hash;
+                $ms = $url;
+                $ms = wordwrap($ms,1000);
+
+				$this->request->data['tokenhash'] = $key;
 				$user = $this->Users->patchEntity($user, $this->request->data);
 				if ($result = $this->Users->save($user)) {					
 
@@ -142,8 +161,20 @@ class UsersController extends AppController{
 					$credit->creditvalue = '5';
 
 					if ($creditsTable->save($credit)) {
+
+						$Message = "Hi ".$this->request->data['firstname']. " ".$this->request->data['lastname']."\n";
+	                    $Message .= "Thank you for registering on the telafrica SMS gateway portal.\nTo activate your account, please click here ".$url."\n";
+	                    $Message .= "Regards\n \nTelafrica Team.";
+
+	                    $Email = new Email('default');
+	                    $Email->from(['telafrica360@gmail.com' => 'TelAfrica Moblie Registration'])
+	                    	->to($this->request->data['email'])
+	                    	->subject('Activate Your telafrica Account')
+	                    	->send($Message);
 					    
 					    $this->Flash->success(__('The user has been saved.'));
+
+					    
 						return $this->redirect(['action' => 'login']);
 					}
 					$this->Flash->error(__('Unable to add the user.'));
@@ -165,6 +196,44 @@ class UsersController extends AppController{
 		$this->set('user', $user);
 		$this->viewBuilder()->layout('login-registration');
 	}
+
+	public function activate($token=null){
+      //$this->viewBuilder()->layout('login-registration');
+		$this->autoRender = false;
+        if(!empty($token)){
+            $user = $this->Users->findByTokenhash($token)->first();
+           
+            if($user){
+                $this->Users->id = $user->id;
+                if(!empty($this->Users->id)){
+                    $this->Users->data = $this->data;
+
+                    $this->Users->data['email'] = $user->email;
+                    $new_hash = sha1($this->Users->data['email'].rand(0,100));//created new token
+                    $this->Users->data['tokenhash'] = $new_hash;
+                    $this->Users->data['activate'] = 1;
+                    $this->Users->data['id'] = $user->id;
+                    
+                   	//var_dump($this->Users->data);die;
+                   	$user = $this->Users->patchEntity($user, $this->Users->data);
+                    if($this->Users->save($user)){
+                        $this->Flash->success(__('Your account has been activated'));
+                        $this->redirect(['controller'=>'users','action'=>'login']);
+                    }else{
+
+                        $this->Flash->error(__('Sorry we could not activte your account'));
+                        $this->redirect(['controller'=>'users','action'=>'login']);
+                    }
+
+                }
+            }else{
+                $this->Flash->error(__('Token Corrupted, your activation link only works once.'));
+                $this->redirect(['controller'=>'users','action'=>'login']);
+            }
+        }else{
+            $this->redirect('/');
+        }
+    }
 
 	public function logout(){
 		return $this->redirect($this->Auth->logout());
@@ -224,5 +293,7 @@ class UsersController extends AppController{
 
 		$this->viewBuilder()->layout('login-registration');
 	}
+
+	
 }
 ?>
