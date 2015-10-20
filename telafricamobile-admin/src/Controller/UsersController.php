@@ -20,7 +20,7 @@ class UsersController extends AppController{
 		// Allow users to register and logout.
 		// You should not add the "login" action to allow list. Doing so would
 		// cause problems with normal functioning of AuthComponent.
-		$this->Auth->allow(['register', 'login', 'logout']);
+		$this->Auth->allow(['register', 'login', 'logout', 'activate']);
 	}
 	
 	public function login(){
@@ -146,7 +146,7 @@ class UsersController extends AppController{
 				
 				$key = Security::hash(Text::uuid(),'sha512',true);
                 $hash = sha1($this->request->data['email'].rand(0,100));
-                $url = Router::url(['controller' => 'users', 'action'=>'verify'], true ).'/'.$key.'#'.$hash;
+                $url = Router::url(['controller' => 'users', 'action'=>'activate'], true ).'/'.$key.'#'.$hash;
                 $ms = $url;
                 $ms = wordwrap($ms,1000);
 
@@ -163,13 +163,13 @@ class UsersController extends AppController{
 					if ($creditsTable->save($credit)) {
 
 						$Message = "Hi ".$this->request->data['firstname']. " ".$this->request->data['lastname']."\n";
-	                    $Message .= "Thank you for registering on the telafrica SMS gateway portal.\nPlease click here ".$url." to complete your registration.\n";
-	                    $Message .= "Regards\n \ntelafrica Team.";
+	                    $Message .= "Thank you for registering on the telafrica SMS gateway portal.\nTo activate your account, please click here ".$url."\n";
+	                    $Message .= "Regards\n \nTelafrica Team.";
 
 	                    $Email = new Email('default');
-	                    $Email->from(['telafrica360@gmail.com' => 'TelAfrica Moblie'])
+	                    $Email->from(['telafrica360@gmail.com' => 'TelAfrica Moblie Registration'])
 	                    	->to($this->request->data['email'])
-	                    	->subject('Complete your registration on telafrica')
+	                    	->subject('Activate Your telafrica Account')
 	                    	->send($Message);
 					    
 					    $this->Flash->success(__('The user has been saved.'));
@@ -196,6 +196,44 @@ class UsersController extends AppController{
 		$this->set('user', $user);
 		$this->viewBuilder()->layout('login-registration');
 	}
+
+	public function activate($token=null){
+      //$this->viewBuilder()->layout('login-registration');
+		$this->autoRender = false;
+        if(!empty($token)){
+            $user = $this->Users->findByTokenhash($token)->first();
+           
+            if($user){
+                $this->Users->id = $user->id;
+                if(!empty($this->Users->id)){
+                    $this->Users->data = $this->data;
+
+                    $this->Users->data['email'] = $user->email;
+                    $new_hash = sha1($this->Users->data['email'].rand(0,100));//created new token
+                    $this->Users->data['tokenhash'] = $new_hash;
+                    $this->Users->data['activate'] = 1;
+                    $this->Users->data['id'] = $user->id;
+                    
+                   	//var_dump($this->Users->data);die;
+                   	$user = $this->Users->patchEntity($user, $this->Users->data);
+                    if($this->Users->save($user)){
+                        $this->Flash->success(__('Your account has been activated'));
+                        $this->redirect(['controller'=>'users','action'=>'login']);
+                    }else{
+
+                        $this->Flash->error(__('Sorry we could not activte your account'));
+                        $this->redirect(['controller'=>'users','action'=>'login']);
+                    }
+
+                }
+            }else{
+                $this->Flash->error(__('Token Corrupted, your activation link only works once.'));
+                $this->redirect(['controller'=>'users','action'=>'login']);
+            }
+        }else{
+            $this->redirect('/');
+        }
+    }
 
 	public function logout(){
 		return $this->redirect($this->Auth->logout());
@@ -256,41 +294,6 @@ class UsersController extends AppController{
 		$this->viewBuilder()->layout('login-registration');
 	}
 
-	public function verify($token=null){
-        $this->User->recursive=-1;
-        if(!empty($token)){
-            $u = $this->User->findBytokenhash($token);
-           
-            if($u){
-                $this->User->id = $u['User']['id'];
-                if(!empty($this->data)){
-                    $this->User->data = $this->data;
-
-                    $this->User->data['User']['username'] = $u['User']['username'];
-                    $new_hash = sha1($u['User']['username'].rand(0,100));//created token
-                    $this->User->data['User']['tokenhash'] = $new_hash;
-                    $this->User->data['User']['id'] =  $u['User']['id'];
-                    //var_dump($this->User->data);
-                    if($this->User->validates(array('fieldList' => array('password','password_confirm')))){
-                        if($this->User->save($this->User->data)){
-                            $this->Session->setFlash('Password Has been Updated');
-                            $this->redirect(array('controller'=>'users','action'=>'login'));
-                        }else{
-
-                            $this->Session->setFlash('Something went wrong :( :(');
-                        }
-
-                    }else{
-
-                        $this->set('errors', $this->User->invalidFields());
-                    }
-                }
-            }else{
-                $this->Session->setFlash('Token Corrupted, the reset link only works once.');
-            }
-        }else{
-            $this->redirect('/');
-        }
-    }
+	
 }
 ?>
