@@ -62,8 +62,8 @@
                     <li><a href="corporate.php">CORPORATE</a></li>
                     <li><a href="terms.php">LEGAL</a></li>
                     <li><a href="contact.php">CONTACT</a></li>
-                    <li><a href="#" class="button greenBG text-white"><span class="icon_profile "></span>&nbsp;SMS Sign Up</a></li>
-                    <li><a href="#" class="button blueBG text-white"><span class="icon_key"></span>&nbsp;SMS Log In</a></li>
+                    <li><a href="telafricamobile-admin/" class="button greenBG text-white"><span class="icon_profile "></span>&nbsp;SMS Sign Up</a></li>
+                    <li><a href="telafricamobile-admin/" class="button blueBG text-white"><span class="icon_key"></span>&nbsp;SMS Log In</a></li>
 
                 </ul>
             </div>

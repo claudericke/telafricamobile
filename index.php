@@ -35,7 +35,7 @@
                         </div>
                         <div class="medium-6 columns">
                             <p><i>telafrica brings you closer takes your message to your customers pockets with it’s bulk sms and voice services that allow you to do less planning and take more action to sell who you are. Sign up today!</i></p>
-                            <a href="#" class="button greenBG"><span class="icon_profile"></span>&nbsp;SMS Sign Up</a>
+                            <a href="telafricamobile-admin/" class="button greenBG"><span class="icon_profile"></span>&nbsp;SMS Sign Up</a>
                         </div>
                         <div class="medium-6 columns"></div>
                     </div>
