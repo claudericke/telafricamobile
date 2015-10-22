@@ -197,7 +197,7 @@
             <div class="medium-5 columns text-center">
                 <h4 class=" page-title">Want to buy data on-demand from as little as R491,20?</h4>
                 <p class=" lead">
-                    Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo
+                   Get the broadband alternative that uses predominately wireless to bonded ADSL and leased line services.
                 </p>
                 <div>
                     <a href="data-on-demand.php" class="button button-white button enquire" data-product="Data On Demand">Learn More <i class="icon arrow_right"></i></a>
