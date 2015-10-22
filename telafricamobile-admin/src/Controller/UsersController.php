@@ -20,7 +20,7 @@ class UsersController extends AppController{
 		// Allow users to register and logout.
 		// You should not add the "login" action to allow list. Doing so would
 		// cause problems with normal functioning of AuthComponent.
-		$this->Auth->allow(['register', 'login', 'logout', 'activate']);
+		$this->Auth->allow(['register', 'login', 'logout', 'activate', 'forgotpassword', 'reset']);
 	}
 	
 	public function login(){
@@ -31,8 +31,8 @@ class UsersController extends AppController{
 			if ($user) {
 				if($user['activate'] == 1){
 					$this->Auth->setUser($user);
-				//return $this->redirect($this->Auth->redirectUrl());
-					return $this->redirect(['action' => 'beta']);
+					return $this->redirect($this->Auth->redirectUrl());
+					//return $this->redirect(['action' => 'beta']);
 				}else{
 					$this->Flash->error(__('Please verify your account by clicking on the link that was sent to your email.'));
 				}
@@ -293,6 +293,90 @@ class UsersController extends AppController{
 
 		$this->viewBuilder()->layout('login-registration');
 	}
+
+	public function forgotpassword() {
+         $this->viewBuilder()->layout('login-registration');
+        //if already logged-in, redirect
+        if($this->Auth->user('id')){
+            $this->redirect(['action' => 'index']);      
+        }
+         
+        // if we get the post information, try to authenticate
+        if ($this->request->is('post')) {
+
+            $specificallyThisUser = $this->Users->findByEmail($this->request->data['email'])->first();
+            //debug($specificallyThisUser);die;
+            if(!empty($specificallyThisUser)){
+            	$this->Users->data = $this->data;
+                $key = Security::hash(Text::uuid(),'sha512',true);
+                $hash = sha1($specificallyThisUser->email.$specificallyThisUser->id.rand(0,100));
+                $url = Router::url( ['controller'=>'users','action'=>'reset'], true ).'/'.$key.'#'.$hash;
+                $ms = $url;
+                $ms = wordwrap($ms,1000);
+                //var_dump($url);
+                $this->Users->data['tokenhash'] = $key;
+                $this->Users->data['id'] = $specificallyThisUser->id;
+
+                $specificallyThisUser = $this->Users->patchEntity($specificallyThisUser, $this->Users->data);
+                if($this->Users->save($specificallyThisUser)){
+                //if($this->Users->saveField('tokenhash',$specificallyThisUser->tokenhash)){
+
+                    $Message = "Hi ".$specificallyThisUser->firstname. " ".$specificallyThisUser->lastname."\n";
+                    $Message .= "You have requested to reset your password.\nPlease go to this ".$url." to reset your password.\n";
+                    $Message .= "Regards\n \nTelafrica Mobile Team.";
+
+                    $Email = new Email('default');
+                    $Email->from(['telafrica360@gmail.com' => 'TelAfrica Moblie'])
+                    	->to($specificallyThisUser->email)
+                    	->subject('Password Reset')
+                    	->send($Message);
+                    $this->Flash->success(__(' Details have been emailed to this email address '.$specificallyThisUser->email));
+                }else{
+
+                    $this->Flash->error(__('Error Generating Reset link'));
+                }
+            }else{
+
+                 $this->Flash->error(__(' Sorry we could not find the user name you entered'));
+            }
+        } 
+    }
+
+    public function reset($token=null){
+        $this->viewBuilder()->layout('login-registration');
+		//debug($this->request->data);die;
+        if(!empty($token)){
+            $user = $this->Users->findByTokenhash($token)->first();
+           
+            if($user){
+                $this->Users->id = $user->id;
+                //if(!empty($this->Users->id)){
+                    $this->Users->data = $this->data;
+
+                    //$this->Users->data['email'] = $user['email'];
+                    $new_hash = sha1($user->email.$user->country.rand(0,100));//created token
+                    $this->Users->data['tokenhash'] = $new_hash;
+                    $this->Users->data['id'] = $user->id;
+                    $this->Users->data['password'] = $this->request->data['password'];
+                    //debug($this->Users->data);die;
+                   	$user = $this->Users->patchEntity($user, $this->Users->data);
+                    if($this->Users->save($user)){
+                        $this->Flash->success(__('Password Has been Updated'));
+                        $this->redirect(['action'=>'login']);
+                    }else{
+
+                       $this->Flash->error(_('Something went wrong :( :('));
+                    }
+
+                    
+               // }
+            }else{
+                $this->Flash->error(_('Token Corrupted, the reset link only works once.'));
+            }
+        }else{
+            $this->redirect('/');
+        }
+    }
 
 	
 }
