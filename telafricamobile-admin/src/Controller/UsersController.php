@@ -360,7 +360,7 @@ class UsersController extends AppController{
                     $this->Users->data['password'] = $this->request->data['password'];
                     //debug($this->Users->data);die;
                    	$user = $this->Users->patchEntity($user, $this->Users->data);
-                    if($this->Users->save($this->Users->data)){
+                    if($this->Users->save($user)){
                         $this->Flash->success(__('Password Has been Updated'));
                         $this->redirect(['action'=>'login']);
                     }else{
