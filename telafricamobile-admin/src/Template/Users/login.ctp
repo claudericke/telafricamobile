@@ -22,7 +22,7 @@
         </div>
         <div class="four columns forgotLinks">
             <!--<span class="u-full-width"><a href="#" class="forgotUsername">Forgot your Username?</a></span>-->
-            <span class="u-full-width"><a href="#" class="forgotUsername">Forgot your Password?</a></span>
+            <span class="u-full-width"><a href="/users/forgotpassword/" class="forgotUsername">Forgot your Password?</a></span>
         </div>
         <?= $this->Form->end() ?>
     </div>
