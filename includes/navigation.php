@@ -40,6 +40,13 @@
                                     </p>
                                     <a href="wireless.php">Learn More</a>
                                 </div>
+                                <div class="medium-12 columns">
+                                    <h6>Value Added Services</h6>
+                                    <p>telafrica Mobile offers many more services beyond Voice, Data and SMS and we classify them as  Value Added Services
+                                        <br/>
+                                    </p>
+                                    <a href="vas.php">Learn More</a>
+                                </div>
                             </li>
                         </ul>
                     </li>

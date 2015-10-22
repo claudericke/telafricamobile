@@ -361,7 +361,7 @@ code {
 }
 
 .slide-content {
-    padding: 10px;
+    padding: -100px;
 }
 
 @-webkit-keyframes burnsIn {
@@ -958,6 +958,7 @@ ul {
     margin: 0px auto;
     cursor: pointer;
     margin-top: 22px;
+    background: #f2f2f2;
 }
 
 .team-member img {
@@ -1792,6 +1793,7 @@ nav.nav-transparent .menu a {
 .subnav span {
     font-size: 11px;
 }
+
 
 .subnav a {
     font-size: 11px !important;
@@ -2828,7 +2830,7 @@ footer.footer-alt span.sub .icon_heart {
 }
 
 .nav-transparent .button {
-    padding: 10px !important;
+    padding: 5px !important;
     margin: 0px !important;
 }
 

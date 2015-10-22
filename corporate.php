@@ -78,7 +78,7 @@
 
         <div class="row">
 
-            <div class="medium-4 columns">
+            <div class="medium-3 columns">
                 <div class="team-member">
                     <img alt="Team Member" src="img/team1.png">
                     <div class="member-details text-center">
@@ -94,7 +94,7 @@
                 <!--end of individual team member-->
             </div>
 
-            <div class="medium-4 columns">
+            <div class="medium-3 columns">
                 <div class="team-member">
                     <img alt="Team Member" src="img/team2.png">
                     <div class="member-details text-center">
@@ -110,7 +110,7 @@
                 <!--end of individual team member-->
             </div>
 
-            <div class="medium-4 columns">
+            <div class="medium-3 columns">
                 <div class="team-member">
                     <img alt="Team Member" src="img/team3.png">
                     <div class="member-details text-center">
@@ -124,74 +124,28 @@
                 </div>
                 <!--end of individual team member-->
             </div>
+
+            <div class="medium-3 columns">
+                <div class="team-member">
+                    <img alt="Team Member" src="img/team4.png">
+                    <div class="member-details text-center">
+                        <h6>Antonia Nyagumbo</h6>
+                        <span class="title">Roaming Services Manager</span>
+                        <div class="horizontal-line"></div>
+                        <ul class="social-profiles">
+                            <li><a href="https://za.linkedin.com/pub/antonia-rumbidzai-m-nyagumbo/87/966/a40" target="_blank"><i class="icon social_linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!--end of individual team member-->
+            </div>
         </div>
 
 
     </section>
-    <footer class="dark">
 
-        <div class="row">
-            <div class="medium-4 columns">
-                <img alt="Logo" src="img/logo-light.png" class="logo push-bottom">
-                <p>
-                    telafrica mobile is a Tier 1 mobile services provider based in South Africa.
-                </p>
-            </div>
+     <?php include("includes/footer.php"); ?>
 
-            <div class="medium-4 columns">
-                <h6>Social pages</h6>
-                <ul>
-                    <li><a href="https://www.facebook.com/telafricamobile" target="_blank">&nbsp;<i class="social_facebook">&nbsp;</i>&nbsp;telafricamobile<br></a></li>
-                    <li><a href="#http://www.twitter.com/" target="_blank">&nbsp;<i class="social_twitter"></i>&nbsp;@telafricamobile<br></a>
-                        <br>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <br>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <br>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-
-
-            <div class="medium-4 columns">
-                <h6>Contact Us</h6>
-                <p class="push-bottom-small">
-                       <span>The Willow Office Park,<br/>Office 276<br/></span>
-                    <span>George Road, Erand Gardens,<br/>Midrand 1685</span>
-                </p>
-                <p>
-                    <i class="icon icon_phone"></i>&nbsp;+27 81 900 0000
-                    <br>
-                    <i class="icon icon_mail"></i>&nbsp;info@telafricamobile.com</p>
-            </div>
-        </div>
-
-        <div class="footer-lower">
-            <div class="row">
-                <div class="medium-7 columns">
-                    <span>© 2015 telafrica mobile - Design by <a href="http://www.driftcreativeagency.com"><strong>Drift Creative Agency</strong></a> - All Rights Reserved</span>
-                </div>
-
-                <div class="medium-5 columns text-right">
-                    <ul class="social-profiles">
-                        <li>
-                            <a href="https://www.facebook.com/telafricamobile" target="_blank">
-                                <i class="icon social_facebook"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-
-    </footer>
 
     <script src="js/vendor/jquery.js"></script>
     <script src="js/foundation.min.js"></script>
