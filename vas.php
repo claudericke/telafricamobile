@@ -51,6 +51,7 @@
                     <li>Games</li>
                     <li>Wallpapers</li>
                     <li>IVR Implementation</li>
+                    <li>Ring Back Tones</li>
                 </ul><br/>
                 <p>Please visit the link below for the WASPA code of conduct;</p>
                 <p><a href="https://waspa.org.za/coc/14-1/">https://waspa.org.za/coc/14-1/</a></p>

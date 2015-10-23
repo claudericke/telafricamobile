@@ -37,8 +37,9 @@
         <!--begin text section-->
 
         <div class="row">
+            <a name="WhoWeAre"></a>
             <div class="medium-12 columns text-center">
-                <h6 class="page-title ">ABOUT US</h6>
+                <h6 class="page-title ">WHO WE ARE</h6>
             </div>
         </div>
 
@@ -46,24 +47,137 @@
 
             <div class="medium-12 columns">
                 <p class="lead">
-                    Wirels Connect (Pty) Ltd trading as telafricamobile (Pty) Ltd is a South African based Mobile operator with a brand name of telafrica Mobile is a licensed operator (MNC25) with backbone of major Tier-1 providers.
+                   Wirels Group (Pty) Ltd  is a company incorporated in the Republic of South Africa registration number 2012/082948/07.Wirels Connect (Pty) Ltd, trading as telafrica Mobile , is a level 3 BBBEE level contributor and also an ICASA ECNS licence holder. telafrica Mobile provides a Tier 1 Telecommunications network, products and services in South Africa and globally.
                 </p>
 
                 <p>
-                    We offer International Voice and Data Services through our points of presence in South Africa, Lesotho. We are directly interconnected with all major voice and data carriers in Asia, Africa, Europe and South America telafrica Mobile is always interested in nurturing new partnerships. Carriers offering Voice and Data Services interconnect and roaming services.
+                   telafrica Mobile has its own network and infrastructure and operates independently. We provide global coverage to more than 900 networks in 200 countries, thus becoming amongst the leading mobile service providers to mobile operators and large enterprises worldwide, in a very competitive industry.
                 </p>
-                <p class="text-center"><a class="button" href="#">Download Our Company Profile</a></p>
+            <div class="row">
+            <div class="medium-12 columns text-center">
+                <a name="Vision"></a>
+                <h6 class="page-title ">VISION</h6>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="medium-12 columns">
+                <p class="lead text-center">
+                  To become one the leading Mobile Network Operator in South Africa, Africa and the whole world by 2040.
+                </p>
+                <div class="row">
+            <div class="medium-12 columns text-center">
+                            <a name="Mission"></a>
+
+                <h6 class="page-title ">MISSION</h6>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="medium-12 columns">
+                <p class="lead text-center">
+                 To offer nothing short of quality and a competitive service to our clients.
+                </p>
             </div>
 
 
         </div>
 
     </section>
+    <section class="duplicatable"><!--begin home features-->
+	<div class="row">
+            <div class="medium-12 columns text-center">
+                            <a name="CoreValues"></a>
+
+                <h6 class="page-title ">OUR CORE VALUES</h6>
+            </div>
+        </div>
+		<div class="row">
+
+			<div class="medium-4 columns text-center large-feature">
+				<div class="icon-box">
+					<i class="icon  icon_balance"></i>
+				</div>
+				<h6>Transparency</h6>
+			</div>
+
+			<div class="medium-4 columns text-center large-feature">
+				<div class="icon-box">
+					<i class="icon  icon_balance"></i>
+				</div>
+				<h6>Efficiency</h6>
+			</div>
+
+			<div class="medium-4 columns text-center large-feature">
+				<div class="icon-box">
+					<i class="icon  icon_balance"></i>
+				</div>
+				<h6>Accountability</h6>
+			</div>
+        </div>
+        <div class="row">
+
+			<div class="medium-4 columns text-center large-feature">
+				<div class="icon-box">
+					<i class="icon  icon_balance"></i>
+				</div>
+				<h6>Respect</h6>
+			</div>
+
+			<div class="medium-4 columns text-center large-feature">
+				<div class="icon-box">
+					<i class="icon  icon_balance"></i>
+				</div>
+				<h6>Integrity</h6>
+			</div>
+
+			<div class="medium-4 columns text-center large-feature">
+				<div class="icon-box">
+					<i class="icon  icon_balance"></i>
+				</div>
+				<h6>Honesty</h6>
+			</div>
+        </div>
+        <div class="row">
+
+			<div class="medium-4 columns text-center large-feature">
+				<div class="icon-box">
+					<i class="icon  icon_balance"></i>
+				</div>
+				<h6>Professionalism</h6>
+			</div>
+
+			<div class="medium-4 columns text-center large-feature">
+				<div class="icon-box">
+					<i class="icon  icon_balance"></i>
+				</div>
+				<h6>Trust</h6>
+			</div>
+
+			<div class="medium-4 columns text-center large-feature">
+				<div class="icon-box">
+					<i class="icon  icon_balance"></i>
+				</div>
+				<h6>Co-operation</h6>
+			</div>
+        </div>
+
+            <div class="row">
+                <div class="medium-12 columns">
+                    <p class="text-center"><a class="button" href="#">Download Our Company Profile</a></p>
+                </div>
+            </div>
+
+	</section>
     <section>
         <!--begin team section-->
 
         <div class="row">
             <div class="medium-12 columns text-center">
+                            <a name="Board"></a>
+
                 <h6 class="page-title">BOARD OF DIRECTORS</h6>
             </div>
         </div>

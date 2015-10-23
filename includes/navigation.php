@@ -1,9 +1,9 @@
         <div class="row">
-            <div class="medium-2 columns">
+            <div class="medium-3 columns">
                 <a class="logo-light" href="index.php"><img alt="telafrica mobile" src="img/logo-light.png" class="logo"></a>
             </div>
 
-            <div class="columns text-left medium-10">
+            <div class="columns text-left medium-9">
                 <ul class="menu">
                     <li class="has-dropdown"><a href="#">PRODUCTS</a>
                         <ul class="subnav subnav-fullwidth">
@@ -59,7 +59,15 @@
   							<li><a href="sip-trunking.php">SIP Trunking </a></li>
   						</ul>
   					</li>
-                    <li><a href="corporate.php">CORPORATE</a></li>
+                    <li  class="has-dropdown"><a href="corporate.php">CORPORATE</a>
+                        <ul class="subnav single-drop">
+                            <li><a href="corporate.php#WhoWeAre">Who We Are</a></li>
+                            <li><a href="corporate.php#Vision">Our Vision</a></li>
+                            <li><a href="corporate.php#Mission">Our Mission</a></li>
+                            <li><a href="corporate.php#CoreValues">Core Values</a></li>
+                            <li><a href="corporate.php#Board">Board Of Directors</a></li>
+                        </ul>
+                    </li>
                     <li><a href="terms.php">LEGAL</a></li>
                     <li><a href="contact.php">CONTACT</a></li>
                     <li><a href="telafricamobile-admin/" class="button greenBG text-white"><span class="icon_profile "></span>&nbsp;SMS Sign Up</a></li>
