@@ -610,7 +610,7 @@
                                    window.setTimeout(function(){location.reload()},5000)
                               }else{
 
-                                     swal.showInputError("Sorry there was error. Credit were not added");
+                                     swal.showInputError("Sorry there was error. User could not be created");
                               }
                              
 

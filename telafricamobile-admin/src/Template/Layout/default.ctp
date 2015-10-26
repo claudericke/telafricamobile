@@ -44,13 +44,13 @@ $cakeDescription = 'telafrica SMS Gateway';
     <ul>
         <li><img src="/telafricamobile-admin/images/logo.png" alt="telafrica mobile" /></li>
         <li><strong>telafrica</strong> Dashboard</li>
-        <li class="dashboard"><a href="/telafricamobile-admin/dashboards/">Dashboard</a></li>
+        <li class="dashboard"><?= $this->Html->link('Dashboard', ['controller' => 'dashboards', 'action' => 'index']) ?></li>
         <li class="messageCenter"><a href="messages.php">Message Center</a></li>
         <li class="settings"><a href="">Settings</a></li>
-        <?php if ($this->request->session()->read('Auth.User.role') == 'admin' || $this->request->session()->read('Auth.User.role') == 'sales') {?> <li class="account"><a href="/users">Account</a></li><?php }?>
+        <?php if ($this->request->session()->read('Auth.User.role') == 'admin' || $this->request->session()->read('Auth.User.role') == 'sales') {?> <li class="account"><?= $this->Html->link('Accounts', ['controller' => 'users', 'action' => 'index']) ?></li><?php }?>
         <li class="reports"><a href="">Reports</a></li>
         <li class="support"><a href="">Support</a></li>
-        <li class="Logout"><a href="/telafricamobile-admin/users/logout">Logout</a></li>
+        <li class="Logout"><?= $this->Html->link('Log Out', ['controller' => 'users', 'action' => 'logout']) ?></li>
         <li class="close" onclick="toggleNav();" ><a href="#">Close</a></li>
     </ul>
 </nav>
