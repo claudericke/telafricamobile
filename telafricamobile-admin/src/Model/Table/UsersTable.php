@@ -19,8 +19,11 @@ class UsersTable extends Table{
         $this->primaryKey('id');
         $this->addBehavior('Timestamp');
         $this->hasOne('Credits', [
-            'foreignKey' => 'user_id'
+            'foreignKey' => 'user_id',
+            'dependent' => true,
+            'cascadeCallbacks' => true
         ]);
+
     }
 
 	public function validationDefault(Validator $validator){

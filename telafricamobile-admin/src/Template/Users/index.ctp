@@ -1,7 +1,4 @@
-<?php
-
-?>
-    <section class="account-admin">
+<section class="account-admin">
         <div class="container">
             <div class="twelve columns panel">
                 <div class="eight columns">&nbsp;</div>
@@ -9,287 +6,304 @@
                     <button class="btn-primary u-full-width blueBG white center createUserButton">Create User +</button>
                 </div>
                 <div class="ten columns createUserContainer">
-                        <form action="" method="post" name="addUserForm">
+                        <?php 
+                              echo $this->Form->create(null,['id' => 'userform']);
+                        ?>
                         <fieldset>
-                                <div class="twelve columns">
-                                    <label for="email">User e-mail:</label>
-                                    <input name="email" id="email" type="text" value="" class="u-full-width" />
+                              <div class="twelve columns">
+                                    <?php echo $this->Form->input('firstname', ['label' => 'User First Name', 'placeholder' => '', 'class' => 'u-full-width', 'required' => 1]); ?>
+                              </div>
+                              <div class="twelve columns">
+                              <?php echo $this->Form->input('lastname', ['label' => 'User Last Name', 'placeholder' => '', 'class' => 'u-full-width', 'required' => 1]); ?>
+                              </div>
+                              <div class="twelve columns">
+                                    <?php echo $this->Form->input('email',  ['label' => 'User e-mail:', 'placeholder' => '', 'class' => 'u-full-width', 'required' => 1]); ?>
                                 </div>
                                 <div class="twelve columns noMargin">
-                                    <label for="password">User Password:</label>
-                                    <input name="password" id="password" type="password" value="" class="u-full-width" />
+                                    
+                                    <?php echo $this->Form->input('password', ['label' => 'User Password:', 'placeholder' => '', 'class' => 'u-full-width', 'required' => 1]); ?>
                                 </div>
                                 <div class="twelve columns noMargin">
-                                    <label for="password">Mobile Number:</label>
-                                    <input name="password" id="password" type="password" value="" class="u-full-width" />
+                                    
+                                    <?php echo $this->Form->input('mobilenumber',  ['label' => 'Mobile Number:', '' => 'Mobile Number', 'class' => 'u-full-width']); ?>
                                 </div>
                                 <div class="twelve columns noMargin">
-                                    <label for="password">Country:</label>
-                                    <select name="country" class="u-full-width">
-                                    <option value="">Country...</option>
-                                    <option value="AF">Afghanistan</option>
-                                    <option value="AL">Albania</option>
-                                    <option value="DZ">Algeria</option>
-                                    <option value="AS">American Samoa</option>
-                                    <option value="AD">Andorra</option>
-                                    <option value="AG">Angola</option>
-                                    <option value="AI">Anguilla</option>
-                                    <option value="AG">Antigua &amp; Barbuda</option>
-                                    <option value="AR">Argentina</option>
-                                    <option value="AA">Armenia</option>
-                                    <option value="AW">Aruba</option>
-                                    <option value="AU">Australia</option>
-                                    <option value="AT">Austria</option>
-                                    <option value="AZ">Azerbaijan</option>
-                                    <option value="BS">Bahamas</option>
-                                    <option value="BH">Bahrain</option>
-                                    <option value="BD">Bangladesh</option>
-                                    <option value="BB">Barbados</option>
-                                    <option value="BY">Belarus</option>
-                                    <option value="BE">Belgium</option>
-                                    <option value="BZ">Belize</option>
-                                    <option value="BJ">Benin</option>
-                                    <option value="BM">Bermuda</option>
-                                    <option value="BT">Bhutan</option>
-                                    <option value="BO">Bolivia</option>
-                                    <option value="BL">Bonaire</option>
-                                    <option value="BA">Bosnia &amp; Herzegovina</option>
-                                    <option value="BW">Botswana</option>
-                                    <option value="BR">Brazil</option>
-                                    <option value="BC">British Indian Ocean Ter</option>
-                                    <option value="BN">Brunei</option>
-                                    <option value="BG">Bulgaria</option>
-                                    <option value="BF">Burkina Faso</option>
-                                    <option value="BI">Burundi</option>
-                                    <option value="KH">Cambodia</option>
-                                    <option value="CM">Cameroon</option>
-                                    <option value="CA">Canada</option>
-                                    <option value="IC">Canary Islands</option>
-                                    <option value="CV">Cape Verde</option>
-                                    <option value="KY">Cayman Islands</option>
-                                    <option value="CF">Central African Republic</option>
-                                    <option value="TD">Chad</option>
-                                    <option value="CD">Channel Islands</option>
-                                    <option value="CL">Chile</option>
-                                    <option value="CN">China</option>
-                                    <option value="CI">Christmas Island</option>
-                                    <option value="CS">Cocos Island</option>
-                                    <option value="CO">Colombia</option>
-                                    <option value="CC">Comoros</option>
-                                    <option value="CG">Congo</option>
-                                    <option value="CK">Cook Islands</option>
-                                    <option value="CR">Costa Rica</option>
-                                    <option value="CT">Cote D'Ivoire</option>
-                                    <option value="HR">Croatia</option>
-                                    <option value="CU">Cuba</option>
-                                    <option value="CB">Curacao</option>
-                                    <option value="CY">Cyprus</option>
-                                    <option value="CZ">Czech Republic</option>
-                                    <option value="DK">Denmark</option>
-                                    <option value="DJ">Djibouti</option>
-                                    <option value="DM">Dominica</option>
-                                    <option value="DO">Dominican Republic</option>
-                                    <option value="TM">East Timor</option>
-                                    <option value="EC">Ecuador</option>
-                                    <option value="EG">Egypt</option>
-                                    <option value="SV">El Salvador</option>
-                                    <option value="GQ">Equatorial Guinea</option>
-                                    <option value="ER">Eritrea</option>
-                                    <option value="EE">Estonia</option>
-                                    <option value="ET">Ethiopia</option>
-                                    <option value="FA">Falkland Islands</option>
-                                    <option value="FO">Faroe Islands</option>
-                                    <option value="FJ">Fiji</option>
-                                    <option value="FI">Finland</option>
-                                    <option value="FR">France</option>
-                                    <option value="GF">French Guiana</option>
-                                    <option value="PF">French Polynesia</option>
-                                    <option value="FS">French Southern Ter</option>
-                                    <option value="GA">Gabon</option>
-                                    <option value="GM">Gambia</option>
-                                    <option value="GE">Georgia</option>
-                                    <option value="DE">Germany</option>
-                                    <option value="GH">Ghana</option>
-                                    <option value="GI">Gibraltar</option>
-                                    <option value="GB">Great Britain</option>
-                                    <option value="GR">Greece</option>
-                                    <option value="GL">Greenland</option>
-                                    <option value="GD">Grenada</option>
-                                    <option value="GP">Guadeloupe</option>
-                                    <option value="GU">Guam</option>
-                                    <option value="GT">Guatemala</option>
-                                    <option value="GN">Guinea</option>
-                                    <option value="GY">Guyana</option>
-                                    <option value="HT">Haiti</option>
-                                    <option value="HW">Hawaii</option>
-                                    <option value="HN">Honduras</option>
-                                    <option value="HK">Hong Kong</option>
-                                    <option value="HU">Hungary</option>
-                                    <option value="IS">Iceland</option>
-                                    <option value="IN">India</option>
-                                    <option value="ID">Indonesia</option>
-                                    <option value="IA">Iran</option>
-                                    <option value="IQ">Iraq</option>
-                                    <option value="IR">Ireland</option>
-                                    <option value="IM">Isle of Man</option>
-                                    <option value="IL">Israel</option>
-                                    <option value="IT">Italy</option>
-                                    <option value="JM">Jamaica</option>
-                                    <option value="JP">Japan</option>
-                                    <option value="JO">Jordan</option>
-                                    <option value="KZ">Kazakhstan</option>
-                                    <option value="KE">Kenya</option>
-                                    <option value="KI">Kiribati</option>
-                                    <option value="NK">Korea North</option>
-                                    <option value="KS">Korea South</option>
-                                    <option value="KW">Kuwait</option>
-                                    <option value="KG">Kyrgyzstan</option>
-                                    <option value="LA">Laos</option>
-                                    <option value="LV">Latvia</option>
-                                    <option value="LB">Lebanon</option>
-                                    <option value="LS">Lesotho</option>
-                                    <option value="LR">Liberia</option>
-                                    <option value="LY">Libya</option>
-                                    <option value="LI">Liechtenstein</option>
-                                    <option value="LT">Lithuania</option>
-                                    <option value="LU">Luxembourg</option>
-                                    <option value="MO">Macau</option>
-                                    <option value="MK">Macedonia</option>
-                                    <option value="MG">Madagascar</option>
-                                    <option value="MY">Malaysia</option>
-                                    <option value="MW">Malawi</option>
-                                    <option value="MV">Maldives</option>
-                                    <option value="ML">Mali</option>
-                                    <option value="MT">Malta</option>
-                                    <option value="MH">Marshall Islands</option>
-                                    <option value="MQ">Martinique</option>
-                                    <option value="MR">Mauritania</option>
-                                    <option value="MU">Mauritius</option>
-                                    <option value="ME">Mayotte</option>
-                                    <option value="MX">Mexico</option>
-                                    <option value="MI">Midway Islands</option>
-                                    <option value="MD">Moldova</option>
-                                    <option value="MC">Monaco</option>
-                                    <option value="MN">Mongolia</option>
-                                    <option value="MS">Montserrat</option>
-                                    <option value="MA">Morocco</option>
-                                    <option value="MZ">Mozambique</option>
-                                    <option value="MM">Myanmar</option>
-                                    <option value="NA">Nambia</option>
-                                    <option value="NU">Nauru</option>
-                                    <option value="NP">Nepal</option>
-                                    <option value="AN">Netherland Antilles</option>
-                                    <option value="NL">Netherlands (Holland, Europe)</option>
-                                    <option value="NV">Nevis</option>
-                                    <option value="NC">New Caledonia</option>
-                                    <option value="NZ">New Zealand</option>
-                                    <option value="NI">Nicaragua</option>
-                                    <option value="NE">Niger</option>
-                                    <option value="NG">Nigeria</option>
-                                    <option value="NW">Niue</option>
-                                    <option value="NF">Norfolk Island</option>
-                                    <option value="NO">Norway</option>
-                                    <option value="OM">Oman</option>
-                                    <option value="PK">Pakistan</option>
-                                    <option value="PW">Palau Island</option>
-                                    <option value="PS">Palestine</option>
-                                    <option value="PA">Panama</option>
-                                    <option value="PG">Papua New Guinea</option>
-                                    <option value="PY">Paraguay</option>
-                                    <option value="PE">Peru</option>
-                                    <option value="PH">Philippines</option>
-                                    <option value="PO">Pitcairn Island</option>
-                                    <option value="PL">Poland</option>
-                                    <option value="PT">Portugal</option>
-                                    <option value="PR">Puerto Rico</option>
-                                    <option value="QA">Qatar</option>
-                                    <option value="ME">Republic of Montenegro</option>
-                                    <option value="RS">Republic of Serbia</option>
-                                    <option value="RE">Reunion</option>
-                                    <option value="RO">Romania</option>
-                                    <option value="RU">Russia</option>
-                                    <option value="RW">Rwanda</option>
-                                    <option value="NT">St Barthelemy</option>
-                                    <option value="EU">St Eustatius</option>
-                                    <option value="HE">St Helena</option>
-                                    <option value="KN">St Kitts-Nevis</option>
-                                    <option value="LC">St Lucia</option>
-                                    <option value="MB">St Maarten</option>
-                                    <option value="PM">St Pierre &amp; Miquelon</option>
-                                    <option value="VC">St Vincent &amp; Grenadines</option>
-                                    <option value="SP">Saipan</option>
-                                    <option value="SO">Samoa</option>
-                                    <option value="AS">Samoa American</option>
-                                    <option value="SM">San Marino</option>
-                                    <option value="ST">Sao Tome &amp; Principe</option>
-                                    <option value="SA">Saudi Arabia</option>
-                                    <option value="SN">Senegal</option>
-                                    <option value="RS">Serbia</option>
-                                    <option value="SC">Seychelles</option>
-                                    <option value="SL">Sierra Leone</option>
-                                    <option value="SG">Singapore</option>
-                                    <option value="SK">Slovakia</option>
-                                    <option value="SI">Slovenia</option>
-                                    <option value="SB">Solomon Islands</option>
-                                    <option value="OI">Somalia</option>
-                                    <option value="ZA">South Africa</option>
-                                    <option value="ES">Spain</option>
-                                    <option value="LK">Sri Lanka</option>
-                                    <option value="SD">Sudan</option>
-                                    <option value="SR">Suriname</option>
-                                    <option value="SZ">Swaziland</option>
-                                    <option value="SE">Sweden</option>
-                                    <option value="CH">Switzerland</option>
-                                    <option value="SY">Syria</option>
-                                    <option value="TA">Tahiti</option>
-                                    <option value="TW">Taiwan</option>
-                                    <option value="TJ">Tajikistan</option>
-                                    <option value="TZ">Tanzania</option>
-                                    <option value="TH">Thailand</option>
-                                    <option value="TG">Togo</option>
-                                    <option value="TK">Tokelau</option>
-                                    <option value="TO">Tonga</option>
-                                    <option value="TT">Trinidad &amp; Tobago</option>
-                                    <option value="TN">Tunisia</option>
-                                    <option value="TR">Turkey</option>
-                                    <option value="TU">Turkmenistan</option>
-                                    <option value="TC">Turks &amp; Caicos Is</option>
-                                    <option value="TV">Tuvalu</option>
-                                    <option value="UG">Uganda</option>
-                                    <option value="UA">Ukraine</option>
-                                    <option value="AE">United Arab Emirates</option>
-                                    <option value="GB">United Kingdom</option>
-                                    <option value="US">United States of America</option>
-                                    <option value="UY">Uruguay</option>
-                                    <option value="UZ">Uzbekistan</option>
-                                    <option value="VU">Vanuatu</option>
-                                    <option value="VS">Vatican City State</option>
-                                    <option value="VE">Venezuela</option>
-                                    <option value="VN">Vietnam</option>
-                                    <option value="VB">Virgin Islands (Brit)</option>
-                                    <option value="VA">Virgin Islands (USA)</option>
-                                    <option value="WK">Wake Island</option>
-                                    <option value="WF">Wallis &amp; Futana Is</option>
-                                    <option value="YE">Yemen</option>
-                                    <option value="ZR">Zaire</option>
-                                    <option value="ZM">Zambia</option>
-                                    <option value="ZW">Zimbabwe</option>
-                                    </select>
+                                    <?php 
+                                          echo $this->Form->input('country', ['class' => 'u-full-width', 'label' => 'Country:',
+                                          'options' => [
+                                                "" => "Country...",
+                                            "AF" => "Afghanistan",
+                                            "AL" => "Albania",
+                                            "DZ" => "Algeria",
+                                            "AS" => "American Samoa",
+                                            "AD" => "Andorra",
+                                            "AG" => "Angola",
+                                            "AI" => "Anguilla",
+                                            "AG" => "Antigua & Barbuda",
+                                            "AR" => "Argentina",
+                                            "AA" => "Armenia",
+                                            "AW" => "Aruba",
+                                            "AU" => "Australia",
+                                            "AT" => "Austria",
+                                            "AZ" => "Azerbaijan",
+                                            "BS" => "Bahamas",
+                                            "BH" => "Bahrain",
+                                            "BD" => "Bangladesh",
+                                            "BB" => "Barbados",
+                                            "BY" => "Belarus",
+                                            "BE" => "Belgium",
+                                            "BZ" => "Belize",
+                                            "BJ" => "Benin",
+                                            "BM" => "Bermuda",
+                                            "BT" => "Bhutan",
+                                            "BO" => "Bolivia",
+                                            "BL" => "Bonaire",
+                                            "BA" => "Bosnia & Herzegovina",
+                                            "BW" => "Botswana",
+                                            "BR" => "Brazil",
+                                            "BC" => "British Indian Ocean Ter",
+                                            "BN" => "Brunei",
+                                            "BG" => "Bulgaria",
+                                            "BF" => "Burkina Faso",
+                                            "BI" => "Burundi",
+                                            "KH" => "Cambodia",
+                                            "CM" => "Cameroon",
+                                            "CA" => "Canada",
+                                            "IC" => "Canary Islands",
+                                            "CV" => "Cape Verde",
+                                            "KY" => "Cayman Islands",
+                                            "CF" => "Central African Republic",
+                                            "TD" => "Chad",
+                                            "CD" => "Channel Islands",
+                                            "CL" => "Chile",
+                                            "CN" => "China",
+                                            "CI" => "Christmas Island",
+                                            "CS" => "Cocos Island",
+                                            "CO" => "Colombia",
+                                            "CC" => "Comoros",
+                                            "CG" => "Congo",
+                                            "CK" => "Cook Islands",
+                                            "CR" => "Costa Rica",
+                                            "CT" => "Cote D'Ivoire",
+                                            "HR" => "Croatia",
+                                            "CU" => "Cuba",
+                                            "CB" => "Curacao",
+                                            "CY" => "Cyprus",
+                                            "CZ" => "Czech Republic",
+                                            "DK" => "Denmark",
+                                            "DJ" => "Djibouti",
+                                            "DM" => "Dominica",
+                                            "DO" => "Dominican Republic",
+                                            "TM" => "East Timor",
+                                            "EC" => "Ecuador",
+                                            "EG" => "Egypt",
+                                            "SV" => "El Salvador",
+                                            "GQ" => "Equatorial Guinea",
+                                            "ER" => "Eritrea",
+                                            "EE" => "Estonia",
+                                            "ET" => "Ethiopia",
+                                            "FA" => "Falkland Islands",
+                                            "FO" => "Faroe Islands",
+                                            "FJ" => "Fiji",
+                                            "FI" => "Finland",
+                                            "FR" => "France",
+                                            "GF" => "French Guiana",
+                                            "PF" => "French Polynesia",
+                                            "FS" => "French Southern Ter",
+                                            "GA" => "Gabon",
+                                            "GM" => "Gambia",
+                                            "GE" => "Georgia",
+                                            "DE" => "Germany",
+                                            "GH" => "Ghana",
+                                            "GI" => "Gibraltar",
+                                            "GB" => "Great Britain",
+                                            "GR" => "Greece",
+                                            "GL" => "Greenland",
+                                            "GD" => "Grenada",
+                                            "GP" => "Guadeloupe",
+                                            "GU" => "Guam",
+                                            "GT" => "Guatemala",
+                                            "GN" => "Guinea",
+                                            "GY" => "Guyana",
+                                            "HT" => "Haiti",
+                                            "HW" => "Hawaii",
+                                            "HN" => "Honduras",
+                                            "HK" => "Hong Kong",
+                                            "HU" => "Hungary",
+                                            "IS" => "Iceland",
+                                            "IN" => "India",
+                                            "ID" => "Indonesia",
+                                            "IA" => "Iran",
+                                            "IQ" => "Iraq",
+                                            "IR" => "Ireland",
+                                            "IM" => "Isle of Man",
+                                            "IL" => "Israel",
+                                            "IT" => "Italy",
+                                            "JM" => "Jamaica",
+                                            "JP" => "Japan",
+                                            "JO" => "Jordan",
+                                            "KZ" => "Kazakhstan",
+                                            "KE" => "Kenya",
+                                            "KI" => "Kiribati",
+                                            "NK" => "Korea North",
+                                            "KS" => "Korea South",
+                                            "KW" => "Kuwait",
+                                            "KG" => "Kyrgyzstan",
+                                            "LA" => "Laos",
+                                            "LV" => "Latvia",
+                                            "LB" => "Lebanon",
+                                            "LS" => "Lesotho",
+                                            "LR" => "Liberia",
+                                            "LY" => "Libya",
+                                            "LI" => "Liechtenstein",
+                                            "LT" => "Lithuania",
+                                            "LU" => "Luxembourg",
+                                            "MO" => "Macau",
+                                            "MK" => "Macedonia",
+                                            "MG" => "Madagascar",
+                                            "MY" => "Malaysia",
+                                            "MW" => "Malawi",
+                                            "MV" => "Maldives",
+                                            "ML" => "Mali",
+                                            "MT" => "Malta",
+                                            "MH" => "Marshall Islands",
+                                            "MQ" => "Martinique",
+                                            "MR" => "Mauritania",
+                                            "MU" => "Mauritius",
+                                            "ME" => "Mayotte",
+                                            "MX" => "Mexico",
+                                            "MI" => "Midway Islands",
+                                            "MD" => "Moldova",
+                                            "MC" => "Monaco",
+                                            "MN" => "Mongolia",
+                                            "MS" => "Montserrat",
+                                            "MA" => "Morocco",
+                                            "MZ" => "Mozambique",
+                                            "MM" => "Myanmar",
+                                            "NA" => "Nambia",
+                                            "NU" => "Nauru",
+                                            "NP" => "Nepal",
+                                            "AN" => "Netherland Antilles",
+                                            "NL" => "Netherlands (Holland, Europe)",
+                                            "NV" => "Nevis",
+                                            "NC" => "New Caledonia",
+                                            "NZ" => "New Zealand",
+                                            "NI" => "Nicaragua",
+                                            "NE" => "Niger",
+                                            "NG" => "Nigeria",
+                                            "NW" => "Niue",
+                                            "NF" => "Norfolk Island",
+                                            "NO" => "Norway",
+                                            "OM" => "Oman",
+                                            "PK" => "Pakistan",
+                                            "PW" => "Palau Island",
+                                            "PS" => "Palestine",
+                                            "PA" => "Panama",
+                                            "PG" => "Papua New Guinea",
+                                            "PY" => "Paraguay",
+                                            "PE" => "Peru",
+                                            "PH" => "Philippines",
+                                            "PO" => "Pitcairn Island",
+                                            "PL" => "Poland",
+                                            "PT" => "Portugal",
+                                            "PR" => "Puerto Rico",
+                                            "QA" => "Qatar",
+                                            "ME" => "Republic of Montenegro",
+                                            "RS" => "Republic of Serbia",
+                                            "RE" => "Reunion",
+                                            "RO" => "Romania",
+                                            "RU" => "Russia",
+                                            "RW" => "Rwanda",
+                                            "NT" => "St Barthelemy",
+                                            "EU" => "St Eustatius",
+                                            "HE" => "St Helena",
+                                            "KN" => "St Kitts-Nevis",
+                                            "LC" => "St Lucia",
+                                            "MB" => "St Maarten",
+                                            "PM" => "St Pierre & Miquelon",
+                                            "VC" => "St Vincent & Grenadines",
+                                            "SP" => "Saipan",
+                                            "SO" => "Samoa",
+                                            "AS" => "Samoa American",
+                                            "SM" => "San Marino",
+                                            "ST" => "Sao Tome & Principe",
+                                            "SA" => "Saudi Arabia",
+                                            "SN" => "Senegal",
+                                            "RS" => "Serbia",
+                                            "SC" => "Seychelles",
+                                            "SL" => "Sierra Leone",
+                                            "SG" => "Singapore",
+                                            "SK" => "Slovakia",
+                                            "SI" => "Slovenia",
+                                            "SB" => "Solomon Islands",
+                                            "OI" => "Somalia",
+                                            "ZA" => "South Africa",
+                                            "ES" => "Spain",
+                                            "LK" => "Sri Lanka",
+                                            "SD" => "Sudan",
+                                            "SR" => "Suriname",
+                                            "SZ" => "Swaziland",
+                                            "SE" => "Sweden",
+                                            "CH" => "Switzerland",
+                                            "SY" => "Syria",
+                                            "TA" => "Tahiti",
+                                            "TW" => "Taiwan",
+                                            "TJ" => "Tajikistan",
+                                            "TZ" => "Tanzania",
+                                            "TH" => "Thailand",
+                                            "TG" => "Togo",
+                                            "TK" => "Tokelau",
+                                            "TO" => "Tonga",
+                                            "TT" => "Trinidad & Tobago",
+                                            "TN" => "Tunisia",
+                                            "TR" => "Turkey",
+                                            "TU" => "Turkmenistan",
+                                            "TC" => "Turks & Caicos Is",
+                                            "TV" => "Tuvalu",
+                                            "UG" => "Uganda",
+                                            "UA" => "Ukraine",
+                                            "AE" => "United Arab Emirates",
+                                            "GB" => "United Kingdom",
+                                            "US" => "United States of America",
+                                            "UY" => "Uruguay",
+                                            "UZ" => "Uzbekistan",
+                                            "VU" => "Vanuatu",
+                                            "VS" => "Vatican City State",
+                                            "VE" => "Venezuela",
+                                            "VN" => "Vietnam",
+                                            "VB" => "Virgin Islands (Brit)",
+                                            "VA" => "Virgin Islands (USA)",
+                                            "WK" => "Wake Island",
+                                            "WF" => "Wallis & Futana Is",
+                                            "YE" => "Yemen",
+                                            "ZM" => "Zambia",
+                                            "ZW" => "Zimbabwe"
+                                           ]
+                                          , 'required' => 1
+                                    ]);
+                                    ?>
                                 </div>
                             <div class="twelve columns noMargin">
-                                    <label for="password">User Level:</label>
-                                     <select name="userLevel" class="u-full-width">
-                                        <option value="regular"><i>Regular (default)</i></option>
-                                        <option value="sales">Sales</option>
-                                        <option value="admin">Administrator</option>
-                                    </select>
+                                    <?php 
+                                          echo $this->Form->input('role', ['class' => 'u-full-width', 'label' => 'User Level:',
+                                          'options' => [
+                                                "regular" => "Regular (default)",
+                                                "sales" => "Sales",
+                                                "admin" => "Administrator"
+                                                ], 
+                                          'required' => 1
+
+                                          ]);
+                                    ?>
                                 </div>
                                 <div class="twelve columns ">
-                                    <button class="btn-primary greenBG white center">Save User</button>
+                                    <button class="btn-primary greenBG white center" id="addUser">Save User</button>
                                     <button class="btn-primary redBG white center Createcancel">Cancel</button>
                                 </div>
                         </fieldset>
-                        </form>
+                        <?php
+                              echo $this->Form->end();
+                        ?>
                     <br/>
                 </div>
                 <table class="u-full-width sentMessages">
@@ -360,9 +374,9 @@
     </section>
 
     <!-- Links for Scripts  -->
-    <script src="/js/jquery-2.1.4.js"></script>
-    <script src="/js/jquery-ui.min.js"></script>
-    <script src="/js/sweetalert.min.js"></script>
+    <script src="/telafricamobile-admin/js/jquery-2.1.4.js"></script>
+    <script src="/telafricamobile-admin/js/jquery-ui.min.js"></script>
+    <script src="/telafricamobile-admin/js/sweetalert.min.js"></script>
     <!-- Links for Scripts  -->
 
     <!-- Javascript  -->
@@ -424,7 +438,7 @@
 
                         }else{
 
-                              $.get('/credits/remove?user_id='+user_id+"&creditvalue="+inputValue, function(d) {       
+                              $.get('/telafricamobile-admin/credits/remove?user_id='+user_id+"&creditvalue="+inputValue, function(d) {       
 
                                     if(d != 'error'){
 
@@ -441,6 +455,8 @@
                       
                   });
             });
+            
+            
       });
 
         // Function to delete account
@@ -478,8 +494,7 @@
                     
                   index =  $('tr').index(this);                      
                   accountName = $("#email" + index).attr('title');
-                  user_id = $("#user_id" + index).val();
-                  
+                  user_id = $("#user_id" + index).val();                  
                   
                   swal({
                       title: "Add Credit to " + accountName,
@@ -503,7 +518,7 @@
 
                         }else{
 
-                              $.get('/credits/add?user_id='+user_id+"&creditvalue="+inputValue, function(d) {       
+                              $.get('/telafricamobile-admin/credits/add?user_id='+user_id+"&creditvalue="+inputValue, function(d) {       
 
                                     if(d != 'error'){
 
@@ -511,7 +526,7 @@
                                           $('#credits' + index).html(d);
                                     }else{
 
-                                           swal("Sorry there was error. Credit were not added", "success");
+                                           swal.showInputError("Sorry there was error. Credit were not added");
                                     }
                                    
 
@@ -520,8 +535,89 @@
                       
                   });
             });
+            
       });
+     // $(document).ready(function () {
+            $("#userform").submit(function(e){
+                 
+                  e.preventDefault();    
+                  var firstname = $('#firstname').val();
+                  var lastname = $('#lastname').val();
+                  var email = $('#email').val();
+                  var mobilenumber = $('#mobilenumber').val();
+                  var country = $('#country').val();
+                  var role = $('#role').val();
+                  var procced = true;
+                  var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;            
+                  var password = $('#password').val();
 
+                  if(!firstname){
+
+                        swal("Please enter the user's first name!");
+                        $('#firstname').focus();
+                        procced = false;
+                  }
+
+                  if(!lastname){
+
+                        swal("Please enter the user's last name!");
+                        $('#lastname').focus();
+                        procced = false;
+                  }
+
+                  if(!email){
+
+                        swal("Please enter the user's email address!");
+                        $('#email').focus();
+                        procced = false;
+                  }
+
+                  if(!regex.test(email)){
+
+                        swal("Please enter the user's valid email address!");
+                        $('#email').focus();
+                        procced = false;
+                  };
+
+                  if(!password){
+
+                        swal("Please select the user's password!");
+                        $('#password').focus();
+                        procced = false;
+                  }
+
+
+                  if(!country){
+
+                        swal("Please select the user's country!");
+                        $('#country').focus();
+                        procced = false;
+                  }
+
+                  if(!role){
+
+                        swal("Please select the user's role!");
+                        $('#role').focus();
+                        procced = false;
+                  }
+                  if(procced){
+
+                        $.get('/telafricamobile-admin/users/add?firstname=' + firstname + '&lastname=' + lastname + '&email=' + email + '&mobilenumber=' + mobilenumber + '&country=' + country + '&role=' + role + '&password=' + password, function(d) {       
+
+                              if(d != 'error'){
+
+                                    swal("The user has been added", "success");
+                                   window.setTimeout(function(){location.reload()},5000)
+                              }else{
+
+                                     swal.showInputError("Sorry there was error. Credit were not added");
+                              }
+                             
+
+                        });
+                  }  
+            });
+       //});
         //Show Create new user form
         $(".createUserButton").click(function () {
             $(".createUserContainer").slideToggle("fast");

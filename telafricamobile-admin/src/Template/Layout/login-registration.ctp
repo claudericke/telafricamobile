@@ -40,7 +40,7 @@ $cakeDescription = 'telafrica SMS Gateway';
 <body class="login">
      <div class="container">
         <div class="twelve columns center logo">
-            <img src="/images/logo.png" />
+            <img src="/telafricamobile-admin/images/logo.png" />
         </div>
         <?php if($_SERVER['REQUEST_URI'] == '/'){ ?>
         <div class="twelve columns center white login-title">
@@ -56,6 +56,6 @@ $cakeDescription = 'telafrica SMS Gateway';
              
         </div>
     </div>
-    <script src="/js/jquery-2.1.4.js"></script>
+    <script src="/telafricamobile-admin/js/jquery-2.1.4.js"></script>
 </body>
 </html>

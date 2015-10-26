@@ -42,15 +42,15 @@ $cakeDescription = 'telafrica SMS Gateway';
 <body class="dashboard">
      <nav class="topNav">
     <ul>
-        <li><img src="/images/logo.png" alt="telafrica mobile" /></li>
+        <li><img src="/telafricamobile-admin/images/logo.png" alt="telafrica mobile" /></li>
         <li><strong>telafrica</strong> Dashboard</li>
-        <li class="dashboard"><a href="/dashboards/">Dashboard</a></li>
+        <li class="dashboard"><a href="/telafricamobile-admin/dashboards/">Dashboard</a></li>
         <li class="messageCenter"><a href="messages.php">Message Center</a></li>
         <li class="settings"><a href="">Settings</a></li>
         <?php if ($this->request->session()->read('Auth.User.role') == 'admin' || $this->request->session()->read('Auth.User.role') == 'sales') {?> <li class="account"><a href="/users">Account</a></li><?php }?>
         <li class="reports"><a href="">Reports</a></li>
         <li class="support"><a href="">Support</a></li>
-        <li class="Logout"><a href="/users/logout">Logout</a></li>
+        <li class="Logout"><a href="/telafricamobile-admin/users/logout">Logout</a></li>
         <li class="close" onclick="toggleNav();" ><a href="#">Close</a></li>
     </ul>
 </nav>
@@ -59,13 +59,13 @@ $cakeDescription = 'telafrica SMS Gateway';
         <div class="container">
             <!-- Logo  -->
             <div class="two columns dashboardLogo">
-                <img src="/images/logo_small.png" alt="telafrica mobile" />
+                <img src="/telafricamobile-admin/images/logo_small.png" alt="telafrica mobile" />
             </div>
             <!-- Logo  -->
 
 
             <!-- Current Page Title  -->
-            <div class="five columns left pageTitle">
+            <div class="five columtelafricamobile-admins left pageTitle">
                 <span>Dashboard</span>
             </div>
             <!-- Current Page Title  -->
@@ -73,14 +73,14 @@ $cakeDescription = 'telafrica SMS Gateway';
 
             <!-- Currently Logged in User  -->
             <div class="five columns  userName">
-                <span>Logged in as <a href="#" class="openLogout"><span><?php echo $this->request->session()->read('Auth.User.email'); ?><span ><img src="/images/icons/down_arrow.png" alt="\/"/></span></span></a></span>
+                <span>Logged in as <a href="#" class="openLogout"><span><?php echo $this->request->session()->read('Auth.User.email'); ?><span ><img src="/telafricamobile-admin/images/icons/down_arrow.png" alt="\/"/></span></span></a></span>
             </div>
             <div class="logout">
-                <span><a href="dashboard.php">Dashboard</a></span>
+                <span><?= $this->Html->link('Dashboard', ['controller' => 'dashboards', 'action' => 'index']) ?></span>
                 <br/>
                 <span><a href="#">Add Credits</a></span>
                 <br/>
-                <span><a href="/users/logout">Log Out</a></span>
+                <span><?= $this->Html->link('Log Out', ['controller' => 'users', 'action' => 'logout']) ?></span>
             </div>
             <!-- Currently Logged in User  -->
         </div>
@@ -104,8 +104,8 @@ $cakeDescription = 'telafrica SMS Gateway';
     
     <?= $this->fetch('content') ?>
              
-<script src="/js/jquery-2.1.4.js"></script>
-<script src="/js/jquery-ui.min.js"></script>
+<script src="/telafricamobile-admin/js/jquery-2.1.4.js"></script>
+<script src="/telafricamobile-admin/js/jquery-ui.min.js"></script>
 <!-- Links for Scripts  -->
 
 <!-- Javascript  -->
