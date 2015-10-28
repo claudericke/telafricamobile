@@ -382,6 +382,7 @@ class UsersController extends AppController{
 		$user = $this->Users->newEntity();
 		if($this->request->is('ajax')) {
             $this->autoRender = false;
+            $this->request->query['activate'] = 1;
 			$user = $this->Users->patchEntity($user, $this->request->query);
 			if ($result = $this->Users->save($user)) {
 

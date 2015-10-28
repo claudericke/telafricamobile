@@ -24,6 +24,7 @@ $cakeDescription = 'telafrica SMS Gateway';
         <?= $cakeDescription ?>:
         <?= $this->fetch('title') ?>
     </title>
+    <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
     <?= $this->Html->meta('icon') ?>
 
      <?= $this->Html->css('cake.css') ?>
@@ -33,10 +34,14 @@ $cakeDescription = 'telafrica SMS Gateway';
     <?= $this->Html->css('entypo.css') ?>
     <?= $this->Html->css('media-queries.css') ?>
     <?= $this->Html->css('sweetalert.css') ?>
+    <?= $this->Html->css('tabs.css') ?>
+    <?= $this->Html->css('jquery.tagsinput.css') ?>
     
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
+    <script src="/telafricamobile-admin/js/jquery-2.1.4.js"></script>
+    <script src="/telafricamobile-admin/js/jquery-ui.min.js"></script>
     
 </head>
 <body class="dashboard">
@@ -45,7 +50,7 @@ $cakeDescription = 'telafrica SMS Gateway';
         <li><img src="/telafricamobile-admin/images/logo.png" alt="telafrica mobile" /></li>
         <li><strong>telafrica</strong> Dashboard</li>
         <li class="dashboard"><?= $this->Html->link('Dashboard', ['controller' => 'dashboards', 'action' => 'index']) ?></li>
-        <li class="messageCenter"><a href="messages.php">Message Center</a></li>
+        <li class="messageCenter"><?= $this->Html->link('Message Center', ['controller' => 'messages', 'action' => 'index']) ?></li>
         <li class="settings"><a href="">Settings</a></li>
         <?php if ($this->request->session()->read('Auth.User.role') == 'admin' || $this->request->session()->read('Auth.User.role') == 'sales') {?> <li class="account"><?= $this->Html->link('Accounts', ['controller' => 'users', 'action' => 'index']) ?></li><?php }?>
         <li class="reports"><a href="">Reports</a></li>
@@ -104,8 +109,7 @@ $cakeDescription = 'telafrica SMS Gateway';
     
     <?= $this->fetch('content') ?>
              
-<script src="/telafricamobile-admin/js/jquery-2.1.4.js"></script>
-<script src="/telafricamobile-admin/js/jquery-ui.min.js"></script>
+
 <!-- Links for Scripts  -->
 
 <!-- Javascript  -->

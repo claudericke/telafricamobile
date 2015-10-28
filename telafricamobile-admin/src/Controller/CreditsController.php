@@ -23,9 +23,8 @@ class CreditsController extends AppController{
 	    	
 	    	$creditvalue = $user_credits->creditvalue;
 
-	    	if($creditvalue){
-	    		$this->request->data['id'] =  $user_credits->id;
-	    	}
+	    	$this->request->data['id'] =  $user_credits->id;
+	    
 	        $this->request->data['user_id'] = $user_id;
 	        $this->request->data['creditvalue'] = $this->request->query['creditvalue'] + $creditvalue;
 	        $cred = $this->Credits->patchEntity($cred,$this->request->data);
@@ -57,9 +56,9 @@ class CreditsController extends AppController{
 	    	
 	    	$creditvalue = $user_credits->creditvalue;
 
-	    	if($creditvalue){
-	    		$this->request->data['id'] =  $user_credits->id;
-	    	}
+	    	
+	    	$this->request->data['id'] =  $user_credits->id;
+	    	
 	        $this->request->data['user_id'] = $user_id;
 	        $this->request->data['creditvalue'] = ($creditvalue - $this->request->query['creditvalue']);
 	        //echo $this->request->data['creditvalue'];die;
