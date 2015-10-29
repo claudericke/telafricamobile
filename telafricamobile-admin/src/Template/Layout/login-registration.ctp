@@ -42,7 +42,8 @@ $cakeDescription = 'telafrica SMS Gateway';
         <div class="twelve columns center logo">
             <img src="/telafricamobile-admin/images/logo.png" />
         </div>
-        <?php if($_SERVER['REQUEST_URI'] == '/'){ ?>
+        
+        <?php if($_SERVER['REQUEST_URI'] == '/telafricamobile-admin/'){ ?>
         <div class="twelve columns center white login-title">
             <h1><strong>SMS Gateway</strong> Login</h1>
         </div>

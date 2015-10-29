@@ -604,14 +604,14 @@
 
                         $.get('/telafricamobile-admin/users/add?firstname=' + firstname + '&lastname=' + lastname + '&email=' + email + '&mobilenumber=' + mobilenumber + '&country=' + country + '&role=' + role + '&password=' + password, function(d) {       
 
-                              if(d != 'error'){
+                            if(d != 'error'){
 
-                                    swal("The user has been added", "success");
-                                   window.setTimeout(function(){location.reload()},5000)
-                              }else{
+                                swal("The user has been added", "success");
+                                window.setTimeout(function(){location.reload()},5000);
+                            }else{
 
-                                     swal.showInputError("Sorry there was error. User could not be created");
-                              }
+                                swal.showInputError("Sorry there was error. User could not be created");
+                            }
                              
 
                         });

@@ -24,10 +24,14 @@ class MessagesController extends AppController{
 	}
 
 	public function index(){
-
-		//$query = $this->Messages->find('all');
-		//$this->set('messagess', $this->paginate($query));
-	    //$this->set('_serialize', ['message']);
+		
+		$SMSTable = TableRegistry::get('sms');
+		$query = $SMSTable->find('all', [
+		    'conditions' => ['sms.user_id =' => $this->Auth->user('id')],
+		    'order' => ['sms.datetosend' => 'DESC']
+		]);
+		$this->set('sentMessages', $this->paginate($query));
+	    $this->set('_serialize', ['sentMessages']);
 	              
     }
 
@@ -36,12 +40,14 @@ class MessagesController extends AppController{
     	if($this->request->is('ajax')) {
 	    	$this->autoRender = false;
 	    	$SMSTable = TableRegistry::get('sms');
-			$SMS = $SMSTable->newEntity();
+			
 
 			$numbers = explode(',', $this->request->query['sendTo']);
-			print_r($numbers);
+			
+			
 			foreach ($numbers as $MSISDN) {
-							
+
+				$SMS = $SMSTable->newEntity();				
 		    	$SMS->user_id = $this->Auth->user('id');
 		    	$SMS->campaign_id = 0;
 		    	$SMS->content = $this->request->query['message'];
@@ -49,12 +55,13 @@ class MessagesController extends AppController{
 		    	$SMS->datetosend = date('Y-m-d H:i:s');
 		    	$SMS->status = 'Q';
 		    	$SMS->retries = 0;
-		    	//$sms = $this->SMS->patchEntity($sms,$this->request->data);
+		    	
 
-		        $result = $SMSTable->save($SMS);
+		        if(!$result = $SMSTable->save($SMS)){
 		           
-		       
-	       }
+		       		echo 'error';
+	       		}
+		    }
 
 
 	    	

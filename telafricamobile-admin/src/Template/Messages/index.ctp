@@ -1,3 +1,7 @@
+<?php
+
+//debug($sentMessages);
+?>
  <!-- Start Notifications and Alerts Panel  -->
 <section class="notifications">
     <div class="container">
@@ -43,53 +47,32 @@
                             </tr>
                         </thead>
                         <tbody>
+                         <?php foreach ($sentMessages as $sentMessage): ?>                      
                             <tr>
                                 <td>
                                     <input type="checkbox" name="selectAll" class="sentCheck" value="">
                                 </td>
-                                <td>+27635889663</td>
-                                <td>Hi Baraa , can u pleas...</td>
-                                <td>12 October 2015</td>
+                                <td><?= h($sentMessage->msisdn) ?></td>
+                                <td><?= h($sentMessage->content) ?></td>
+                                <td><?= h(date('d F Y H:i:s', strtotime($sentMessage->datetosend))) ?></td>
                                 <td class="green bold">Delivered</td>
                                 <td><span class="icon trash"><img src="/telafricamobile-admin/images/icons/trash.png" alt="trash" /></span></td>
                                 <td><span class="icon trash"><img src="/telafricamobile-admin/images/icons/forward.png"  alt="forward" /></span></td>
                             </tr>
-                            <tr>
-                                <td>
-                                    <input type="checkbox" name="selectAll" class="sentCheck" value="">
-                                </td>
-                                <td>+27635152032</td>
-                                <td>New stock available, ...</td>
-                                <td>11 October 2015</td>
-                                <td class="green bold">Delivered</td>
-                                <td><span class="icon trash"><img src="/telafricamobile-admin/images/icons/trash.png" alt="trash" /></span></td>
-                                <td><span class="icon trash"><img src="/telafricamobile-admin/images/icons/forward.png"  alt="forward" /></span></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="checkbox" name="selectAll" class="sentCheck" value="">
-                                </td>
-                                <td>+16554654833</td>
-                                <td>Stand a chance to wi...</td>
-                                <td>09 October 2015</td>
-                                <td class="red bold">Operator determined barring</td>
-                                <td><span class="icon trash"><img src="/telafricamobile-admin/images/icons/trash.png" alt="trash" /></span></td>
-                                <td><span class="icon trash"><img src="/telafricamobile-admin/images/icons/forward.png"  alt="forward" /></span></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="checkbox" name="selectAll" class="sentCheck" value="">
-                                </td>
-                                <td>+67321321544</td>
-                                <td>Verse of the day, Elij...</td>
-                                <td>4 October 2015</td>
-                                <td class="green bold">Delivered</td>
-                                <td><span class="icon trash"><img src="/telafricamobile-admin/images/icons/trash.png" alt="trash" /></span></td>
-                                <td><span class="icon trash"><img src="/telafricamobile-admin/images/icons/forward.png"  alt="forward" /></span></td>
-                            </tr>
+                        <?php                    
+                        endforeach; 
+                        ?>     
 
                         </tbody>
                     </table>
+                    <div class="paginator">
+                        <ul class="pagination">
+                            <?= $this->Paginator->prev('< ' . __('previous')) ?>
+                            <?= $this->Paginator->numbers() ?>
+                            <?= $this->Paginator->next(__('next') . ' >') ?>
+                        </ul>
+                        <p><?= $this->Paginator->counter() ?></p>
+                    </div>
                 </div>
             </li>
 
@@ -338,7 +321,7 @@
      $("#sendMessage").click(function () {
         var proceed = true;
         if($('#message').val() == ''){
-            swal("Error", "Please enter the message", "error");
+            swal("", "Please enter the message", "error");
             $('#message').focus();
             proceed = false;
         }
@@ -354,10 +337,11 @@
 
                     if(d != 'error'){
 
-                          swal("Added to Send List", "Your message(s) have been sent to the network. Check sent items to view send status");
+                        swal("Added to Send List", "Your message(s) have been sent to the network. Check sent items to view send status");
+                        window.setTimeout(function(){location.reload()},5000);
                     }else{
 
-                           swal("Sorry there was error. Credit were not removed", "success");
+                        swal("Sorry there was error. Credit were not removed", "success");
                     }
                    
 
