@@ -229,7 +229,7 @@
                     <img alt="Team Member" src="img/team3.png">
                     <div class="member-details text-center">
                         <h6>Simphiwe Mkhwanazi</h6>
-                        <span class="title">Financial Director</span>
+                        <span class="title">Financial Manager</span>
                         <div class="horizontal-line"></div>
                         <ul class="social-profiles">
                             <li><a href="https://www.linkedin.com/pub/simphiwe-mkhwanazi/35/3b9/841" target="_blank"><i class="icon social_linkedin"></i></a></li>
@@ -253,6 +253,24 @@
                 </div>
                 <!--end of individual team member-->
             </div>
+        </div>
+        <div class="row">
+            <div class="medium-3 columns">&nbsp;</div>
+          <div class="medium-3 columns small-push-2">
+            <div class="team-member">
+                <img alt="Team Member" src="img/team5.png">
+                <div class="member-details text-center">
+                    <h6>Lihle Molphy</h6>
+                    <span class="title">Retail Manager</span>
+                    <div class="horizontal-line"></div>
+                    <ul class="social-profiles">
+                        <li><a href="https://www.linkedin.com/pub/lihle-molphy/34/a95/790" target="_blank"><i class="icon social_linkedin"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <!--end of individual team member-->
+        </div>
+            <div class="medium-3 columns">&nbsp;</div>
         </div>
 
 
