@@ -47,7 +47,7 @@
         </div>
         <div class="six columns panel usageReport">
             <h4>Monthly Usage Report</h4>
-            <img src="/images/Site-Statistic-2.jpg" alt="Stats" />
+            <img src="/telafricamobile-admin/images/Site-Statistic-2.jpg" alt="Stats" />
         </div>
     </div>
 </section>

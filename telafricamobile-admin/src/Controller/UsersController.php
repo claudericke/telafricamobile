@@ -378,6 +378,28 @@ class UsersController extends AppController{
         }
     }
 
-	
+    public function add(){
+		$user = $this->Users->newEntity();
+		if($this->request->is('ajax')) {
+            $this->autoRender = false;
+            $this->request->query['activate'] = 1;
+			$user = $this->Users->patchEntity($user, $this->request->query);
+			if ($result = $this->Users->save($user)) {
+
+				$creditsTable = TableRegistry::get('Credits');
+				$credit= $creditsTable->newEntity();
+
+				$credit->user_id = $result->id;
+				$credit->creditvalue = '0';
+
+				if ($creditsTable->save($credit)) {
+					echo 'The user has been saved.';
+				}else{
+					echo 'error';
+				}
+			}
+		}
+		$this->set('user', $user);
+	}	
 }
 ?>

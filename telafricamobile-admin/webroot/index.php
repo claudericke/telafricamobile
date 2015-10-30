@@ -35,3 +35,5 @@ $dispatcher->dispatch(
     Request::createFromGlobals(),
     new Response()
 );
+
+define('BASE_URL', 'telafricamobile-admin');
