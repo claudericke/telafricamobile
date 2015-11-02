@@ -160,24 +160,77 @@
                     </div>
                 </div>
             </li>
+<style type="text/css">
+    
+.fileUpload {
 
+    height: 38px;
+   
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+
+    border: 0 solid #bbb;
+    border-radius: 2px;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+   
+    letter-spacing: 0.1rem;
+    line-height: 38px;
+    
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    white-space: nowrap
+}
+.fileUpload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+</style>
             <li data-content="subs">
-                  <div class="container createList">
-                    <form name="addList">
-                        <div class="two columns">
-                            <label for="sendTo">Numbers:</label>
+                <div class="container createList">
+                    <form name="addList" id="addList" enctype="multipart/form-data">
+                        <div class="container">
+                            <div class="two columns">
+                                <label for="listname">List Name:</label>
+                            </div>
+                            <div class="seven columns">
+                                <input name="listname" id="listname" value="" class="u-full-width"  type="text" />
+                                <!--<small class="italics">Numbers seperated by commas. Numbers without country code will be considered as local numbers</small>-->
+                            </div>
+                        
+                            <div class="three columns ">
+                                <input id="uploadFile" placeholder="Choose File" disabled="disabled" />
+                                <div class="btn-primary u-full-width blueBG white center fileUpload">
+                                    <span>Upload CSV</span>
+                                    <input type="file" class="upload" value="" id="uploadBtn"/>
+                                </div>
+                                <!--<button class="btn-primary u-full-width blueBG white center">Upload CSV</button>-->
+                                <button class="btn-primary u-full-width greenBG white center" id="createSubscriberList">Save List</button>
+                                <button class="btn-primary u-full-width redBG white center createNewListCancel">Cancel</button>
+                            </div>
                         </div>
-                        <div class="seven columns">
-                            <input name="subList" id="subList" value="" class="u-full-width" />
-                            <small class="italics">Numbers seperated by commas. Numbers without country code will be considered as local numbers</small>
+                        <div class="container">
+                            <div class="two columns">
+                                <label for="sendTo">List Desciption:</label>
+                            </div>
+                            <div class="seven columns">
+                                <textarea id="listdesciption" class="u-full-width" value="" name="listdesciption"></textarea>
+                            </div>
                         </div>
-                        <div class="three columns ">
-                            <button class="btn-primary u-full-width blueBG white center">Upload CSV</button>
-                            <button class="btn-primary u-full-width greenBG white center">Save List</button>
-                            <button class="btn-primary u-full-width redBG white center createNewListCancel">Cancel</button>
-                        </div>
-                      </form>
-                    </div>
+                    </form>
+                </div>
                 <div class="container">
                     <div class="seven columns ">
                         &nbsp;
@@ -185,7 +238,7 @@
                     <div class="five columns right">
                         <button class="btn-primary u-full-width greenBG white center createNewList"><strong>+&nbsp;</strong>Create New List </button>
                     </div>
-<table class="u-full-width subscribers">
+                    <table class="u-full-width subscribers">
                         <thead>
                             <tr>
                                 <th>List Name</th>
@@ -260,10 +313,13 @@
             'width': '100%'
         });
 
-       $('#subList').tagsInput({
+      /** $('#subList').tagsInput({
             'defaultText': 'Add Numbers',
             'height': '53px',
             'width': '100%'
+        });**/
+        $("#uploadBtn").change(function () {
+            $("#uploadFile").val(this.value);
         });
 
     });
@@ -349,6 +405,50 @@
             
         }
     });
+    
+    // Functionality for send button. Reccoment an AJAX request (http://t4t5.github.io/sweetalert/)
+    //$("#createSubscriberList").click(function () {
+    $('#addList').on('submit', function(ev){
+        ev.preventDefault();
+        var proceed = true;
+        if($('#listname').val() == ''){
+            swal("", "Please enter the list name", "error");
+             $('#listname').focus();
+            proceed = false;
+        }
+        if($('#listdesciption').val() == ''){
+            swal("", "Please enter the list desciption", "error");
+            $('#listdesciption').focus();
+            proceed = false;
+        }
+
+        if(proceed){          
+
+           
+
+            var formData = new FormData($('#addList')[0]);
+            //formData.append("type", $("#newcatname").val());
+            //formData.append("content", $("#newcatimage").prop('files')[0]);
+            $.ajax({
+                type:'POST',
+                url: '/telafricamobile-admin/messages/createSubscriberList',
+                data:formData,
+                cache:false,
+                contentType: false,
+                processData: false,
+                success:function(data){
+                    console.log("success");
+                    console.log(data);
+                },
+                error: function(data){
+                    console.log("error");
+                    console.log(data);
+                }
+            });
+                        
+        }
+    });
+
 
     // Functionality for reset button on compose
     $("#resetMessage").click(function () {
