@@ -211,10 +211,10 @@
                             </div>
                         
                             <div class="three columns ">
-                                <input id="uploadFile" placeholder="Choose File" disabled="disabled" />
+                                <input id="uploadFile" name="uploadFile" placeholder="Choose File" disabled="disabled" />
                                 <div class="btn-primary u-full-width blueBG white center fileUpload">
                                     <span>Upload CSV</span>
-                                    <input type="file" class="upload" value="" id="uploadBtn"/>
+                                    <input type="file" class="upload" value="" id="uploadBtn" name="uploadBtn"/>
                                 </div>
                                 <!--<button class="btn-primary u-full-width blueBG white center">Upload CSV</button>-->
                                 <button class="btn-primary u-full-width greenBG white center" id="createSubscriberList">Save List</button>
@@ -225,7 +225,7 @@
                             <div class="two columns">
                                 <label for="sendTo">List Desciption:</label>
                             </div>
-                            <div class="seven columns">
+                            <div class="seven columns"> 
                                 <textarea id="listdesciption" class="u-full-width" value="" name="listdesciption"></textarea>
                             </div>
                         </div>
@@ -324,19 +324,6 @@
 
     });
 
-    // Show and Hide Log In Button
-    $(".userName").click(function () {
-        $(".logout").slideToggle("fast");
-    });
-
-    // Show and Hide Navigation
-    function toggleNav() {
-        $(".topNav").toggle("slide", {
-            direction: "left"
-        }, 500);
-    }
-
-
     //Word Count for Message Input
     $("#message").keyup(function () {
 
@@ -421,14 +408,15 @@
             $('#listdesciption').focus();
             proceed = false;
         }
+        var fileExtension = ['zip'];
+        if ($.inArray($('#uploadBtn').val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+            swal("", "Please upload a zip file", "error");
+            proceed = false;
+        }
 
-        if(proceed){          
-
-           
+        if(proceed){  
 
             var formData = new FormData($('#addList')[0]);
-            //formData.append("type", $("#newcatname").val());
-            //formData.append("content", $("#newcatimage").prop('files')[0]);
             $.ajax({
                 type:'POST',
                 url: '/telafricamobile-admin/messages/createSubscriberList',

@@ -48,7 +48,7 @@ $cakeDescription = 'telafrica SMS Gateway';
      <nav class="topNav">
     <ul>
         <li><img src="/telafricamobile-admin/images/logo.png" alt="telafrica mobile" /></li>
-        <li><strong>telafrica</strong> Dashboard</li>
+        <li><strong>telafrica</strong> <?= $this->fetch('title') ?></li>
         <li class="dashboard"><?= $this->Html->link('Dashboard', ['controller' => 'dashboards', 'action' => 'index']) ?></li>
         <li class="messageCenter"><?= $this->Html->link('Message Center', ['controller' => 'messages', 'action' => 'index']) ?></li>
         <li class="settings"><a href="">Settings</a></li>
@@ -70,8 +70,8 @@ $cakeDescription = 'telafrica SMS Gateway';
 
 
             <!-- Current Page Title  -->
-            <div class="five columtelafricamobile-admins left pageTitle">
-                <span>Dashboard</span>
+            <div class="five columns left pageTitle">
+                <span><?= $this->fetch('title') ?></span>
             </div>
             <!-- Current Page Title  -->
 

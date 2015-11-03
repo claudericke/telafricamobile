@@ -39,8 +39,7 @@ class MessagesController extends AppController{
 
     	if($this->request->is('ajax')) {
 	    	$this->autoRender = false;
-	    	$SMSTable = TableRegistry::get('sms');
-			
+	    	$SMSTable = TableRegistry::get('sms');			
 
 			$numbers = explode(',', $this->request->query['sendTo']);
 			
@@ -66,19 +65,95 @@ class MessagesController extends AppController{
 
     public function createSubscriberList(){
 
-    	/**if($this->request->is('ajax')) {
+	    if($this->request->is('post')){
+
 	    	$this->autoRender = false;
 	    	$subscriber_listsTable = TableRegistry::get('subscriber_lists');
 			$subscriber_lists_subscribersTable = TableRegistry::get('subscriber_lists_subscribers');
+		   	//$data = $this->request->data;
 
-			
-	    }**/
+		   	//echo "<pre>";print_r($_FILES); echo "</pre>";
+		   	if($_FILES["uploadBtn"]["name"]) {
+				$filename = $_FILES["uploadBtn"]["name"];
+				$source = $_FILES["uploadBtn"]["tmp_name"];
+				$type = $_FILES["uploadBtn"]["type"];
+				
+				$name = explode(".", $filename);
+				$accepted_types = array('application/zip', 'application/x-zip-compressed', 'multipart/x-zip', 'application/x-compressed');
+				foreach($accepted_types as $mime_type) {
+					if($mime_type == $type) {
+						$okay = true;
+						break;
+					} 
+				}
+				
+				$continue = strtolower($name[1]) == 'zip' ? true : false;
+				if(!$continue) {
+					$message = "The file you are trying to upload is not a .zip file. Please try again.";
+					echo "error";
+				}
 
-	    if($this->request->is('post')){
-	    	$this->autoRender = false;
-		   	$data = $this->request->data;
-		   	echo "<pre>";print_r($data); echo "</pre>";
-		   //You should be able to see file data in this array
+				$target_path = Configure::read('UPLOADFOLDER').$filename; 
+				if(move_uploaded_file($source, $target_path)) {
+					$zip = new \ZipArchive();
+					$x = $zip->open($target_path);
+					if ($x === true) {
+
+						for( $i = 0; $i < $zip->numFiles; $i++){ 
+		    				
+							/**
+							 * Here we get the name of the Extracted file
+							 * 
+							 */ 
+							$stat = $zip->statIndex( $i );
+	    					$ExtractedFile = basename($stat['name']);
+						
+						}
+						$zip->extractTo(Configure::read('UPLOADFOLDER')); 
+						$zip->close();
+				
+						unlink($target_path);
+					}
+					$message = "Your .zip file was uploaded and unpacked.";
+
+					$subscriber_lists = $subscriber_listsTable->newEntity();
+					$subscriber_lists->user_id = $this->Auth->user('id');
+					$subscriber_lists->listname = $this->request->data['listname'];
+					$subscriber_lists->listdescription = $this->request->data['listdesciption'];
+
+					if(!$result = $subscriber_listsTable->save($subscriber_lists)){
+		           
+			       		echo 'error';
+
+		       		}else{
+
+		       			$processfile = fopen(Configure::read('UPLOADFOLDER').$ExtractedFile, 'r');
+						while (($line = fgetcsv($processfile)) !== FALSE) {
+							if (is_numeric($line[0])){
+
+								$subscriber_lists_subscribers = $subscriber_lists_subscribersTable->newEntity();
+			       				$subscriber_lists_subscribers->subscriber_lists_id = $result->id;
+			       				$subscriber_lists_subscribers->msisdn = $line[0];
+
+			       				if(!$results = $subscriber_lists_subscribersTable->save($subscriber_lists_subscribers)){
+			           
+						       		echo 'error';
+
+					       		}
+					       	}
+		       			}
+						fclose($processfile);
+						unlink(Configure::read('UPLOADFOLDER').$ExtractedFile);
+
+		       		}
+ 
+					//echo "Extracted File ".$ExtractedFile;
+				} else {	
+					$message = "There was a problem with the upload. Please try again.";
+					echo "error";
+				}
+			}
+		   	
 		}
     }
 

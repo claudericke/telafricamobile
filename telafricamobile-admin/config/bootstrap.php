@@ -214,3 +214,4 @@ Configure::write('OZEKI', [
     'Type' => 'SMPP'
 ]);
 
+Configure::write('UPLOADFOLDER', WWW_ROOT.'/uploads/');
