@@ -12,6 +12,7 @@ use Cake\ORM\TableRegistry;
 use Cake\Utility\Security;
 use Cake\Utility\Text;
 use Cake\Routing\Router;
+use Cake\Datasource\ConnectionManager;
 
 class MessagesController extends AppController{
 
@@ -31,7 +32,26 @@ class MessagesController extends AppController{
 		    'order' => ['sms.datetosend' => 'DESC']
 		]);
 		$this->set('sentMessages', $this->paginate($query));
-	    $this->set('_serialize', ['sentMessages']);
+	    //$this->set('_serialize', ['sentMessages']);
+
+	    //$subscriber_listsTable = TableRegistry::get('subscriber_lists');
+	    $conn = ConnectionManager::get('default');
+
+	    $query = "SELECT subscriber_lists.id, subscriber_lists.listname, subscriber_lists.listdescription, count(subscriber_lists_subscribers.msisdn) AS totalSubscibers
+		FROM subscriber_lists subscriber_lists
+		LEFT JOIN subscriber_lists_subscribers
+		ON
+		subscriber_lists.id = subscriber_lists_subscribers.subscriber_lists_id
+		WHERE subscriber_lists.user_id = ".$this->Auth->user('id')."
+		GROUP BY subscriber_lists.id
+		ORDER By subscriber_lists.listname";
+			   
+		$list = $conn->execute($query)->fetchAll('assoc');
+		//$rows = $conn->fetchAll('assoc');
+	   	//echo $query;die;
+		$this->set('messageLists', $list);
+	    $this->set('_serialize', ['sentMessages','messageLists']);
+
 	              
     }
 
@@ -72,7 +92,7 @@ class MessagesController extends AppController{
 			$subscriber_lists_subscribersTable = TableRegistry::get('subscriber_lists_subscribers');
 		   	//$data = $this->request->data;
 
-		   	//echo "<pre>";print_r($_FILES); echo "</pre>";
+		   	echo "<pre>";print_r($_FILES); echo "</pre>";
 		   	if($_FILES["uploadBtn"]["name"]) {
 				$filename = $_FILES["uploadBtn"]["name"];
 				$source = $_FILES["uploadBtn"]["tmp_name"];
@@ -80,17 +100,20 @@ class MessagesController extends AppController{
 				
 				$name = explode(".", $filename);
 				$accepted_types = array('application/zip', 'application/x-zip-compressed', 'multipart/x-zip', 'application/x-compressed');
-				foreach($accepted_types as $mime_type) {
+				
+				/**foreach($accepted_types as $mime_type) {
 					if($mime_type == $type) {
 						$okay = true;
 						break;
 					} 
-				}
+				}**/
 				
 				$continue = strtolower($name[1]) == 'zip' ? true : false;
-				if(!$continue) {
+				if(!in_array($type, $accepted_types)) {
 					$message = "The file you are trying to upload is not a .zip file. Please try again.";
+
 					echo "error";
+					return;
 				}
 
 				$target_path = Configure::read('UPLOADFOLDER').$filename; 
@@ -152,6 +175,7 @@ class MessagesController extends AppController{
 					$message = "There was a problem with the upload. Please try again.";
 					echo "error";
 				}
+				//echo $message;
 			}
 		   	
 		}

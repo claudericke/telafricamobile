@@ -526,7 +526,7 @@
                                           $('#credits' + index).html(d);
                                     }else{
 
-                                           swal.showInputError("Sorry there was error. Credit were not added");
+                                           swal.showInputError("Sorry there was an error. Credit were not added");
                                     }
                                    
 

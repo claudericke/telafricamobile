@@ -1,6 +1,6 @@
 <?php
 
-//debug($sentMessages);
+//debug($messageLists);
 ?>
  <!-- Start Notifications and Alerts Panel  -->
 <section class="notifications">
@@ -250,34 +250,27 @@
                             </tr>
                         </thead>
                         <tbody>
+                        <?php 
+                        $i = 1;
+                        foreach ($messageLists as $messageList): 
+                        
+                        ?>
                             <tr>
 
-                                <td>Mailing List 1</td>
-                                <td>A list of my users</td>
-                                <td>120 Subscribers</td>
+                                <td title="<?php echo $messageList['listname']; ?>" id="listname<?php echo $i;?>" ><?php echo $messageList['listname']; ?></td>
+                                <td><?php echo $messageList['listdescription']; ?></td>
+                                <td><?php echo $messageList['totalSubscibers']; ?></td>
                                 <td><span class="icon deleteUser"><img src="/telafricamobile-admin/images/icons/trash.png" title="Delete User" alt="trash" /></span></td>
-                                <td><span class="icon addUser"><img src="/telafricamobile-admin/images/icons/addUser.png"  alt="Add User" title="Add User" /></span></td>
-                                <td><span class="icon sendtoList"><img src="/telafricamobile-admin/images/icons/sendSMS.png"  alt="Send SMS" Title="Send SMS" /></span></td>
-                            </tr>
-                            <tr>
-
-                                <td>Mailing List 2</td>
-                                <td>Another list of my users</td>
-                                <td>53 Subscribers</td>
-                                <td><span class="icon deleteUser"><img src="/telafricamobile-admin/images/icons/trash.png" title="Delete User" alt="trash" /></span></td>
-                                <td><span class="icon addUser"><img src="/telafricamobile-admin/images/icons/addUser.png"  alt="Add User" title="Add User" /></span></td>
-                                <td><span class="icon sendtoList"><img src="/telafricamobile-admin/images/icons/sendSMS.png"  alt="Send SMS" Title="Send SMS" /></span></td>
-                            </tr>
-                            <tr>
-
-                                <td>Mailing List 3</td>
-                                <td>Yet another list of my users</td>
-                                <td>44 Subscribers</td>
-                                <td><span class="icon deleteUser"><img src="/telafricamobile-admin/images/icons/trash.png" title="Delete User" alt="trash" /></span></td>
-                                <td><span class="icon addUser"><img src="/telafricamobile-admin/images/icons/addUser.png"  alt="Add User" title="Add User" /></span></td>
+                                <td><a href="javascript:" class="addUserlink"><span class="icon addUser">
+                                <input type="hidden" value="<?php echo $messageList['id']; ?>" id="listid<?php echo $i;?>" name="listid<?php echo $i;?>" />
+                                <img src="/telafricamobile-admin/images/icons/addUser.png"  alt="Add User" title="Add User" /></span></a></td>
                                 <td><span class="icon sendtoList"><img src="/telafricamobile-admin/images/icons/sendSMS.png"  alt="Send SMS" Title="Send SMS" /></span></td>
                             </tr>
 
+                        <?php  
+                        $i++;                  
+                        endforeach; 
+                        ?>   
                         </tbody>
                     </table>
                 </div>
@@ -380,7 +373,7 @@
 
                     if(d != 'error'){
 
-                        swal("Added to Send List", "Your message(s) have been sent to the network. Check sent items to view send status");
+                        swal("Added to Send List", "Your message(s) have been sent to the network. Check sent items to view send status", "success");
                         window.setTimeout(function(){location.reload()},5000);
                     }else{
 
@@ -425,18 +418,35 @@
                 contentType: false,
                 processData: false,
                 success:function(data){
-                    console.log("success");
-                    console.log(data);
+                    
+                    if (data != "error"){
+
+                        swal("List Saved", "Your list has been saved successfully", "success");
+                        window.setTimeout(function(){location.reload()},5000);
+                    }else{
+
+                        swal.showInputError("Sorry there was an error.  The list was not added");
+                    }
                 },
                 error: function(data){
                     console.log("error");
                     console.log(data);
+                    swal.showInputError("Sorry there was an error.  The list was not added");
                 }
             });
                         
         }
     });
+    $(".addUserlink").click(function () {
 
+        var listname = "";
+        var index = "";
+        $('.subscribers tr').click(function(){
+            index = $('tr').index(this);
+            listname = $("#listname" + index).attr('title');
+            alert(listname);
+        });
+    });
 
     // Functionality for reset button on compose
     $("#resetMessage").click(function () {
