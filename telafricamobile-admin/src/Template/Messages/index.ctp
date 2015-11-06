@@ -259,7 +259,7 @@
 
                                 <td title="<?php echo $messageList['listname']; ?>" id="listname<?php echo $i;?>" ><?php echo $messageList['listname']; ?></td>
                                 <td><?php echo $messageList['listdescription']; ?></td>
-                                <td><?php echo $messageList['totalSubscibers']; ?></td>
+                                <td><span id="totalSubscibers<?php echo $i;?>"><?php echo $messageList['totalSubscibers']; ?></span></td>
                                 <td><span class="icon deleteUser"><img src="/telafricamobile-admin/images/icons/trash.png" title="Delete User" alt="trash" /></span></td>
                                 <td><a href="javascript:" class="addUserlink"><span class="icon addUser">
                                 <input type="hidden" value="<?php echo $messageList['id']; ?>" id="listid<?php echo $i;?>" name="listid<?php echo $i;?>" />
@@ -437,16 +437,60 @@
                         
         }
     });
-    $(".addUserlink").click(function () {
+    
 
-        var listname = "";
-        var index = "";
-        $('.subscribers tr').click(function(){
-            index = $('tr').index(this);
-            listname = $("#listname" + index).attr('title');
-            alert(listname);
-        });
+    var listname = "";
+    var index = "";
+    $('.subscribers').find('tr').click(function(){
+        index = ($(this).index()+1);
+        listname = $("#listname" + index).attr('title');
+        listid = $("#listid" + index).val();
+        //alert(listname);
+
+        swal({
+            title: "Add subscriber tov " +  listname + " list",
+            text: "Enter subscriber's numbers:",
+            type: "input",
+            showCancelButton: true,
+            closeOnConfirm: false,
+            animation: "slide-from-top"
+            }, function(inputValue) {
+              if (inputValue === false) return false;
+
+              if (inputValue === "") {
+
+                  swal.showInputError("Ooops looks like you did not enter the subscriber's number!");
+                  return false
+
+                }else if(!$.isNumeric(inputValue)){
+
+                      swal.showInputError("Please enter valid numbers!");
+                      return false
+
+                }else{
+
+                    $.get('/telafricamobile-admin/messages/addSubsciber?listid='+listid+"&subscriberNumber="+inputValue, function(d) {  
+
+                    var response = $.parseJSON(d);  
+
+                    console.log(response);   
+
+                    if(!response.error){
+
+                          swal("You have added " + inputValue + " to " + listname, ". The list has now " +response.message, "success");
+                          $('#totalSubscibers' + index).html(response.message);
+                    }else{
+
+                            swal.showInputError(response.message);
+                    }
+
+
+                    });
+                }
+              
+          });
     });
+
 
     // Functionality for reset button on compose
     $("#resetMessage").click(function () {

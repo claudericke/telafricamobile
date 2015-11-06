@@ -181,5 +181,45 @@ class MessagesController extends AppController{
 		}
     }
 
+    public function addSubsciber (){
+
+    	if($this->request->is('ajax')) {
+    		
+	    	$this->autoRender = false;
+	    	$subscriber_lists_subscribersTable = TableRegistry::get('subscriber_lists_subscribers');
+	    	$query = $subscriber_lists_subscribersTable->find('all', [
+			    'conditions' => ['subscriber_lists_subscribers.msisdn =' => $this->request->query['subscriberNumber'], 'subscriber_lists_subscribers.subscriber_lists_id =' => $this->request->query['listid']] 
+			]);
+			
+	    	$existingNumber = $query->count();
+	    	//debug($existingNumber);die;
+	    	if($existingNumber == 0){
+		    	$subscriber = $subscriber_lists_subscribersTable->newEntity();
+
+		    	$subscriber->msisdn = $this->request->query['subscriberNumber'];
+		    	$subscriber->subscriber_lists_id = $this->request->query['listid'];
+
+		    	if ($subscriber_lists_subscribersTable->save($subscriber)) {
+
+		    		$query = $subscriber_lists_subscribersTable->find('all', [
+					    'conditions' => ['subscriber_lists_subscribers.subscriber_lists_id =' => $this->request->query['listid']] 
+					]);
+			
+	    			$existingNumber = $query->count();
+					$message['error'] = false;
+					$message['message'] = $existingNumber;
+				}else{
+					$message['error'] = true;
+					$message['message'] = "Something went wrong. Please try again!";
+				}
+			}else{
+
+				$message['error'] = true;
+				$message['message'] = "This number ".$this->request->query['subscriberNumber']." is already part of this subscriber list";
+			}
+
+			echo json_encode($message);
+	    }
+    }
 
 }
