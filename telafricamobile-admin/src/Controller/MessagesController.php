@@ -50,37 +50,183 @@ class MessagesController extends AppController{
 		//$rows = $conn->fetchAll('assoc');
 	   	//echo $query;die;
 		$this->set('messageLists', $list);
-	    $this->set('_serialize', ['sentMessages','messageLists']);
+
+		$messageTemplatesTable = TableRegistry::get('message_templates');
+
+		$query = $messageTemplatesTable->find('all', [
+		    'conditions' => ['message_templates.user_id =' => $this->Auth->user('id')],
+		    'order' => ['message_templates.id' => 'ASC']
+		]);
+
+		$messageTemplates = $query->toArray();
+		$this->set('messageTemplates', $messageTemplates);
+
+	    $this->set('_serialize', ['sentMessages','messageLists', 'messageTemplates']);
 
 	              
     }
 
     public function sendSMS(){
 
-    	if($this->request->is('ajax')) {
+    	if($this->request->is('post')){
 	    	$this->autoRender = false;
+
+	    	$creditsTable = TableRegistry::get('Credits');
+			$credits = $creditsTable->find()
+	    		->select(['id','creditValue'])
+			 	->where(['Credits.user_id =' => $this->Auth->user('id')])
+			 	->first();
+
 	    	$SMSTable = TableRegistry::get('sms');			
+	    	//echo "<pre>";print_r($this->request->data); echo "</pre>";
+	    	//die;
+	    	$now = date('Y-m-d H:i:s');
+	    	$csvNUmbers = array();
+	    	$queuedSMS = 0;
 
-			$numbers = explode(',', $this->request->query['sendTo']);
-			
-			$now = date('Y-m-d H:i:s');
-			foreach ($numbers as $MSISDN) {
+	    	//echo "<pre>";print_r($_FILES); echo "</pre>";
+		   	if($_FILES["uploadBtn1"]["name"]) {
+				$filename = $_FILES["uploadBtn1"]["name"];
+				$source = $_FILES["uploadBtn1"]["tmp_name"];
+				$type = $_FILES["uploadBtn1"]["type"];
+				
+				$name = explode(".", $filename);
+				$accepted_types = array('application/zip', 'application/x-zip-compressed', 'multipart/x-zip', 'application/x-compressed');
+				
+				$continue = strtolower($name[1]) == 'zip' ? true : false;
+				if(!in_array($type, $accepted_types)) {
+					
+					$message['error'] = true;
+					$message['message'] = "The file you are trying to upload is not a .zip file. Please try again.";
+					
+					return;
+				}
 
-				$SMS = $SMSTable->newEntity();				
-		    	$SMS->user_id = $this->Auth->user('id');
-		    	$SMS->campaign_id = 0;
-		    	$SMS->content = $this->request->query['message'];
-		    	$SMS->msisdn = $MSISDN;
-		    	$SMS->datetosend = $now;
-		    	$SMS->status = 'Q';
-		    	$SMS->retries = 0;		    	
+				$target_path = Configure::read('UPLOADFOLDER').$filename; 
+				if(move_uploaded_file($source, $target_path)) {
+					$zip = new \ZipArchive();
+					$x = $zip->open($target_path);
+					if ($x === true) {
 
-		        if(!$result = $SMSTable->save($SMS)){
-		           
-		       		echo 'error';
-	       		}
-		    }	    	
+						for( $i = 0; $i < $zip->numFiles; $i++){ 
+		    				
+							/**
+							 * Here we get the name of the Extracted file
+							 * 
+							 */ 
+							$stat = $zip->statIndex( $i );
+	    					$ExtractedFile = basename($stat['name']);
+						
+						}
+						$zip->extractTo(Configure::read('UPLOADFOLDER')); 
+						$zip->close();
+				
+						unlink($target_path);
+					}
+					
+
+	       			$processfile = fopen(Configure::read('UPLOADFOLDER').$ExtractedFile, 'r');
+					while (($line = fgetcsv($processfile)) !== FALSE) {
+						if (is_numeric($line[0])){
+							$csvNUmbers [] = $line[0];
+						}
+					}
+
+					if(count($csvNUmbers) <= $credits->creditValue){
+
+						foreach ($csvNUmbers as $msisdn) {							
+
+							$SMS = $SMSTable->newEntity();				
+					    	$SMS->user_id = $this->Auth->user('id');
+					    	$SMS->campaign_id = 0;
+					    	$SMS->content = $this->request->data['message'];
+					    	$SMS->msisdn = $msisdn;
+					    	$SMS->datetosend = $now;
+					    	$SMS->status = 'Q';
+					    	$SMS->retries = 0;		    	
+
+					        if(!$result = $SMSTable->save($SMS)){
+					           
+					       		$message['error'] = true;
+					       		$message['message'] = "";
+				       		}else{
+				       			$queuedSMS++;
+				       		}
+				       	
+		       			}
+
+		       			if($queuedSMS > 0){
+					    	$credit= $creditsTable->newEntity();
+
+							$credit->id = $credits->id;
+							$credit->creditvalue = ($credits->creditValue - $queuedSMS);
+			    			$creditsTable->save($credit);
+			    			$message['error'] = false;
+					       	$message['message'] = ($credits->creditValue - $queuedSMS);
+			    		}
+
+		       		}else{
+
+		       			$message['error'] = true;
+		    			$message['message'] = "Sorry you do not have enough credits to send the SMSs. Your current credit balance is ".$credits->creditValue;
+		       		}
+					fclose($processfile);
+					unlink(Configure::read('UPLOADFOLDER').$ExtractedFile);
+
+		       		
+ 
+					//echo "Extracted File ".$ExtractedFile;
+				} else {
+
+					
+	       			$message['error'] = true;
+	    			$message['message'] = "There was a problem with the upload. Please try again.";
+					
+				}
+				//echo $message;
+			}elseif($this->request->data['sendTo']){
+				
+				$numbers = explode(',', $this->request->data['sendTo']);
+				
+				if(count($numbers) <= $credits->creditValue){		
+					foreach ($numbers as $MSISDN) {
+
+						$SMS = $SMSTable->newEntity();				
+				    	$SMS->user_id = $this->Auth->user('id');
+				    	$SMS->campaign_id = 0;
+				    	$SMS->content = $this->request->data['message'];
+				    	$SMS->msisdn = $MSISDN;
+				    	$SMS->datetosend = $now;
+				    	$SMS->status = 'Q';
+				    	$SMS->retries = 0;		    	
+
+				        if(!$result = $SMSTable->save($SMS)){
+				           
+				       		echo 'error';
+			       		}else{
+
+			       			$queuedSMS++;
+			       		}
+
+			       		if($queuedSMS > 0){
+					    	$credit= $creditsTable->newEntity();
+
+							$credit->id = $credits->id;
+							$credit->creditvalue = ($credits->creditValue - $queuedSMS);
+			    			$creditsTable->save($credit);
+			    			$message['error'] = false;
+					       	$message['message'] = ($credits->creditValue - $queuedSMS);
+			    		}
+				    }
+				}else{
+					$message['error'] = true;
+		    		$message['message'] = "Sorry you do not have enough credits to send the SMSs. Your current credit balance is ".$credits->creditValue;
+
+				}
+			}	    	
 	    }
+
+	    echo json_encode($message);
     }
 
     public function createSubscriberList(){
@@ -88,11 +234,13 @@ class MessagesController extends AppController{
 	    if($this->request->is('post')){
 
 	    	$this->autoRender = false;
+
+
 	    	$subscriber_listsTable = TableRegistry::get('subscriber_lists');
 			$subscriber_lists_subscribersTable = TableRegistry::get('subscriber_lists_subscribers');
 		   	//$data = $this->request->data;
 
-		   	echo "<pre>";print_r($_FILES); echo "</pre>";
+		   	//echo "<pre>";print_r($_FILES); echo "</pre>";
 		   	if($_FILES["uploadBtn"]["name"]) {
 				$filename = $_FILES["uploadBtn"]["name"];
 				$source = $_FILES["uploadBtn"]["tmp_name"];
@@ -241,6 +389,121 @@ class MessagesController extends AppController{
 			echo json_encode($message);
 	    }
 
+
+    }
+
+    public function sendMessageToList(){
+
+     	if($this->request->is('ajax')) {
+    		
+	    	$this->autoRender = false;
+
+	    	$creditsTable = TableRegistry::get('Credits');
+			$credits = $creditsTable->find()
+	    		->select(['id','creditValue'])
+			 	->where(['Credits.user_id =' => $this->Auth->user('id')])
+			 	->first();
+			
+	    	$SMSTable = TableRegistry::get('sms');
+	    	$subscriber_lists_subscribersTable = TableRegistry::get('subscriber_lists_subscribers');	
+
+	    	$subscriber_lists = $subscriber_lists_subscribersTable->find()
+	    		->select(['msisdn'])
+			 	->where(['subscriber_lists_subscribers.subscriber_lists_id =' => $this->request->query['listid']]);	
+			$subscriber_lists_count = $subscriber_lists->count();
+
+			//debug($subscriber_lists_count);die;
+			if($subscriber_lists_count <= $credits->creditValue){
+
+				$now = date('Y-m-d H:i:s');
+				$queuedSMS = 0;
+				foreach ($subscriber_lists as $subscriber) {
+
+					$SMS = $SMSTable->newEntity();				
+			    	$SMS->user_id = $this->Auth->user('id');
+			    	$SMS->campaign_id = 0;
+			    	$SMS->content = $this->request->query['message'];
+			    	$SMS->msisdn = $subscriber->msisdn;
+			    	$SMS->datetosend = $now;
+			    	$SMS->status = 'Q';
+			    	$SMS->retries = 0;		    	
+
+			        if(!$result = $SMSTable->save($SMS)){
+			           
+			       		$message['error'] = true;
+			       		$message['message'] = "There was and error. Please try again!";
+		       		}else{
+		       			$queuedSMS++;
+		       			
+		       		}
+			    }
+
+			    if($queuedSMS > 0){
+			    	$credit= $creditsTable->newEntity();
+
+					$credit->id = $credits->id;
+					$credit->creditvalue = ($credits->creditValue - $queuedSMS);
+	    			$creditsTable->save($credit);
+	    			$message['error'] = false;
+			       	$message['message'] = ($credits->creditValue - $queuedSMS);
+	    		}
+			}else{
+
+				$message['error'] = true;
+			    $message['message'] = "Sorry you do not have enough credits to send the SMSs. Your current credit balance is ".$credits->creditValue;
+			}
+
+		   	echo json_encode($message);   	
+
+	    }
+
+     }
+
+    public function createMessageTemplate(){
+    	if($this->request->is('ajax')) {
+    		
+	    	$this->autoRender = false;
+
+	    	$messageTemplatesTable = TableRegistry::get('message_templates');
+	    	$messageTemplates = $messageTemplatesTable->newEntity();
+
+
+	    	$messageTemplates->templateContent = $this->request->query['message'];
+	    	$messageTemplates->user_id = $this->Auth->user('id');
+
+	    	if($messageTemplatesTable->save($messageTemplates)){
+
+	    		$message['error'] = false;
+	    		$message['message'] = "";
+	    	}else{
+
+	    		$message['error'] = true;
+	    		$message['message'] = "There was an error. Please try again.";
+	    	}
+
+	    	echo json_encode($message);
+
+    	}
+    }
+
+    public function deleteMessageTemplate(){
+
+    	if($this->request->is('ajax')) {
+    		
+	    	$this->autoRender = false;
+
+	    	$messageTemplatesTable = TableRegistry::get('message_templates');
+	    	if($messageTemplatesTable->deleteAll(['id' => $this->request->query['template_id']])){
+
+	    		$message['error'] = false;
+	    		$message['message'] = "";
+	    	}else{
+
+	    		$message['error'] = true;
+	    		$message['message'] = "There was an error. Please try again.";
+	    	}
+	    	echo json_encode($message);
+	    }  	
 
     }
 

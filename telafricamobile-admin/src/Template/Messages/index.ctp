@@ -1,6 +1,6 @@
 <?php
 
-//debug($messageLists);
+//debug($messageTemplates);
 ?>
  <!-- Start Notifications and Alerts Panel  -->
 <section class="notifications">
@@ -78,32 +78,36 @@
 
             <li data-content="compose">
                 <div class="container">
-                    <form name="compose">
+                    <form name="compose" id="compose" enctype="multipart/form-data">
                         <div class="two columns">
                             <label for="sendTo">Send To:</label>
                         </div>
                         <div class="seven columns">
-                            <input name="send-idTo" id="sendTo" value="" class="u-full-width" />
+                            <input name="sendTo" id="sendTo" value="" class="u-full-width" />
                             
                             <small class="italics">Numbers seperated by commas. Numbers without country code will be considered as local (South Africa) numbers</small>
                         </div>
                         <div class="three columns ">
-                            <button class="btn-primary u-full-width blueBG white center">Upload CSV</button>
+                                <input id="uploadFile1" name="uploadFile1" placeholder="Choose File" disabled="disabled" />
+                                <div class="btn-primary u-full-width blueBG white center fileUpload">
+                                    <span>Upload CSV</span>
+                                    <input type="file" class="upload" value="" id="uploadBtn1" name="uploadBtn1"/>
+                                </div>
+                           <!--<button class="btn-primary u-full-width blueBG white center">Upload CSV</button>-->
                         </div>
-                </div>
-                <div class="container">
-                    <div class="two columns">
-                        <label for="message">Message:</label>
                     </div>
-                    <div class="seven columns">
-                        <textarea name="message" id="message" value="" class="u-full-width"></textarea>
-                    </div>
+                    <div class="container">
+                        <div class="two columns">
+                            <label for="message">Message:</label>
+                        </div>
+                        <div class="seven columns">
+                            <textarea name="message" id="message" value="" class="u-full-width"></textarea>
+                        </div>
                     <div class="three columns ">
                         <span class="wordCount">0</span><span>&nbsp; characters</span>
                         <br/>
                         <span class="messageCount">1</span><span>&nbsp; part message</span>
                     </div>
-                    </form>
                 </div>
                 <div class="container">
                     <div class="one columns">
@@ -111,11 +115,11 @@
                     </div>
                     <div class="spacer">&nbsp;</div>
                     <div class="three columns floatRight">
-                        <button class="btn-primary u-full-width greenBG white" id="sendMessage">Review &amp; Send</button>
+                        <input type="submit" class="btn-primary u-full-width greenBG white" id="sendMessage" name="sendMessage" value="Review &amp; Send">
 
                     </div>
                     <div class="three columns floatRight">
-                        <button class="btn-primary u-full-width greyBG white" id="resetMessage">Reset All</button>
+                        <input type="button" class="btn-primary u-full-width greyBG white" id="resetMessage" value="Reset All" name="resetMessage"></button>
                     </div>
                     <div class="two columns">
                         &nbsp;
@@ -133,32 +137,24 @@
                         <button class="btn-primary u-full-width blueBG white center" onClick="newTemplate()">Create New Template +</button>
                     </div>
                 </div>
+                 <?php
+                 $i = 1; 
+                 foreach ($messageTemplates as $messageTemplate): 
+                    ?> 
                 <div class="container">
                     <div class="four columns panel">
-                        <h4>Template 1 <small>(130 Characters)</small></h4>
-                        <p>roin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio.</p>
+                        <h4>Template <?php echo $i; ?> <small>(<?php echo strlen($messageTemplate->templateContent); ?>)</small></h4>
+                        <p><?php echo $messageTemplate->templateContent; ?></p>
                         <div class="twleve columns noMargin">
-                            <button class="btn-primary u-full-width redBG white center" onClick="deleteTemplate(1)">Delete</button>
+                            <button class="btn-primary u-full-width redBG white center" onClick="deleteTemplate('<?php echo $messageTemplate->id; ?>', 'Template <?php echo $i; ?>')">Delete</button>
                             <button class="btn-primary u-full-width greenBG white center" onClick="sendTemplate(1)">Send</button>
                         </div>
                     </div>
-                    <div class="four columns panel">
-                        <h4>Template 2 <small>(190 Characters)</small></h4>
-                        <p>roin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a augue.</p>
-                        <div class="twleve columns noMargin">
-                            <button class="btn-primary u-full-width redBG white center" onClick="deleteTemplate(2)">Delete</button>
-                            <button class="btn-primary u-full-width greenBG white center" onClick="sendTemplate(2)">Send</button>
-                        </div>
-                    </div>
-                    <div class="four columns panel">
-                        <h4>Template 3 <small>(74 Characters)</small></h4>
-                        <p>roin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>
-                        <div class="twleve columns noMargin">
-                            <button class="btn-primary u-full-width redBG white center" onClick="deleteTemplate(3)">Delete</button>
-                            <button class="btn-primary u-full-width greenBG white center" onClick="sendTemplate(3)">Send</button>
-                        </div>
-                    </div>
                 </div>
+                <?php  
+                $i++;               
+                endforeach; 
+                ?>
             </li>
 <style type="text/css">
     
@@ -264,7 +260,7 @@
                                 <td><a href="javascript:" class="addUserlink" title="<?php echo $i;?>"><span class="icon addUser" >
                                 <input type="hidden" value="<?php echo $messageList['id']; ?>" id="listid<?php echo $i;?>" name="listid<?php echo $i;?>" />
                                 <img src="/telafricamobile-admin/images/icons/addUser.png"  alt="Add User" title="Add User" /></span></a></td>
-                                <td><span class="icon sendtoList"><img src="/telafricamobile-admin/images/icons/sendSMS.png"  alt="Send SMS" Title="Send SMS" /></span></td>
+                                <td><a href="javascript:" class="sendMessageToList" title="<?php echo $i;?>"><span class="icon sendtoList"><img src="/telafricamobile-admin/images/icons/sendSMS.png"  alt="Send SMS" Title="Send SMS" /></span></td>
                             </tr>
 
                         <?php  
@@ -314,6 +310,9 @@
         $("#uploadBtn").change(function () {
             $("#uploadFile").val(this.value);
         });
+         $("#uploadBtn1").change(function () {
+            $("#uploadFile1").val(this.value);
+        });
 
     });
 
@@ -354,21 +353,28 @@
     });
 
     // Functionality for send button. Reccoment an AJAX request (http://t4t5.github.io/sweetalert/)
-     $("#sendMessage").click(function () {
+    //$("#sendMessage").click(function () {
+    $('#compose').on('submit', function(ev){
+        ev.preventDefault();
         var proceed = true;
         if($('#message').val() == ''){
             swal("", "Please enter the message", "error");
             $('#message').focus();
             proceed = false;
         }
-        if($('#sendTo').val() == ''){
+        if($('#sendTo').val() == '' && $('#uploadFile1').val() == ''){
             swal("", "Please enter the numbers you want to send messages to", "error");
             
             proceed = false;
         }
+        var fileExtension = ['zip'];
+        if ($.inArray($('#uploadBtn1').val().split('.').pop().toLowerCase(), fileExtension) == -1 && $('#uploadFile1').val() != '') {
+            swal("", "Please upload a zip file", "error");
+            proceed = false;
+        }
 
         if(proceed){
-
+            /**
             $.get('/telafricamobile-admin/messages/sendSMS?sendTo='+$('#sendTo').val()+"&message="+$('#message').val(), function(d) {       
 
                     if(d != 'error'){
@@ -382,6 +388,33 @@
                    
 
               });
+            **/
+            var formData = new FormData($('#compose')[0]);
+            $.ajax({
+                type:'POST',
+                url: '/telafricamobile-admin/messages/sendSMS',
+                data:formData,
+                cache:false,
+                contentType: false,
+                processData: false,
+                success:function(data){
+                    var response = $.parseJSON(data);  
+                    if (!response.error){
+
+                        //swal("List Saved", "Your list has been saved successfully", "success");
+                        swal("Added to Send List", "Your message(s) have been sent to the network. Check sent items to view send status. Your credit balance is " + response.message, "success");
+                        window.setTimeout(function(){location.reload()},3000);
+                    }else{
+
+                        swal(response.message);
+                    }
+                },
+                error: function(data){
+                    //console.log("error");
+                    //console.log(data.message);
+                    swal.showInputError("Sorry there was an error.");
+                }
+            });
             
         }
     });
@@ -506,33 +539,88 @@
         swal({
           title: "Are you sure you want to delete this list " + listname + "?",
           text: "Once the list is deleted it cannot be recovered!",
-          type: "warning",
+          type: "warning",        
           showCancelButton: true,
           confirmButtonColor: "#DD6B55",
           confirmButtonText: "Yes, delete it!",
-          closeOnConfirm: false
-        }, function() {          
+          cancelButtonText: "No, cancel plx!",
+          closeOnConfirm: false,
+          closeOnCancel: false
 
-            $.get('/telafricamobile-admin/messages/deleteList?listid='+listid, function(d) {  
+        }, function(isConfirm){
+            if (isConfirm) {         
 
-                var response = $.parseJSON(d);  
+                $.get('/telafricamobile-admin/messages/deleteList?listid='+listid, function(d) {  
 
-                console.log(response);   
+                    var response = $.parseJSON(d);  
 
-                if(!response.error){
+                    console.log(response);   
 
-                      swal(response.message, "success");
-                      $('#row' + index).remove();
+                    if(!response.error){
+
+                          swal("Deleted!", response.message, "success");
+                          $('#row' + index).remove();
+                    }else{
+
+                             swal("Cancelled", response.message, "error");
+                    }
+                });
+
+            }else{
+
+                swal("Cancelled", "The " + listname +" list has not been deleted", "error");
+            }
+          
+        });
+    });
+    
+    $('.sendMessageToList').click(function(){
+        var listname = "";
+        var index = "";
+        var listid = "";
+        
+        index = $(this).attr('title');
+        listname = $("#listname" + index).attr('title');
+        listid = $("#listid" + index).val();
+        console.log(index);        
+        
+        swal({
+            title: "Send message to subscriber " +  listname + " list",
+            text: "Enter the message:",
+            type: "input",
+            showCancelButton: true,
+            closeOnConfirm: false,
+            animation: "slide-from-top"
+            }, function(inputValue) {
+              if (inputValue === false) return false;
+
+              if (inputValue === "") {
+
+                  swal.showInputError("Ooops looks like you did not enter the message!");
+                  return false
+
                 }else{
 
+                    $.get('/telafricamobile-admin/messages/sendMessageToList?listid='+listid+"&message="+inputValue, function(d) {  
+
+                    var response = $.parseJSON(d);  
+
+                    console.log(response);   
+
+                    if(!response.error){
+
+                        swal("The message have been queued for subscribers in the   "+ listname + " list.", "With " + $('#totalSubscibers' + index).html() + " subscribers. Your remaining credit balance is " + response.message, "success");
+                       // window.setTimeout(function(){location.reload()},5000);
+                    }else{
+
                         swal.showInputError(response.message);
+                    }
+
+
+                    });
                 }
-
-
-            });
-        //}
-          
-      });
+              
+          });
     });
 
     // Functionality for reset button on compose
@@ -552,6 +640,7 @@
                 $("#message").val("");
                 $('#sendTo').importTags('');
                 $(".wordCount").text(160);
+                $('#uploadFile1').val("");
                 swal("Reset!", "All fields have been reset", "success");
             } else {
                 swal("Cancelled", "Fields not reset, please continue", "error");
@@ -568,7 +657,7 @@
     }
 
     //Function for deleting a template
-    function deleteTemplate(templateItem) {
+    function deleteTemplate(template_id, templateItem) {
         swal({
             title: "Are you sure?",
             text: "Are you sure you want to delete template" + templateItem + "?",
@@ -581,7 +670,26 @@
             closeOnCancel: false
         }, function (isConfirm) {
             if (isConfirm) {
-                swal("Deleted!", "SMS Template " + templateItem + " deleted", "success");
+
+                $.get('/telafricamobile-admin/messages/deleteMessageTemplate?template_id='+template_id, function(d) {  
+
+                var response = $.parseJSON(d);  
+
+                console.log(response);   
+
+                if(!response.error){
+
+                   swal("Deleted!", "SMS Template " + templateItem + " deleted", "success");
+                    window.setTimeout(function(){location.reload()},5000);
+                }else{
+
+                    swal(response.message);
+                }
+
+
+            });
+
+                
             } else {
                 swal("Cancelled", "All SMS templates unchanged", "error");
             }
@@ -606,9 +714,29 @@
             if (inputValue === false) return false;
             if (inputValue === "") {
                 swal.showInputError("You need to write something!");
-                return false
+                return false;
             }
-            swal("SMS Template Created!", "Template text: " + inputValue, "success");
+
+            $.get('/telafricamobile-admin/messages/createMessageTemplate?message='+inputValue, function(d) {  
+
+                var response = $.parseJSON(d);  
+
+                console.log(response);   
+
+                if(!response.error){
+
+                    swal("SMS Template Created!", "Template text: " + inputValue, "success");
+                    window.setTimeout(function(){location.reload()},5000);
+                }else{
+
+                    swal.showInputError(response.message);
+                }
+
+
+            });
+
+
+           
         });
     }
 
