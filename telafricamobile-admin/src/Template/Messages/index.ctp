@@ -255,13 +255,13 @@
                         foreach ($messageLists as $messageList): 
                         
                         ?>
-                            <tr>
+                            <tr id="row<?php echo $i;?>" >
 
                                 <td title="<?php echo $messageList['listname']; ?>" id="listname<?php echo $i;?>" ><?php echo $messageList['listname']; ?></td>
                                 <td><?php echo $messageList['listdescription']; ?></td>
                                 <td><span id="totalSubscibers<?php echo $i;?>"><?php echo $messageList['totalSubscibers']; ?></span></td>
-                                <td><span class="icon deleteUser"><img src="/telafricamobile-admin/images/icons/trash.png" title="Delete User" alt="trash" /></span></td>
-                                <td><a href="javascript:" class="addUserlink"><span class="icon addUser">
+                                <td><a href="javascript:" class="deleteList" title="<?php echo $i;?>"><span class="icon deleteUser"><img src="/telafricamobile-admin/images/icons/trash.png" title="Delete User" alt="trash" /></span></a></td>
+                                <td><a href="javascript:" class="addUserlink" title="<?php echo $i;?>"><span class="icon addUser" >
                                 <input type="hidden" value="<?php echo $messageList['id']; ?>" id="listid<?php echo $i;?>" name="listid<?php echo $i;?>" />
                                 <img src="/telafricamobile-admin/images/icons/addUser.png"  alt="Add User" title="Add User" /></span></a></td>
                                 <td><span class="icon sendtoList"><img src="/telafricamobile-admin/images/icons/sendSMS.png"  alt="Send SMS" Title="Send SMS" /></span></td>
@@ -374,7 +374,7 @@
                     if(d != 'error'){
 
                         swal("Added to Send List", "Your message(s) have been sent to the network. Check sent items to view send status", "success");
-                        window.setTimeout(function(){location.reload()},5000);
+                        window.setTimeout(function(){location.reload()},3000);
                     }else{
 
                         swal("Sorry there was error. Credit were not removed", "success");
@@ -422,7 +422,7 @@
                     if (data != "error"){
 
                         swal("List Saved", "Your list has been saved successfully", "success");
-                        window.setTimeout(function(){location.reload()},5000);
+                        window.setTimeout(function(){location.reload()},3000);
                     }else{
 
                         swal.showInputError("Sorry there was an error.  The list was not added");
@@ -438,17 +438,18 @@
         }
     });
     
+    $('.addUserlink').click(function(){
+        var listname = "";
+        var index = "";
+        var listid = "";
 
-    var listname = "";
-    var index = "";
-    $('.subscribers').find('tr').click(function(){
-        index = ($(this).index()+1);
+        index = $(this).attr('title');
         listname = $("#listname" + index).attr('title');
         listid = $("#listid" + index).val();
-        //alert(listname);
+        console.log(index);
 
         swal({
-            title: "Add subscriber tov " +  listname + " list",
+            title: "Add subscriber to " +  listname + " list",
             text: "Enter subscriber's numbers:",
             type: "input",
             showCancelButton: true,
@@ -491,6 +492,48 @@
           });
     });
 
+    $('.deleteList').click(function(){
+        var listname = "";
+        var index = "";
+        var listid = "";
+        
+        index = $(this).attr('title');
+        listname = $("#listname" + index).attr('title');
+        listid = $("#listid" + index).val();
+        console.log(index);
+
+        
+        swal({
+          title: "Are you sure you want to delete this list " + listname + "?",
+          text: "Once the list is deleted it cannot be recovered!",
+          type: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#DD6B55",
+          confirmButtonText: "Yes, delete it!",
+          closeOnConfirm: false
+        }, function() {          
+
+            $.get('/telafricamobile-admin/messages/deleteList?listid='+listid, function(d) {  
+
+                var response = $.parseJSON(d);  
+
+                console.log(response);   
+
+                if(!response.error){
+
+                      swal(response.message, "success");
+                      $('#row' + index).remove();
+                }else{
+
+                        swal.showInputError(response.message);
+                }
+
+
+            });
+        //}
+          
+      });
+    });
 
     // Functionality for reset button on compose
     $("#resetMessage").click(function () {

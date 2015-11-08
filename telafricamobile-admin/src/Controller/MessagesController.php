@@ -222,4 +222,26 @@ class MessagesController extends AppController{
 	    }
     }
 
+    public function deleteList(){
+
+
+    	if($this->request->is('ajax')) {
+    		
+	    	$this->autoRender = false;
+
+	    	$subscriber_listsTable = TableRegistry::get('subscriber_lists');
+			$subscriber_lists_subscribersTable = TableRegistry::get('subscriber_lists_subscribers');
+
+			$subscriber_listsTable->deleteAll(['id' => $this->request->query['listid']]);
+			$subscriber_lists_subscribersTable->deleteAll(['subscriber_lists_id' => $this->request->query['listid']]);
+
+			$message['error'] = false;
+			$message['message'] = "The list has been deleted";
+
+			echo json_encode($message);
+	    }
+
+
+    }
+
 }
