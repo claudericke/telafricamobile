@@ -5,12 +5,12 @@
         <?= $this->Form->create() ?>
         <div class="spacer">&nbsp;</div>
         <div class="twelve columns">
-           <?php echo $this->Form->input('email',  ['label' => '', 'placeholder' => 'E-Mail Address', 'class' => 'emailInput u-full-width']); ?>
+           <?php echo $this->Form->input('email',  ['label' => '', 'placeholder' => 'E-Mail Address', 'class' => 'emailInput u-full-width', 'required' => 1]); ?>
         </div>
         <div class="twelve columns"><div class="spacer">&nbsp;</div></div>
         <div class="twelve columns">
             
-           <?php echo $this->Form->input('password', ['label' => '', 'placeholder' => 'Password', 'class' => 'passwordInput u-full-width']); ?>
+           <?php echo $this->Form->input('password', ['label' => '', 'placeholder' => 'Password', 'class' => 'passwordInput u-full-width', 'required' => 1]); ?>
         </div>
         <div class="twelve columns"><div class="spacer">&nbsp;</div></div>
         <div class="four columns margin5 center" >
