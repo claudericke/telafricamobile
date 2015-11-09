@@ -213,8 +213,8 @@
                                     <input type="file" class="upload" value="" id="uploadBtn" name="uploadBtn"/>
                                 </div>
                                 <!--<button class="btn-primary u-full-width blueBG white center">Upload CSV</button>-->
-                                <button class="btn-primary u-full-width greenBG white center" id="createSubscriberList">Save List</button>
-                                <button class="btn-primary u-full-width redBG white center createNewListCancel">Cancel</button>
+                                <input type="submit" class="btn-primary u-full-width greenBG white center" id="createSubscriberList" name="createSubscriberList" value="Save List">
+                                <input type="button" value="Cancel" name="Cancel" class="btn-primary u-full-width redBG white center createNewListCancel">
                             </div>
                         </div>
                         <div class="container">
