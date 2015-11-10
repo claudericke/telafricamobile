@@ -147,7 +147,7 @@
                         <p><?php echo $messageTemplate->templateContent; ?></p>
                         <div class="twleve columns noMargin">
                             <button class="btn-primary u-full-width redBG white center" onClick="deleteTemplate('<?php echo $messageTemplate->id; ?>', 'Template <?php echo $i; ?>')">Delete</button>
-                            <button class="btn-primary u-full-width greenBG white center" onClick="sendTemplate(1)">Send</button>
+                            <button class="btn-primary u-full-width greenBG white center" onClick="sendTemplate('<?php echo $messageTemplate->templateContent; ?>')">Send</button>
                         </div>
                     </div>
                 </div>
@@ -698,7 +698,14 @@
 
     //Function te sent SMS from template
     function sendTemplate(templateItem) {
-        swal("Pass Value of selected template to #message textarea and activate compose tab");
+        //swal("Pass Value of selected template to #message textarea and activate compose tab");
+        $('#message').text(templateItem);
+        $('.cd-tabs-navigation').children('li').eq(2).children('a').removeClass('selected');
+        $('.cd-tabs-content').children('li').eq(2).removeClass('selected');
+
+        $('.cd-tabs-navigation').children('li').eq(1).children('a').addClass('selected');
+        $('.cd-tabs-content').children('li').eq(1).addClass('selected');
+    
     }
 
     function newTemplate() {
