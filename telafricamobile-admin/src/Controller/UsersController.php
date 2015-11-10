@@ -162,16 +162,24 @@ class UsersController extends AppController{
 
 					if ($creditsTable->save($credit)) {
 
-						$Message = "Hi ".$this->request->data['firstname']. " ".$this->request->data['lastname']."\n";
-	                    $Message .= "Thank you for registering on the telafrica SMS gateway portal.\nTo activate your account, please click here ".$url."\n";
-	                    $Message .= "Regards\n \nTelafrica Team.";
+						$Message1 = "<p>Hi ".$this->request->data['firstname']. " ".$this->request->data['lastname']."</p>";
+	                    $Message2 = "<p>Thank you for registering on the telafrica SMS gateway portal.<br>To activate your account, please click below</p>";
+	                   
+
+	                    $Message3 = '<span style="color: #ffffff; font-weight: 300;">
+                                  <a style="color: #ffffff; text-align:center;text-decoration: none;" href="'.$url.'">Activate Account</a>
+                               </span>';
+                    	$Message4 = "<p>Regards<br> <br>Telafrica Mobile Team.</p>";
 
 	                    $Email = new Email('default');
 	                    $Email->from(['telafrica360@gmail.com' => 'TelAfrica Moblie Registration'])
+	                    	->emailFormat('html')
+                    		->template('emailtemplate')
 	                    	->to($this->request->data['email'])
 	                    	->subject('Activate Your telafrica Account')
-	                    	->send($Message);
-					    
+	                    	->viewVars(['value' => $Message1, 'value2' => $Message2, 'value3' => $Message3, 'value4' => $Message4])
+	                    	->send();
+					    	
 					    $this->Flash->success(__('The user has been saved.'));
 
 					    
@@ -321,15 +329,21 @@ class UsersController extends AppController{
                 if($this->Users->save($specificallyThisUser)){
                 //if($this->Users->saveField('tokenhash',$specificallyThisUser->tokenhash)){
 
-                    $Message = "Hi ".$specificallyThisUser->firstname. " ".$specificallyThisUser->lastname."\n";
-                    $Message .= "You have requested to reset your password.\nPlease go to this ".$url." to reset your password.\n";
-                    $Message .= "Regards\n \nTelafrica Mobile Team.";
+                    $Message1 = "<p>Hi ".$specificallyThisUser->firstname. " ".$specificallyThisUser->lastname."</p>";
+                    $Message2 = "<p>You have requested to reset your password.<br>Please click below to reset your password.</p>";
+                    $Message3 = '<span style="color: #ffffff; font-weight: 300;">
+                                  <a style="color: #ffffff; text-align:center;text-decoration: none;" href="'.$url.'">Reset Password</a>
+                               </span>';
+                    $Message4 = "<p>Regards<br> <br>Telafrica Mobile Team.</p>";
 
                     $Email = new Email('default');
                     $Email->from(['telafrica360@gmail.com' => 'TelAfrica Moblie'])
+                    	->emailFormat('html')
+                    	->template('emailtemplate')
                     	->to($specificallyThisUser->email)
                     	->subject('Password Reset')
-                    	->send($Message);
+                    	->viewVars(['value' => $Message1, 'value2' => $Message2, 'value3' => $Message3, 'value4' => $Message4])
+                    	->send();
                     $this->Flash->success(__(' Details have been emailed to this email address '.$specificallyThisUser->email));
                 }else{
 
@@ -351,6 +365,8 @@ class UsersController extends AppController{
             if($user){
                 $this->Users->id = $user->id;
                 //if(!empty($this->Users->id)){
+                if ($this->request->is('post')) {
+                	
                     $this->Users->data = $this->data;
 
                     //$this->Users->data['email'] = $user['email'];
@@ -366,10 +382,8 @@ class UsersController extends AppController{
                     }else{
 
                        $this->Flash->error(_('Something went wrong :( :('));
-                    }
-
-                    
-               // }
+                    }                    
+               }
             }else{
                 $this->Flash->error(_('Token Corrupted, the reset link only works once.'));
             }
