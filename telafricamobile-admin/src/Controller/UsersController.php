@@ -422,7 +422,8 @@ class UsersController extends AppController{
             $this->autoRender = false;
            	$accountManager = $this->Users->findById($this->Auth->user('accountmanager'))->first();
 			
-            $Message1 = "<p>Hi ".$accountManager->firstname. " ".$accountManager->lastname."</p>";
+			$username = $accountManager->firstname. " ".$accountManager->lastname;
+            $Message1 = "<p>Hi ".$username."</p>";
             $Message2 = "<p>The user ".$this->Auth->user('firstname')." ".$this->Auth->user('lastname')." with email address ".$this->Auth->user('email')." has requested ".$this->request->query['requestedCredits']." credits.</p>";
             $Message3 = '';
             $Message4 = "<p>Regards<br> <br>Telafrica Mobile Team.</p>";
@@ -432,7 +433,7 @@ class UsersController extends AppController{
             	->emailFormat('html')
             	->template('emailtemplate')
             	->to($accountManager->email)
-            	->subject('Credits Request by')
+            	->subject('Credits Requested by user '.$this->Auth->user('firstname').' '.$this->Auth->user('lastname'))
             	->viewVars(['value' => $Message1, 'value2' => $Message2, 'value3' => $Message3, 'value4' => $Message4])
             	->send();
 		}
