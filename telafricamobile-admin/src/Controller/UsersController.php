@@ -52,8 +52,8 @@ class UsersController extends AppController{
 	              
     	}else{
 
-    		$this->Flash->error(__('Sorry you do not have permission to view the user page!'));
-    		return $this->redirect(['controller' => 'dashboards', 'action' => 'index']);
+    		//$this->Flash->error(__('Sorry you do not have permission to view the user page!'));
+    		//return $this->redirect(['controller' => 'dashboards', 'action' => 'index']);
     	}
 
     }
@@ -414,6 +414,53 @@ class UsersController extends AppController{
 			}
 		}
 		$this->set('user', $user);
+	}	
+
+	public function creditRequest(){
+		
+		if($this->request->is('ajax')) {
+            $this->autoRender = false;
+           	$accountManager = $this->Users->findById($this->Auth->user('accountmanager'))->first();
+			
+            $Message1 = "<p>Hi ".$accountManager->firstname. " ".$accountManager->lastname."</p>";
+            $Message2 = "<p>The user ".$this->Auth->user('firstname')." ".$this->Auth->user('lastname')." with email address ".$this->Auth->user('email')." has requested ".$this->request->query['requestedCredits']." credits.</p>";
+            $Message3 = '';
+            $Message4 = "<p>Regards<br> <br>Telafrica Mobile Team.</p>";
+
+            $Email = new Email('default');
+            $Email->from(['telafrica360@gmail.com' => 'TelAfrica Moblie'])
+            	->emailFormat('html')
+            	->template('emailtemplate')
+            	->to($accountManager->email)
+            	->subject('Credits Request by')
+            	->viewVars(['value' => $Message1, 'value2' => $Message2, 'value3' => $Message3, 'value4' => $Message4])
+            	->send();
+		}
+		
+	}	
+
+	public function closeAccount(){
+		
+		if($this->request->is('ajax')) {
+			$user = $this->Users->get($this->Auth->user('id'), [
+	            'contain' => []
+	        ]);
+            $this->autoRender = false;
+           	$this->Users->data = $this->data;
+           	$this->Users->data['activate'] = 0;
+            $this->Users->data['id'] = $this->Auth->user('id');
+            $this->Users->data['reasonForDeletingAccount'] = $this->request->query['reason'];        
+            //debug($this->Users->data);die;
+           	$user = $this->Users->patchEntity($user, $this->Users->data);
+			if (!$result = $this->Users->save($user)) {
+
+				echo "error";	
+			}else{
+
+				$this->request->session()->destroy();
+			}
+		}
+		
 	}	
 }
 ?>

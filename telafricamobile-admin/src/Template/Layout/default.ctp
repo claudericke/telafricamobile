@@ -42,6 +42,7 @@ $cakeDescription = 'telafrica SMS Gateway';
     <?= $this->fetch('script') ?>
     <script src="/telafricamobile-admin/js/jquery-2.1.4.js"></script>
     <script src="/telafricamobile-admin/js/jquery-ui.min.js"></script>
+    <script src="/telafricamobile-admin/js/sweetalert.min.js"></script>
     
 </head>
 <body class="dashboard">
@@ -52,7 +53,7 @@ $cakeDescription = 'telafrica SMS Gateway';
         <li class="dashboard"><?= $this->Html->link('Dashboard', ['controller' => 'dashboards', 'action' => 'index']) ?></li>
         <li class="messageCenter"><?= $this->Html->link('Message Center', ['controller' => 'messages', 'action' => 'index']) ?></li>
         <li class="settings"><a href="">Settings</a></li>
-        <?php if ($this->request->session()->read('Auth.User.role') == 'admin' || $this->request->session()->read('Auth.User.role') == 'sales') {?> <li class="account"><?= $this->Html->link('Accounts', ['controller' => 'users', 'action' => 'index']) ?></li><?php }?>
+        <li class="account"><?= $this->Html->link('Accounts', ['controller' => 'users', 'action' => 'index']) ?></li>
         <li class="reports"><a href="">Reports</a></li>
         <li class="support"><a href="">Support</a></li>
         <li class="Logout"><?= $this->Html->link('Log Out', ['controller' => 'users', 'action' => 'logout']) ?></li>

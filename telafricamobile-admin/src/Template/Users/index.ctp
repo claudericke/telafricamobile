@@ -1,3 +1,8 @@
+<?php
+
+if ($this->request->session()->read('Auth.User.role') == 'admin' || $this->request->session()->read('Auth.User.role') == 'sales'){
+
+?>
 <section class="account-admin">
         <div class="container">
             <div class="twelve columns panel">
@@ -372,11 +377,51 @@
     </div>
             </div>
     </section>
+<?php
 
-    <!-- Links for Scripts  -->
-    <script src="/telafricamobile-admin/js/jquery-2.1.4.js"></script>
-    <script src="/telafricamobile-admin/js/jquery-ui.min.js"></script>
-    <script src="/telafricamobile-admin/js/sweetalert.min.js"></script>
+}else{
+
+
+?>
+
+
+<section class="account-reg">
+        <div class="container">
+            <div class="twelve columns panel">
+                <h4>Add Credit</h4>
+                <p>Please enter the amount of credit you wish to add. Minimum is 500 credits</p>
+                <form name="settings" action="" method="post">
+                    <label for="creditAmount">Enter Sender ID:</label>
+                    <input type="number" name="creditAmount" value="500" id="creditAmount" min="500" max="1000000" step="500" autocomplete="off">
+                    <input type="button" name="addCredit" class="addCredit center greenBG white " value="Add Credit" />
+                    <div class="twelve columns">
+                        <span>Total cost: </span><span><strong>$2.50</strong></span>
+                    </div>
+                    <div class="twelve columns">
+                        <div class="spacer"></div>
+                    </div>
+                    <h4>Close Account</h4>
+                    <p>If you wish to close your account please complete the form below.</p>
+                    <label for="reason">Reason for closing <small><i>(optional)</i></small>:</label>
+                    <input name="reason" type="text" id="reason" />
+                    <div class="twelve columns">
+                        <input type="checkbox" name="agree" id="agree"> I Agree to Terms of Closure as defined by the Terms of Agreement</div>
+                    <div class="twelve columns">
+                        <input type="button" name="closeAccount" id="closeAccount" class="closeAccount center redBG white " value="Close Account" />
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </section>
+
+
+<?php
+}
+
+?>
+
+  
     <!-- Links for Scripts  -->
 
     <!-- Javascript  -->
@@ -392,17 +437,7 @@
         $("#creditAmount").keyup(function () {
                 e.preventDefault();
             })
-            // Show and Hide Log In Button
-        $(".userName").click(function () {
-            $(".logout").slideToggle("fast");
-        });
-
-        // Show and Hide Navigation
-        function toggleNav() {
-            $("nav").toggle("slide", {
-                direction: "left"
-            }, 500);
-        }
+          
 
         //Remove Credit Function
      $(".removeCredit").click(function() {
@@ -618,6 +653,88 @@
                   }  
             });
        //});
+
+        // Disable keystrokes on credits to ensure 500 increments
+        $("#creditAmount").keyup(function (e) {
+            e.preventDefault();
+        })
+
+        // Function to add Credits
+        $(".addCredit").click(function () {
+            var creditValue = $("#creditAmount").val();
+            swal({
+                title: "Are you sure?",
+                text: "You are about to request " + creditValue + " additional credits",
+                type: "info",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, send request!",
+                closeOnConfirm: false
+            }, function () {
+
+                $.get('/telafricamobile-admin/users/creditRequest?requestedCredits=' + creditValue, function(d) {       
+
+                    if(d != 'error'){
+
+                        swal("Request Sent!", "You have sent a request for " + creditValue + " credits. Please check your mail for more details.", "success");
+                        //swal("Nice!", "You wrote: " + inputValue, "success");
+                    }else{
+
+                        swal("","Sorry there was error. User could not be created", "error");
+                    }
+                     
+
+                });
+
+                
+            });
+        });
+
+        // Function to delete account
+        $("#closeAccount").click(function () {
+            var reason = $('#reason').val();
+            var proceed = true;
+            if(!$('#agree').is(":checked")){
+                swal("", "Please accept the terms and conditions", "error");                         
+                proceed = false;
+            }
+             if(proceed){
+                swal({
+                    title: "Confirm Close!",
+                    text: "Please type 'DELETE' to confirm account deletion:",
+                    type: "input",
+                    showCancelButton: true,
+                    closeOnConfirm: false,
+                    animation: "slide-from-top"
+                }, function (inputValue) {
+                    if (inputValue != "DELETE") {
+                        swal.showInputError("Please type DELETE to confirm deletion");
+                        return false;
+                    } else {                              
+
+                        $.get('/telafricamobile-admin/users/closeAccount?reason=' + reason, function(d) {       
+
+                            if(d != 'error'){
+                                swal({
+                                    title: "Account Deleted!",
+                                    text: "Your account has been deleted permanently! You will now be logged out",
+                                    type: "warning",
+                                    timer: 2000,
+                                    showConfirmButton: true
+                                });
+                                
+                            }else{
+
+                                swal("","Sorry there was error.", "error");
+                            }                                 
+
+                        });                       
+                       window.setTimeout(function(){window.location.replace("/telafricamobile-admin/")},5000);
+                    }
+                
+                });
+            }
+        });
         //Show Create new user form
         $(".createUserButton").click(function () {
             $(".createUserContainer").slideToggle("fast");
