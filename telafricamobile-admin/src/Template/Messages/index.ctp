@@ -47,7 +47,20 @@
                             </tr>
                         </thead>
                         <tbody>
-                         <?php foreach ($sentMessages as $sentMessage): ?>                      
+                         <?php 
+                         foreach ($sentMessages as $sentMessage): 
+
+                            switch ($sentMessage->status) {
+                                case 'Q':
+                                    $status = 'Queued';
+                                    break;
+                                
+                                default:
+                                    # code...at
+                                    break;
+                            }
+
+                         ?>                      
                             <tr>
                                 <td>
                                     <input type="checkbox" name="selectAll" class="sentCheck" value="">
@@ -55,7 +68,7 @@
                                 <td><?= h($sentMessage->msisdn) ?></td>
                                 <td><?= h($sentMessage->content) ?></td>
                                 <td><?= h(date('d F Y H:i:s', strtotime($sentMessage->datetosend))) ?></td>
-                                <td class="green bold">Delivered</td>
+                                <td class="green bold"><?php echo $status; ?></td>
                                 <td><span class="icon trash"><img src="/telafricamobile-admin/images/icons/trash.png" alt="trash" /></span></td>
                                 <td><span class="icon trash"><img src="/telafricamobile-admin/images/icons/forward.png"  alt="forward" /></span></td>
                             </tr>

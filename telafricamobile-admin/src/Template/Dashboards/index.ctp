@@ -1,3 +1,6 @@
+<?php
+//debug($credits);
+?>
 <!-- Start Notifications and Alerts Panel  -->
 <section class="notifications">
     <div class="container">
@@ -23,7 +26,7 @@
         </div>
        <div class="three columns creditsRemaining panel">
             <h4>Credits</h4>
-            <h5><strong>5</strong></h5>
+            <h5><strong><?php echo $credits->creditValue; ?></strong></h5>
             <p>SMSs Credits</p>
         </div>
         <div class="six columns panel reportsSummary">

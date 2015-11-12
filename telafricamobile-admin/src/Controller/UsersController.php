@@ -463,5 +463,34 @@ class UsersController extends AppController{
 		}
 		
 	}	
+
+	/**
+     * Settings method
+     *
+     * @param string|null $id User id.
+     * @return void Redirects on successful edit, renders view otherwise.
+     * @throws \Cake\Network\Exception\NotFoundException When record not found.
+     */
+    public function Settings($id = null){
+    	
+        $user = $this->Users->get($this->Auth->user('id'), [
+            'contain' => []
+        ]);
+        if ($this->request->is(['patch', 'post', 'put'])) {
+        	if(!empty($this->request->data['password_update'])){
+	        	$user->password = $this->request->data['password_update'];
+	        }
+            $user = $this->Users->patchEntity($user, $this->request->data);
+            if ($this->Users->save($user)) {
+                $this->Flash->success(__('The setting have been saved.'));
+                return $this->redirect(['controller' => 'dashboards', 'action' => 'index']);
+            } else {
+                $this->Flash->error(__('The settings could not be saved. Please, try again.'));
+            }
+        }
+        $this->set(compact('user'));
+        $this->set('_serialize', ['user']);	
+    		
+    }
 }
 ?>

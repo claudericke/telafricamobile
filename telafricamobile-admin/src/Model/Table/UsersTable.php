@@ -45,7 +45,12 @@ class UsersTable extends Table{
 		->add('password_confirm', 'no-misspelling', [
         	'rule' => ['compareWith', 'password'],
         	'message' => 'Passwords are not equal',
-    	]);
+    	]) 
+        ->allowEmpty('password_confirm_update')      
+        ->add('password_confirm_update', 'no-misspelling', [
+            'rule' => ['compareWith', 'password_update'],
+            'message' => 'Passwords are not equal',
+        ]);
 		
 	}  
  

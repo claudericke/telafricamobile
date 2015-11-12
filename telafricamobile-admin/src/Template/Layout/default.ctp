@@ -52,7 +52,7 @@ $cakeDescription = 'telafrica SMS Gateway';
         <li><strong>telafrica</strong> <?= $this->fetch('title') ?></li>
         <li class="dashboard"><?= $this->Html->link('Dashboard', ['controller' => 'dashboards', 'action' => 'index']) ?></li>
         <li class="messageCenter"><?= $this->Html->link('Message Center', ['controller' => 'messages', 'action' => 'index']) ?></li>
-        <li class="settings"><a href="">Settings</a></li>
+        <li class="settings"><?= $this->Html->link('Settings', ['controller' => 'users', 'action' => 'settings']) ?></li>
         <li class="account"><?= $this->Html->link('Accounts', ['controller' => 'users', 'action' => 'index']) ?></li>
         <li class="reports"><a href="">Reports</a></li>
         <li class="support"><a href="">Support</a></li>
