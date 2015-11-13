@@ -44,17 +44,21 @@ class UsersController extends AppController{
 	}
 
 	public function index(){
+		
+		$query = $this->Users->find('all')->contain(['Credits']);
+		$this->set('users', $this->paginate($query));
 
-		if($this->Auth->user('role') == 'admin' || $this->Auth->user('role') == 'sales'){
-			$query = $this->Users->find('all')->contain(['Credits']);
-			$this->set('users', $this->paginate($query));
-	        $this->set('_serialize', ['users']);
-	              
-    	}else{
+		$countriesTable = TableRegistry::get('Countries');
 
-    		//$this->Flash->error(__('Sorry you do not have permission to view the user page!'));
-    		//return $this->redirect(['controller' => 'dashboards', 'action' => 'index']);
-    	}
+		$query = $countriesTable->find('list', [
+			'keyField' => 'countrycode',
+    		'valueField' => 'countryname',
+		    'order' => ['Countries.countryName' => 'ASC']
+		]);
+
+		$countries = $query->toArray();
+		$this->set('countries', $countries);
+        $this->set('_serialize', ['users', 'countries']);              
 
     }
 
@@ -68,6 +72,8 @@ class UsersController extends AppController{
 
 		$user = $this->Users->newEntity();
 		if ($this->request->is('post')) {
+
+
 			//echo "<pre>";print_r($this->request->data['g-recaptcha-response']);echo "</pre>";
 			/**
 			$http = new Client();
@@ -200,6 +206,15 @@ class UsersController extends AppController{
 
 			
 		}
+		$countriesTable = TableRegistry::get('Countries');
+		$query = $countriesTable->find('list', [
+		'keyField' => 'countrycode',
+		'valueField' => 'countryname',
+		    'order' => ['Countries.countryName' => 'ASC']
+		]);
+
+		$countries = $query->toArray();
+		$this->set('countries', $countries);
 		$this->set('sitekey', Configure::read('GoogleReCaptcha.Sitekey'));
 		$this->set('user', $user);
 		$this->viewBuilder()->layout('login-registration');

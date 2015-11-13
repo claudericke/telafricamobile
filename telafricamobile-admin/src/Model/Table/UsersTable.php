@@ -23,6 +23,10 @@ class UsersTable extends Table{
             'dependent' => true,
             'cascadeCallbacks' => true
         ]);
+        $this->hasOne('Countries', [
+            'foreignKey' => 'countrycode'
+        ]);
+
 
     }
 
