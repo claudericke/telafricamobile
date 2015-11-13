@@ -84,7 +84,7 @@ $cakeDescription = 'telafrica SMS Gateway';
             <div class="logout">
                 <span><?= $this->Html->link('Dashboard', ['controller' => 'dashboards', 'action' => 'index']) ?></span>
                 <br/>
-                <span><a href="#">Add Credits</a></span>
+                <span><?= $this->Html->link('Add Credits', ['controller' => 'users', 'action' => 'index']) ?></span>
                 <br/>
                 <span><?= $this->Html->link('Log Out', ['controller' => 'users', 'action' => 'logout']) ?></span>
             </div>
