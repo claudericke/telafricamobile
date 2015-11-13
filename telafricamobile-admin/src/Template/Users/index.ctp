@@ -1,5 +1,5 @@
 <?php
-//debug($countries);
+//debug($accountmanagers);
 
 if ($this->request->session()->read('Auth.User.role') == 'admin' || $this->request->session()->read('Auth.User.role') == 'sales'){
 
@@ -50,6 +50,17 @@ if ($this->request->session()->read('Auth.User.role') == 'admin' || $this->reque
                                     ]);
                                     ?>
                                 </div>
+                                <div class="twelve columns noMargin">
+                                    <?php 
+                                          echo $this->Form->input('accountmanager', [
+                                            'class' => 'u-full-width', 
+                                            'label' => 'Account Manager:',
+                                            'options' => $accountmanagers,
+                                            'empty' => 'Account Manager....',
+                                            'required' => 1
+                                    ]);
+                                    ?>
+                                </div>
                             <div class="twelve columns noMargin">
                                     <?php 
                                           echo $this->Form->input('role', ['class' => 'u-full-width', 'label' => 'User Level:',
@@ -64,8 +75,8 @@ if ($this->request->session()->read('Auth.User.role') == 'admin' || $this->reque
                                     ?>
                                 </div>
                                 <div class="twelve columns ">
-                                    <button class="btn-primary greenBG white center" id="addUser">Save User</button>
-                                    <button class="btn-primary redBG white center Createcancel">Cancel</button>
+                                    <input type="submit" class="btn-primary greenBG white center" id="addUser" name="addUser" value="Save User">
+                                    <input type="button" class="btn-primary redBG white center Createcancel" name="Cancel" value="Cancel">
                                 </div>
                         </fieldset>
                         <?php
@@ -347,6 +358,7 @@ if ($this->request->session()->read('Auth.User.role') == 'admin' || $this->reque
                   var procced = true;
                   var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;            
                   var password = $('#password').val();
+                  var accountmanager = $('#accountmanager').val();
 
                   if(!firstname){
 
@@ -388,6 +400,13 @@ if ($this->request->session()->read('Auth.User.role') == 'admin' || $this->reque
 
                         swal("Please select the user's country!");
                         $('#country').focus();
+                        procced = false;
+                  }
+
+                  if(!accountmanager){
+
+                        swal("Please select the account manager!");
+                        $('#accountmanager').focus();
                         procced = false;
                   }
 

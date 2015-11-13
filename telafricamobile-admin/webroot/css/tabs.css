@@ -205,7 +205,7 @@ font-family: "Lato", sans-serif;
 }
 .cd-tabs-content li {
   display: none;
-  padding: 1.4em;
+  padding: 1.4em ! important;
 }
 .cd-tabs-content li.selected {
   display: block;

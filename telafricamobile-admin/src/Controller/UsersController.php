@@ -58,7 +58,18 @@ class UsersController extends AppController{
 
 		$countries = $query->toArray();
 		$this->set('countries', $countries);
-        $this->set('_serialize', ['users', 'countries']);              
+
+		$allowedAccountMans = ['admin', 'sales'];
+		$query = $this->Users->find('list', [
+			'keyField' => 'id',
+			'valueField' => 'email',
+			'conditions' => ['Users.role IN' => $allowedAccountMans],
+			'order' => ['email' => 'ASC']
+		]);
+		//debug($query);die;
+		$accountmanagers = $query->toArray();
+		$this->set('accountmanagers', $accountmanagers);
+        $this->set('_serialize', ['users', 'countries','accountmanagers']);              
 
     }
 
@@ -157,6 +168,18 @@ class UsersController extends AppController{
                 $ms = wordwrap($ms,1000);
 
 				$this->request->data['tokenhash'] = $key;
+
+				$allowedAccountMans = ['admin', 'sales'];
+				$query = $this->Users->find('all', [ 
+					'fields' => ['id'],
+					'conditions' => ['Users.role IN' => $allowedAccountMans]
+				]);
+				foreach ($query as $value) {
+					$accountmanagers [] = $value->id;
+				}
+				
+				$this->request->data['accountmanager'] = $accountmanagers[rand (0, count($accountmanagers) - 1)];
+				
 				$user = $this->Users->patchEntity($user, $this->request->data);
 				if ($result = $this->Users->save($user)) {					
 
@@ -208,13 +231,15 @@ class UsersController extends AppController{
 		}
 		$countriesTable = TableRegistry::get('Countries');
 		$query = $countriesTable->find('list', [
-		'keyField' => 'countrycode',
-		'valueField' => 'countryname',
-		    'order' => ['Countries.countryName' => 'ASC']
+			'keyField' => 'countrycode',
+			'valueField' => 'countryname',
+			'order' => ['Countries.countryName' => 'ASC']
 		]);
 
 		$countries = $query->toArray();
 		$this->set('countries', $countries);
+
+		
 		$this->set('sitekey', Configure::read('GoogleReCaptcha.Sitekey'));
 		$this->set('user', $user);
 		$this->viewBuilder()->layout('login-registration');
