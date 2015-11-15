@@ -1,10 +1,28 @@
 <?php
-
+//debug($TotalDeliveredSMSs);
 foreach ($SMSsPerMonth as $value) {
     $Months [] = date('F Y', strtotime($value['datetosend']));
     $NumberOfSMSSent [] = $value['SMSsPerMonth'];
 }
 
+foreach ($LastSentSMSs as $LastSentSMS) {
+    
+    if($LastSentSMS->status == 'D'){
+        $DeliveredSMSs[] = $LastSentSMS->msisdn;
+    }
+
+    if($LastSentSMS->status == 'Q'){
+        $QueuedSMSs[] = $LastSentSMS->msisdn;
+    }
+
+    if($LastSentSMS->status == 'C'){
+        $ConfirmedSMSs[] = $LastSentSMS->msisdn;
+    }
+
+    if($LastSentSMS->status == 'P'){
+        $PendingSMSs[] = $LastSentSMS->msisdn;
+    }
+}
 
 ?>
 <script src="/telafricamobile-admin/js/Chart.min.js"></script>
@@ -29,7 +47,7 @@ foreach ($SMSsPerMonth as $value) {
     <div class="container">
         <div class="three columns messagesSent panel">
             <h4>Messages Sent</h4>
-            <h5><strong>225</strong></h5>
+            <h5><strong><?php echo $TotalDeliveredSMSs;?></strong></h5>
             <p>SMSs Delivered To Date</p>
         </div>
        <div class="three columns creditsRemaining panel">
@@ -38,12 +56,13 @@ foreach ($SMSsPerMonth as $value) {
             <p>SMSs Credits</p>
         </div>
         <div class="six columns panel reportsSummary">
-            <h4>Delivery Summary <span class="right  width100"><a href="#" class="green">show all reports</a></span></h4>
+            <h4>Delivery Summary <span class="right  width100"><a href="/telafricamobile-admin/reports" class="green">show all reports</a></span></h4>
             <ul>
-                <li>Date Sent: <span>8 October 2015</span></li>
-                <li>Messages Delivered <span>200</span></li>
-                <li>Messages Failed: <span>22</span></li>
-                <li>Messages Confirmed: <span>3</span></li>
+                <li>Date Sent: <span><?php echo date('d F Y', strtotime($Date)); ?></span></li>
+                <li>Messages Delivered: <span><?php echo (count($DeliveredSMSs) ? count($DeliveredSMSs) : "0"); ?></span></li>
+                <li>Messages Pending: <span><?php echo (count($PendingSMSs) ? count($PendingSMSs) : "0"); ?></span></li>
+                <li>Messages Confirmed: <span><?php echo (count($ConfirmedSMSs) ? count($ConfirmedSMSs) : "0"); ?></span></li>
+                <li>Messages Queued: <span><?php echo (count($QueuedSMSs) ? count($QueuedSMSs) : "0"); ?></span></li>
             </ul>
         </div>
     </div>

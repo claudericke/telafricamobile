@@ -42,7 +42,7 @@
                                 <th>Message</th>
                                 <th>Date Sent</th>
                                 <th>Delivery Status</th>
-                                <th><span class="icon trash"><img src="/telafricamobile-admin/images/icons/trash.png" alt="trash" /></span></th>
+                                <th><!--<span class="icon trash"><img src="/telafricamobile-admin/images/icons/trash.png" alt="trash" /></span>--></th>
                                 <th><span class="icon trash">&nbsp;</span></th>
                             </tr>
                         </thead>
@@ -51,26 +51,32 @@
                          foreach ($sentMessages as $sentMessage): 
 
                             switch ($sentMessage->status) {
-                                case 'Q':
-                                    $status = 'Queued';
+                            
+                                case 'P':
+                                    $status = 'Pending';
                                     break;
-                                
+                                case 'S':
+                                    $status = 'Submitted';
+                                    break;
+                                case 'D':
+                                    $status = 'Delivered';  
+                                    break;                              
                                 default:
-                                    # code...at
+                                    $status = 'Queued';
                                     break;
                             }
 
                          ?>                      
                             <tr>
                                 <td>
-                                    <input type="checkbox" name="selectAll" class="sentCheck" value="">
+                                   <!--<input type="checkbox" name="selectAll" class="sentCheck" value="">-->
                                 </td>
                                 <td><?= h($sentMessage->msisdn) ?></td>
                                 <td><?= h($sentMessage->content) ?></td>
                                 <td><?= h(date('d F Y H:i:s', strtotime($sentMessage->datetosend))) ?></td>
                                 <td class="green bold"><?php echo $status; ?></td>
-                                <td><span class="icon trash"><img src="/telafricamobile-admin/images/icons/trash.png" alt="trash" /></span></td>
-                                <td><span class="icon trash"><img src="/telafricamobile-admin/images/icons/forward.png"  alt="forward" /></span></td>
+                                <!--<td><span class="icon trash"><img src="/telafricamobile-admin/images/icons/trash.png" alt="trash" /></span></td>-->
+                                <td><span class="icon trash"><img src="/telafricamobile-admin/images/icons/forward.png" alt="forward" /></span></td>
                             </tr>
                         <?php                    
                         endforeach; 

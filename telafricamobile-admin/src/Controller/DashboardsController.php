@@ -28,7 +28,36 @@ class DashboardsController extends AppController{
 		$SMSsPerMonth = $conn->execute($query)->fetchAll('assoc');
 		$this->set('SMSsPerMonth', $SMSsPerMonth);
 
-	    $this->set('_serialize', ['SMSsPerMonth', 'credits']);
+    	$SMSTable = TableRegistry::get('sms');
+
+		$TotalDeliveredSMSs = $SMSTable->find()
+			->where(['sms.status =' => 'D', 'sms.user_id =' => $this->Auth->user('id')])
+		 	->count();
+		$this->set('TotalDeliveredSMSs', $TotalDeliveredSMSs); 
+
+		$LastSentDate = $SMSTable->find()
+			->select(['datetosend'])
+		 	->where(['sms.user_id =' => $this->Auth->user('id')])
+		 	->order(['sms.datetosend' => 'DESC'])
+		 	->first();
+
+		$date = date('Y-m-d',strtotime($LastSentDate->datetosend));
+
+		$this->set('Date', $date);
+
+		$LastSentSMSs = $SMSTable->find()
+			->where(['sms.user_id =' => $this->Auth->user('id'),
+				[
+					'sms.datetosend >=' => $date.' 00:00:00', 
+					'sms.datetosend <=' => $date.' 23:59:59'
+				]
+			])
+		 	->order(['sms.status' => 'DESC'])
+		 	->all();
+
+		$this->set('LastSentSMSs', $LastSentSMSs);
+
+	    $this->set('_serialize', ['SMSsPerMonth', 'credits', 'TotalDeliveredSMSs', 'Date', 'LastSentSMSs']);
     
     }
 
