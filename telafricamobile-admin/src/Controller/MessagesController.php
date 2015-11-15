@@ -66,6 +66,11 @@ class MessagesController extends AppController{
 	              
     }
 
+    private function remove_prefix($text, $prefix) {
+    
+	    return preg_replace('/^' . preg_quote($prefix, '/') . '/', '', $text);
+	}
+
     public function sendSMS(){
 
     	if($this->request->is('post')){
@@ -77,8 +82,15 @@ class MessagesController extends AppController{
 			 	->where(['Credits.user_id =' => $this->Auth->user('id')])
 			 	->first();
 
-	    	$SMSTable = TableRegistry::get('sms');			
-	    	//echo "<pre>";print_r($this->request->data); echo "</pre>";
+	    	$SMSTable = TableRegistry::get('sms');		
+
+	    	$countryPrefixTable = TableRegistry::get('countries');	
+	    	$countryPrefix = $countryPrefixTable->find()
+	    		->select(['countryphonecode'])
+			 	->where(['countries.countrycode =' => $this->Auth->user('countrycode')])
+			 	->first();
+
+	    	//debug($countryPrefix->countryphonecode); 
 	    	//die;
 	    	$now = date('Y-m-d H:i:s');
 	    	$csvNUmbers = array();
@@ -134,7 +146,13 @@ class MessagesController extends AppController{
 
 					if(count($csvNUmbers) <= $credits->creditValue){
 
-						foreach ($csvNUmbers as $msisdn) {							
+						foreach ($csvNUmbers as $msisdn) {	
+
+							if($msisdn[0] == '0'){
+
+								$msisdn = $countryPrefix->countryphonecode.$this->remove_prefix($msisdn, $msisdn[0]);
+
+							}						
 
 							$SMS = $SMSTable->newEntity();				
 					    	$SMS->user_id = $this->Auth->user('id');
@@ -189,8 +207,15 @@ class MessagesController extends AppController{
 				$numbers = explode(',', $this->request->data['sendTo']);
 				
 				if(count($numbers) <= $credits->creditValue){		
+					
 					foreach ($numbers as $MSISDN) {
 
+						if($MSISDN[0] == '0'){
+
+							$MSISDN = $countryPrefix->countryphonecode.$this->remove_prefix($MSISDN, $MSISDN[0]);
+
+						}
+						
 						$SMS = $SMSTable->newEntity();				
 				    	$SMS->user_id = $this->Auth->user('id');
 				    	$SMS->campaign_id = 0;
