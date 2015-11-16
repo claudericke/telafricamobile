@@ -63,7 +63,7 @@ class UsersController extends AppController{
 		$query = $this->Users->find('list', [
 			'keyField' => 'id',
 			'valueField' => 'email',
-			'conditions' => ['Users.role IN' => $allowedAccountMans],
+			'conditions' => ['Users.role IN' => $allowedAccountMans, 'users.activate' => 1],
 			'order' => ['email' => 'ASC']
 		]);
 		//debug($query);die;

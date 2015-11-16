@@ -25,16 +25,44 @@
         <div class="twelve columns panel">
              <div class="twelve columns">
                 <h4>Date Range:</h4>
-                 <table class="u-full-width sentMessages">
-                     <tr>
-                        <td>Start Date:</td>
-                        <td><input type="text" id="startdate" name="startdate"></td>
-                        <td>End Date:</td>
-                        <td><input type="text" id="enddate" name="enddate"></td>
-                        <td><button class="saveSettings center greenBG white" id="submit">Submit</button></td>
-                    </tr>
-                </table>
+                <!--<form>-->
+                     <table class="u-full-width sentMessages">
+                         <tr>
+                           <?php 
 
+                            if ($this->request->session()->read('Auth.User.role') == 'admin'){
+                           ?>
+                            <td>
+                                 <?php 
+                                      echo $this->Form->input('accounts', [
+                                        'class' => 'u-full-width', 
+                                        'label' => 'Please Select an Account:',
+                                        'options' => $accounts,
+                                        'empty' => 'Accounts....',
+                                        'required' => 0
+                                ]);
+                                ?>
+
+                            </td>
+                            <?php
+                            }
+
+                            ?>
+                            <td>
+                                
+                                <?php 
+                                    echo $this->Form->input('startdate', ['label' => 'Start Date', 'placeholder' => 'Start Date', 'class' => 'u-full-width', 'required' => 1]); 
+                                ?>
+                            </td>
+                            <td>
+                                <?php 
+                                    echo $this->Form->input('enddate', ['label' => 'End Date', 'placeholder' => 'End Date', 'class' => 'u-full-width', 'required' => 1]); 
+                                ?>
+                            </td>
+                            <td><button class="saveSettings center greenBG white" id="submit">Submit</button></td>
+                        </tr>
+                    </table>
+                <!--</form>-->
                 <div id="data"></div>
             </div>
         </div>
@@ -46,6 +74,7 @@
 
         var startdate = $('#startdate').val();
         var enddate = $('#enddate').val();
+        var account = $('#accounts').val();
         var procced = true;
 
         if(!startdate){
@@ -65,7 +94,7 @@
 
         if(procced){
 
-            $.get('/telafricamobile-admin/reports/getstarts?startdate='+startdate+"&enddate="+enddate, function(d) {       
+            $.get('/telafricamobile-admin/reports/getstarts?startdate='+startdate+"&enddate="+enddate + '&account=' + account, function(d) {       
                 var response = $.parseJSON(d);
                 
                 if(!response.error){
