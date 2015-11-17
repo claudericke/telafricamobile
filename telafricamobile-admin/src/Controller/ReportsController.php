@@ -29,7 +29,7 @@ class ReportsController extends AppController{
     
     public function getstarts(){
 
-    	if($this->request->is('ajax')) {
+    	if($this->request->is('ajax')){
 
 	    	$this->autoRender = false;
 	    	$conn = ConnectionManager::get('default');
@@ -96,8 +96,8 @@ class ReportsController extends AppController{
 			        $QueuedSMSs[] = $LastSentSMS->msisdn;
 			    }
 
-			    if($LastSentSMS->status == 'C'){
-			        $ConfirmedSMSs[] = $LastSentSMS->msisdn;
+			    if($LastSentSMS->status == 'S'){
+			        $SubmittedSMSs[] = $LastSentSMS->msisdn;
 			    }
 
 			    if($LastSentSMS->status == 'P'){
@@ -118,7 +118,7 @@ class ReportsController extends AppController{
                     default:
                         $status = 'Queued';
                         break;
-                }
+                }              
 
 
 			    $CSVArray[] = $LastSentSMS->msisdn;
@@ -129,8 +129,75 @@ class ReportsController extends AppController{
 			   	$csv .= join(',', $CSVArray)."\n";
 
 			   	unset($CSVArray);
-
 			}
+
+
+			$graphs = '<script src="/telafricamobile-admin/js/Chart.min.js"></script><div style="width:90%;height:400px">
+                <div id="legend" style="width:200px"></div>
+               	 <canvas id="myChart" style="width:100%; height:80%"></canvas>
+	            </div>
+
+	            <script type="text/javascript">               
+	                            
+	                // Get the context of the canvas element we want to select
+	                var ctx = document.getElementById("myChart").getContext("2d");
+
+	                // Chart data and style
+	                var options = {
+
+	                    //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
+	                    scaleBeginAtZero : true,
+
+	                    //Boolean - Whether grid lines are shown across the chart
+	                    scaleShowGridLines : true,
+
+	                    //String - Colour of the grid lines
+	                    scaleGridLineColor : "rgba(0,0,0,.05)",
+
+	                    //Number - Width of the grid lines
+	                    scaleGridLineWidth : 1,
+
+	                    //Boolean - Whether to show horizontal lines (except X axis)
+	                    scaleShowHorizontalLines: true,
+
+	                    //Boolean - Whether to show vertical lines (except Y axis)
+	                    scaleShowVerticalLines: true,
+
+	                    //Boolean - If there is a stroke on each bar
+	                    barShowStroke : true,
+
+	                    //Number - Pixel width of the bar stroke
+	                    barStrokeWidth : 2,
+
+	                    //Number - Spacing between each of the X value sets
+	                    barValueSpacing : 5,
+
+	                    //Number - Spacing between data sets within X values
+	                    barDatasetSpacing : 1,
+
+	                    //String - A legend template
+	                    legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].fillColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
+
+	                }
+
+	                var data = {
+	                    labels: [\'Pending\', \'Submitted\', \'Delivered\', \'Queued\'],
+	                    datasets: [
+	                        {
+	                            label: "SMSs Sent",
+	                            fillColor: "rgba(151,187,205,0.5)",
+	                            strokeColor: "rgba(151,187,205,0.8)",
+	                            highlightFill: "rgba(151,187,205,0.75)",
+	                            highlightStroke: "rgba(151,187,205,1)",
+	                            data: ['.count($PendingSMSs).', '.count($SubmittedSMSs).', '.count($DeliveredSMSs).', '.count($QueuedSMSs).']
+	                        },
+	                      
+	                    ]
+	                };
+
+	                var myBarChart = new Chart(ctx).Bar(data, options);
+	                document.getElementById("legend").innerHTML = myBarChart.generateLegend();
+	            </script>';
 
 			#create the CSV file
 			$system_path = Configure::read('UPLOADFOLDER');
@@ -140,12 +207,12 @@ class ReportsController extends AppController{
 			fwrite($fh,$csv);
 			fclose($fh);
 			
-			if (exec('/usr/bin/zip -j '.$system_path.$filename_md5.'.zip '.$system_path.$filename_md5.'.csv')){
-				$download = '<br><br><a href="uploads/'.$filename_md5.'.zip">Click here to download a compressed CSV file!</a><br><br>';
-			}
-			else
-			{
-				$download = '<br><br>Could not create ZIP file.<br><br>';    
+				if (exec('/usr/bin/zip -j '.$system_path.$filename_md5.'.zip '.$system_path.$filename_md5.'.csv')){
+
+					$download = '<br><br><a href="uploads/'.$filename_md5.'.zip">Click here to download a compressed CSV file!</a><br><br>';
+				}else{
+					$download = '<br><br>Could not create ZIP file.<br><br>';    
+				}
 			}
 			unlink($system_path.$filename_md5.'.csv');
 			
@@ -157,9 +224,10 @@ class ReportsController extends AppController{
             	<li>Total Sent SMSs between '.date('d F Y', strtotime($this->request->query['startdate'])).' and '.date('d F Y', strtotime($this->request->query['enddate'])).' are <b>'.$TotalDeliveredSMSs.'</b></li>
                 <li>Messages Delivered: <span>'.(count($DeliveredSMSs) ? count($DeliveredSMSs) : "0").'</span></li>
                 <li>Messages Pending: <span>'.(count($PendingSMSs) ? count($PendingSMSs) : "0").'</span></li>
-                <li>Messages Confirmed: <span>'.(count($ConfirmedSMSs) ? count($ConfirmedSMSs) : "0").'</span></li>
+                <li>Messages Submitted: <span>'.(count($SubmittedSMSs) ? count($SubmittedSMSs) : "0").'</span></li>
                 <li>Messages Queued: <span>'.(count($QueuedSMSs) ? count($QueuedSMSs) : "0").'</span></li>
-                <li>'.$download.'</li>
+                <li>'.$graphs.'</li>
+                <li>'.($TotalDeliveredSMSs != 0 ? $download : "").'</li>
             </ul>
        		</div>';
 
@@ -168,4 +236,4 @@ class ReportsController extends AppController{
 			echo json_encode($message);
 		}
     }
-}
+//}

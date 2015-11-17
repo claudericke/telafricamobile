@@ -1,4 +1,5 @@
  <script src="/telafricamobile-admin/js/jquery-ui.js"></script>
+
  <link href="/telafricamobile-admin/css/jquery-ui.css" rel="stylesheet">
   <script>
       $(function() {
